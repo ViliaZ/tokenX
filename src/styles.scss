@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+:root{
+    --bg-dark: rgb(47, 48, 56);
+    --primary: rgb(226, 228, 243) ;
+    --accent: rgb(189, 178, 28);
+}
+
+h2{
+    font-size: 26px;
+}
+
+h3{
+    font-size: 20px;
+}
+
+

@@ -1,0 +1,33 @@
+.wrapper {
+    display: flex;
+    justify-content: flex-start;
+    height: 100vh;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.pos-rel{
+    position: relative;
+}
+
+app-sidebar {
+    width: 16%;
+    min-width: 200px;
+    background-color: rgb(47, 48, 56);
+}
+
+app-main {
+    margin: 2rem;
+    padding: 3rem;
+    background-color: rgb(47, 48, 56);
+    border-radius: 15px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}

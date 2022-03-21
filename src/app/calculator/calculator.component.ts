@@ -61,7 +61,7 @@ export class CalculatorComponent implements OnInit {
     let fetchResult = await firstValueFrom(this.assetService.getExchangeRateEUR(this.requestedAssetID)); 
     this.priceInEUR = (fetchResult['market_data']['current_price']['eur']) * this.amountInput;
 
-    let priceData = fetchResult;
+    // let priceData = fetchResult;
   }
 
 }

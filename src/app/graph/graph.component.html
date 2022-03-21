@@ -1,0 +1,18 @@
+<input [(ngModel)]="assetInput" (ngModelChange)="findRequestedAsset()"  placeholder="asset" type="text">
+<input [(ngModel)]="amountInput" (ngModelChange)="calculateExchange()"  placeholder="amount" type="number">
+
+
+<table>
+    <!-- <tr>
+        <th>Coin Name</th>
+        <th>ID</th>
+        <th>Info</th>
+    </tr> -->
+    <tr>
+        <td>Fiat: {{ priceInEUR }} EUR </td>
+        <td> --- {{ assetInput }} </td>
+
+    </tr>
+
+
+</table>

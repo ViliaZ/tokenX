@@ -4,8 +4,14 @@ h1{
     writing-mode: vertical-lr;
     left: 0;
     bottom: 0;
-    color: rgba(245, 245, 245, 0.007);
+    color: rgba(245, 245, 245, 0);
     font-size: 172px;
     transform: translateX(-46px);
-    -webkit-text-stroke: 1px rgb(110, 110, 110);
+    -webkit-text-stroke: 1px rgb(100, 99, 99);
+}
+
+#offset {
+    transform: translateX(-36px) translateY(-8px);
+    -webkit-text-stroke: 0px rgba(2, 2, 2, 0) !important;
+    color: rgba(0, 0, 0, 0.068);
 }

@@ -1,0 +1,35 @@
+.imgArrows {
+    width: 30px;
+}
+
+input {
+    background-color: black;
+    padding: 4px;
+    margin-right: 12px;
+    border: unset;
+    border-right: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.currencyOne {
+    background-color: rgba(0, 0, 0, 0.753);
+    flex: 1;
+    max-width: 50%;
+    padding: 8px;
+}
+
+.currencyEUR {
+    background-color: rgba(0, 0, 0, 0.753);
+    max-width: 50%;
+    flex: 1;
+    padding: 8px;
+}

@@ -7,13 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class AssetsService {
 
-  requestedAssetID: string = 'litecoin';
-  // equals value of input field; per default: bitcoin
   urlAllCoins: string = 'https://api.coingecko.com/api/v3/coins/list?include_platform=false';
   // Attribution required!
 
-  urlExchangeRates: string = `https://api.coingecko.com/api/v3/coins/${this.requestedAssetID}?tickers=true&sparkline=true`;
-  // get coin data with exchange rates to fiat currency 
 
   assetList: object = {};
 
@@ -24,7 +20,8 @@ export class AssetsService {
     return this.http.get(this.urlAllCoins);
   }
 
-  getExchangeRateEUR() {
-    return this.http.get(this.urlExchangeRates)
+  getExchangeRateEUR(assetRequested) {
+  
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}?tickers=true&sparkline=true`);
   }
 }

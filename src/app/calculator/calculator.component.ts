@@ -28,12 +28,16 @@ export class CalculatorComponent implements OnInit {
   //   "name": "Bitcoin"
   // },
 
-  constructor(private assetService: AssetsService) { }
+  constructor(private assetService: AssetsService) {
+  }
 
   ngOnInit(): void {
     this.getAssetList();
     this.findRequestedAsset();
     this.calculateExchange();
+  }
+
+  ngOnChanges(){    
   }
 
   getAssetList() {
@@ -43,25 +47,23 @@ export class CalculatorComponent implements OnInit {
   findRequestedAsset() {
     this.filteredAsset = [];
 
-    if(this.assetInput.length > 3){
-    for (let i = 0; i < this.assetList.length; i++) {
-      if (this.assetList[i].id.includes(this.assetInput.toLowerCase())) {
-        this.filteredAsset.push(this.assetList[i].id)
+    if (this.assetInput.length > 3) {
+      for (let i = 0; i < this.assetList.length; i++) {
+        if (this.assetList[i].id.includes(this.assetInput.toLowerCase())) {
+          this.filteredAsset.push(this.assetList[i].id)
+        }
+        if (this.assetList[i].id == this.assetInput.toLowerCase()) {
+          this.requestedAssetID = this.assetList[i].id
+        }
       }
-      if (this.assetList[i].id == this.assetInput.toLowerCase()) {
-        this.requestedAssetID = this.assetList[i].id
-      }
+      this.calculateExchange();
     }
-    this.calculateExchange();
-  }
   };
 
- 
-  async calculateExchange() {
-    let fetchResult = await firstValueFrom(this.assetService.getExchangeRateEUR(this.requestedAssetID)); 
-    this.priceInEUR = (fetchResult['market_data']['current_price']['eur']) * this.amountInput;
 
-    // let priceData = fetchResult;
+  async calculateExchange() {
+    let fetchResult = await firstValueFrom(this.assetService.getExchangeRateEUR(this.requestedAssetID));
+    this.priceInEUR = (fetchResult['market_data']['current_price']['eur']) * this.amountInput;
   }
 
 }

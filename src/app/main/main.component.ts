@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AssetsService } from '../assets.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { AssetsService } from '../assets.service';
 })
 export class MainComponent implements OnInit {
 
+  @Input() currentTab: string = 'graph'
 
   constructor(private assets:AssetsService) { }
 

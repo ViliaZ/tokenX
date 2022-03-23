@@ -1,13 +1,12 @@
-<div class="currencyOne flex-c-c border-rad">
-    <input [(ngModel)]="amountInput" (ngModelChange)="calculateExchange()"   type="number"  min="0" class="inputNumber">
-    <input [(ngModel)]="assetInput" (ngModelChange)="findRequestedAsset()" placeholder="Bitcoin" class="inputAsset" >
+<div class="currencyOne">
+    <input [(ngModel)]="amountInput" (ngModelChange)="calculateExchange()" type="number" min="0" class="inputNumber">
+    <input [(ngModel)]="assetInput" (ngModelChange)="findRequestedAsset()" placeholder="Bitcoin" class="inputAsset">
 </div>
 
-<img src="assets/img/exchange-white.png" class="imgArrows">
+<div><img src="assets/img/exchange-white.png" class="imgArrows"></div>
 
 
-<div class="currencyEUR flex-c-c  border-rad">
-    <input type="number" [disabled]="true" [(ngModel)]="priceInEUR"  class="inputNumber">
-    <div>EUR</div>
-
-
+<div class="currencyEUR">
+    <input [(ngModel)]="priceInEUR" class="inputNumber" type="number" [disabled]="true">
+    <div class="currStable">EUR</div>
+</div>

@@ -1,3 +1,8 @@
+:host{
+    background-color: black;
+    min-width: 175px;
+}
+
 h1{
     margin: 0;
     position: absolute;
@@ -7,7 +12,7 @@ h1{
     color: rgba(245, 245, 245, 0);
     font-size: 172px;
     transform: translateX(-46px);
-    -webkit-text-stroke: 1px rgb(100, 99, 99);
+    -webkit-text-stroke: 1px rgb(175, 169, 169);
 }
 
 #offset {

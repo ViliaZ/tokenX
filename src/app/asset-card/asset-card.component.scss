@@ -1,0 +1,13 @@
+:host{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-dark);
+    border-radius: 16px;
+    padding: 4px;
+    color:white;
+    width: 100%;
+    min-width: 200px;
+    min-height: 150px;
+}

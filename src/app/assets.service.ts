@@ -10,18 +10,29 @@ export class AssetsService {
   urlAllCoins: string = 'https://api.coingecko.com/api/v3/coins/list?include_platform=false';
   // Attribution required!
 
-
   assetList: object = {};
+  requestedAssetID: string = 'bitcoin'; // from input field
+ 
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   }
 
   getAssetList() {
     return this.http.get(this.urlAllCoins);
   }
 
   getExchangeRateEUR(assetRequested) {
-  
     return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}?tickers=true&sparkline=true`);
   }
+
+  getAssetWeeklyData(assetRequested) {
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}/market_chart?vs_currency=eur&days=30&interval=daily`);
+  }
+
+
+getAssetDetails(assetRequested){
+  // thumbnail, infotext
+  return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}`);
+}
+
 }

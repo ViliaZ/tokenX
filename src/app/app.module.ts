@@ -9,6 +9,10 @@ import { GraphComponent } from './graph/graph.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
+import { MenuComponent } from './menu/menu.component';
+import { AssetCardComponent } from './asset-card/asset-card.component';
+import { FooterComponent } from './footer/footer.component';
+import { TableComponent } from './table/table.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +20,10 @@ import { NgChartsModule } from 'ng2-charts';
     MainComponent,
     CalculatorComponent,
     GraphComponent,
+    MenuComponent,
+    AssetCardComponent,
+    FooterComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,

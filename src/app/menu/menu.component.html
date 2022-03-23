@@ -1,0 +1,17 @@
+<div class="wrapperDiv">
+
+    <div (click)="tabAnimation('table')" class="wrapper-table">
+        <div class="table" [class.animationTabChange]="activeTab == 'table'">
+        </div>
+        <!-- pos absolute -->
+        <a >TABLE</a>
+
+    </div>
+
+    <div (click)="tabAnimation('graph')" class="wrapper-graph">
+        <div class="graph" [class.animationTabChange]="activeTab == 'graph'">
+        </div>
+        <a >GAPH</a>
+
+    </div>
+</div>

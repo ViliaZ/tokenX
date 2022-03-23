@@ -1,2 +1,4 @@
-<app-calculator class="border-rad flex-c-c gap-1"></app-calculator>
-<app-graph class="flex-1 border-rad mt-1"></app-graph>
+
+<app-calculator #calculator class="border-rad flex-c-c gap-1"></app-calculator>
+<app-graph *ngIf="currentTab === 'table'" [requestedAssetID]="calculator.requestedAssetID" class="flex-1 border-rad mt-1"></app-graph>
+<app-table *ngIf="currentTab === 'graph'" ></app-table>

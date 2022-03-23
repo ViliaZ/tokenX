@@ -1,4 +1,23 @@
-<div class="wrapper">
+
+
 <app-sidebar class="pos-rel"></app-sidebar>
-<app-main class="flex-1 pos-rel border-rad"></app-main>
+
+<div class="wrapper flex-1">
+
+    <div class="leftSection">
+        <app-asset-card></app-asset-card>
+        <app-asset-card></app-asset-card>
+        <app-asset-card></app-asset-card>
+        <app-asset-card></app-asset-card>
+    </div>
+
+    <div class="rightSection">
+        <app-menu #menu></app-menu>
+        <app-main [currentTab]="menu.activeTab" class="flex-1 pos-rel border-rad"></app-main>
+    </div>
+
+
 </div>
+
+<!-- pos. absolute -->
+<app-footer></app-footer>

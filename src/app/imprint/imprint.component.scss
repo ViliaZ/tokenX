@@ -1,4 +1,4 @@
-:host{
+:host {
     position: absolute;
     color: white;
     background: black;
@@ -8,79 +8,90 @@
     right: 0px;
     z-index: 1000;
     padding: 80px 100px;
-
-
-    
 }
 
-.wrapper{
-height: 100%;
-width: 100%;
-background-color: black;
-overflow: auto;
+.wrapper {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    overflow: auto;
 }
 
-button{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+button {
     position: absolute;
-    bottom:100px;
+    bottom: 100px;
     right: 100px;
-    padding: 0px 20px 0px 0px;
+    height: 35px;
+    width: 100px;
     color: white;
     background-color: rgb(0, 0, 0);
-    border:  1px solid white;
+    border: 1px solid white;
     border-radius: 25px;
 
-    div{
+    .pos-rel {
+        height: 100%;
+        width: 100%;
+        position: relative;
+    }
+    img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 33px;
+        height: 33px;
+        filter: invert(1);
         background-color: rgba(149, 145, 145, 0.294);
-        // padding: 2px;
-        border-radius: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 8px;
-
-        img{
-            width: 33px;
-            height: 33px;
-            filter: invert(1);
-        }
+        border-radius: 50%;
     }
 
-// button on hover
-    &:hover{
+    // word: return
+    span {
+        position: absolute;
+        bottom: 10px;
+        right: 12px;
+    }
+
+    // button on hover
+    &:hover {
         background-color: white;
         color: black;
         cursor: pointer;
-        transition: all 350ms ease-in-out;
+        // transition: all 350ms ease-in-out;
 
-        div{
+        div {
             background-color: rgba(149, 145, 145, 0.294);
         }
-        img{
-            filter: invert(0)!important;
-        };
+        img {
+            right: 0!important;
+            left: unset!important;
+            filter: invert(0) !important;
+            transition: all 350ms ease-in-out;
+
+            // animation: slideRight 250ms forwards;
+        }
+
+        span{
+            left: 12px!important;
+            right: unset!important;
+            transition: all 350ms ease-in-out;
+        }
     }
 }
 
-h1{
+h1 {
     margin-top: 30px;
     margin-bottom: 20px;
 }
 
-h2{
+h2 {
     margin: 0;
     color: white;
     font-size: 18px;
-    font-weight:600;
-    margin: 24px 0px 12px 0px!important;
+    font-weight: 600;
+    margin: 24px 0px 12px 0px !important;
     margin-block-end: 0em;
 }
 
-
-p{
+p {
     margin-top: 30px;
 }

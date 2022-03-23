@@ -12,7 +12,12 @@
             <span>€ {{ currentPrices[i] }}</span>
         </div>
         <div class="row">
-            <span class="changePercent" [class.red]="changePercent[i] == 0 || changePercent[i] < 0 "><span *ngIf="changePercent[i]>0">+</span>{{ changePercent[i] }}%</span>
+            <span 
+                class="changePercent" 
+                [class.red]="changePercent[i]==0 || changePercent[i]<0">
+                    <span *ngIf="changePercent[i]>0">+</span>
+            {{ changePercent[i].toFixed(2) }}%
+            </span>
      </div>
     </div>
 

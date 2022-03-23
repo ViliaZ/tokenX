@@ -2,16 +2,18 @@
 
 <div class="wrapper flex-1">
 
-    <app-asset-section>
-    </app-asset-section>
-
     <div class="rightSection">
         <app-menu #menu></app-menu>
         <app-main [currentTab]="menu.activeTab" class="flex-1 pos-rel border-rad"></app-main>
     </div>
 
+    <app-asset-section>
+    </app-asset-section>
 
 </div>
 
 <!-- pos. absolute -->
-<app-footer></app-footer>
+<app-imprint *ngIf="footer.imprintRequest"></app-imprint>
+
+<!-- pos. absolute -->
+<app-footer #footer></app-footer>

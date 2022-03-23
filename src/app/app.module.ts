@@ -13,6 +13,7 @@ import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { TableComponent } from './table/table.component';
 import { AssetSectionComponent } from './asset-section/asset-section.component';
+import { ImprintComponent } from './imprint/imprint.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { AssetSectionComponent } from './asset-section/asset-section.component';
     FooterComponent,
     TableComponent,
     AssetSectionComponent,
+    ImprintComponent,
   ],
   imports: [
     BrowserModule,

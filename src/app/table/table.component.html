@@ -1,11 +1,15 @@
-<table>
-<th>
-    <tr></tr>
-</th>
-
-<td>
-
+    <table>
+        <tr>
+                <th>DATE</th>
+                <th>PRICE</th>
+                <th>MARKET CAP</th>
+                <th>VOLUME</th>
+        </tr>
     
-</td>
-
-</table>
+        <tr *ngFor="let date of dates; index as i">
+            <td>{{ date }}</td>
+            <td>{{ prices[i] }}</td>
+            <td>{{ marketCaps[i] }}</td>
+            <td>{{ volumes[i] }}</td>
+        </tr>
+    </table>

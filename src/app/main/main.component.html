@@ -1,4 +1,6 @@
-
 <app-calculator #calculator class="border-rad flex-c-c gap-1"></app-calculator>
-<app-graph *ngIf="currentTab === 'table'" [requestedAssetID]="calculator.requestedAssetID" class="flex-1 border-rad mt-1"></app-graph>
-<app-table *ngIf="currentTab === 'graph'" ></app-table>
+<app-graph *ngIf="currentTab === 'table'" [requestedAssetID]="calculator.requestedAssetID"
+    class="flex-1 border-rad mt-1"></app-graph>
+<app-table *ngIf="currentTab === 'graph'" [requestedAssetID]="calculator.requestedAssetID"></app-table>
+<!-- pos absolute -->
+<div *ngIf="currentTab === 'graph'" class="info"><i>* all prices in €</i></div>

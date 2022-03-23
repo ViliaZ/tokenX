@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-asset-card',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssetCardComponent implements OnInit {
 
+  img: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
+    this.getAssetInfos();
   }
+
+  //fetch Infos for main Assets ranking 1-5 in  Market Cap
+getAssetInfos(){
+
+}
 
 }

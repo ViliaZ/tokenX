@@ -15,7 +15,7 @@ export class CalculatorComponent implements OnInit {
   amountInEUR: number = 0;
   assetList: any = [];
 
-  requestedAssetID: string = 'bitcoin';
+  requestedAssetID: string = 'litecoin';
 
   priceInEUR: number = 0;
   priceInUSD: number = 0;

@@ -41,7 +41,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   getAssetList() {
-    this.assetService.getAssetList().subscribe((data) => { this.assetList = data; console.log('assetList', this.assetList); })
+    this.assetService.getAssetList().subscribe((data) => { this.assetList = data; })
   }
 
   findRequestedAsset() {

@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
 import { MenuComponent } from './menu/menu.component';
-import { AssetCardComponent } from './asset-card/asset-card.component';
 import { FooterComponent } from './footer/footer.component';
 import { TableComponent } from './table/table.component';
 import { AssetSectionComponent } from './asset-section/asset-section.component';
@@ -22,7 +21,6 @@ import { AssetSectionComponent } from './asset-section/asset-section.component';
     CalculatorComponent,
     GraphComponent,
     MenuComponent,
-    AssetCardComponent,
     FooterComponent,
     TableComponent,
     AssetSectionComponent,

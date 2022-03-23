@@ -1,11 +1,96 @@
-:host{
-        padding-top: 25px;
+:host {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    overflow: auto;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-dark);
+    border-radius: 16px;
+    padding: 55px 6px 40px 6px;
+    color: white;
+    width: 175px;
+    min-height: 175px;
+    margin-top: 12px;
+    overflow: hidden;
+
+    &:first-child {
+        margin-top: 0px !important;
+    }
+
+    .assetName {
+        position: absolute;
+        bottom: 6px;
+        left: 8px;
+        font-size: 12px;
+
+        &::after {
+            content: "";
+            width: 250px;
+            height: 1px;
+            background-color: white;
+            position: absolute;
+            top: 48%;
+            right: 0;
+            transform: translateX(105%);
+        }
+    }
+}
+
+.upperRow {
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    right: 0px;
+    padding: 0px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .image {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        filter: drop-shadow(0.3rem 0.4rem 0.55rem rgb(22, 22, 22));
+    }
+    .rankingNr {
+        font-size: 20px;
+    }
+}
+
+.infoPart {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+
+    .row {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        width: 30%;
-        height: 100%;
-        overflow: auto;
-        background-color: grey;
+        justify-content: center;
+        align-items: flex-start;
+        // padding-left: 30px;
+    }
+}
+
+.changePercent{
+    color: green;
+}
+
+.red{
+    color: red!important;
 }

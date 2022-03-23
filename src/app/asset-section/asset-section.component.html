@@ -1,24 +1,23 @@
-<!-- <app-asset-card ></app-asset-card> -->
-<div *ngFor="let asset of assetNames.slice(0, 25); index as i" class="wrapper">
+
+<div *ngFor="let asset of assetNames.slice(0, 25); index as i" class="card">
     <div class="upperRow">
-        <div class="circle"></div>
-        <!-- <img src="{{ images[0] }}"> -->
+       <img class="image" src="{{ images[i] }}">
+
         <div class="rankingNr">#{{ assetRanks[i] }}</div>
     </div>
 
     <div class="infoPart">
         <div class="row">
             <span>Current Price</span>
-            <span>€ 454656</span>
+            <span>€ {{ currentPrices[i] }}</span>
         </div>
         <div class="row">
-            <span>Market Cap</span>
-            <span>€ 344545</span>
-        </div>
+            <span class="changePercent" [class.red]="changePercent[i] == 0 || changePercent[i] < 0 "><span *ngIf="changePercent[i]>0">+</span>{{ changePercent[i] }}%</span>
+     </div>
     </div>
 
     <!-- pos absolute -->
-    <div class="assetName">name asset</div>
+    <div class="assetName">{{ assetNames[i] }}</div>
 </div>
 
 

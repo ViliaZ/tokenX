@@ -1,4 +1,21 @@
-<div>
-    <div class="circle"></div>
-    <!-- <img src="{{ img }}"> -->
+<div *ngFor="let price of currentPrices; index as i">
+    <div class="upperRow">
+        <div class="circle"></div>
+        <!-- <img src="{{ images[0] }}"> -->
+        <div class="rankingNr">#{{marketCaps[i]['market_cap_rank'] }}</div>
+    </div>
+
+    <div class="infoPart">
+        <div class="row">
+            <span>Current Price</span>
+            <span>€ {{currentPrices[i]['current_price'] }}</span>
+        </div>
+        <div class="row">
+            <span>Market Cap</span>
+            <span>€ {{ marketCaps[i]['market_cap']}}</span>
+        </div>
+    </div>
+
+    <!-- pos absolute -->
+    <div class="assetName">{{ assetNames[i].id }}</div>
 </div>

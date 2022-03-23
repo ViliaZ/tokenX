@@ -13,6 +13,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AssetCardComponent } from './asset-card/asset-card.component';
 import { FooterComponent } from './footer/footer.component';
 import { TableComponent } from './table/table.component';
+import { AssetSectionComponent } from './asset-section/asset-section.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { TableComponent } from './table/table.component';
     AssetCardComponent,
     FooterComponent,
     TableComponent,
+    AssetSectionComponent,
   ],
   imports: [
     BrowserModule,

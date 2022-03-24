@@ -35,13 +35,13 @@
         bottom: 10px;
         left: 10px;
         font-size: 14px;
-        color: black;
+        color:  whitesmoke;
 
         &::after {
             content: "";
             width: 250px;
             height: 1px;
-            background-color: rgb(0, 0, 0);
+            background-color:whitesmoke;
             position: absolute;
             top: 48%;
             right: 0;
@@ -92,9 +92,9 @@
 }
 
 .changePercent{
-    color: green;
+    color: var(--accent);
 }
 
 .red{
-    color: red!important;
+    color: rgb(255, 0, 106)!important;
 }

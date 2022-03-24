@@ -7,7 +7,7 @@
     left: 130px;
     right: 0px;
     z-index: 1000;
-    padding: 80px 100px;
+    padding: 100px 100px;
 }
 
 .wrapper {
@@ -19,8 +19,8 @@
 
 button {
     position: absolute;
-    bottom: 100px;
-    right: 100px;
+    bottom: 40px;
+    right: 80px;
     height: 35px;
     width: 100px;
     color: white;
@@ -59,13 +59,15 @@ button {
         // transition: all 350ms ease-in-out;
 
         div {
-            background-color: rgba(149, 145, 145, 0.294);
+            background-color: rgba(255, 255, 255, 0.918);
+            border-radius: 16px;
         }
         img {
             right: 0!important;
             left: unset!important;
             filter: invert(0) !important;
-            transition: all 350ms ease-in-out;
+            transition: all 250ms ease-in-out;
+            background-color: var(--accent);
 
             // animation: slideRight 250ms forwards;
         }
@@ -73,7 +75,7 @@ button {
         span{
             left: 12px!important;
             right: unset!important;
-            transition: all 350ms ease-in-out;
+            transition: all 250ms ease-in-out;
         }
     }
 }

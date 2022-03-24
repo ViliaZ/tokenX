@@ -23,7 +23,7 @@
     font-size: 12px;
 
     &:hover {
-        color: aqua;
+        color: var(--accent);
 
         &:after {
             width: 0px;

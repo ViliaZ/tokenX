@@ -67,11 +67,11 @@ export class GraphComponent implements OnInit {
         datasets: [
           {
             data: this.prices,
-            borderColor: '#3e95cd',
-            fill: false,
+            borderColor: 'white',
+            fill: true,
             label: 'Last 30 days',
             backgroundColor: 'rgba(93, 175, 89, 0.1)',
-            borderWidth: 3,
+            borderWidth: 1,
           },
         ],
       },

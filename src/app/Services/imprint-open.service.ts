@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ImprintOpenService {
 
-imprintOpen: boolean = false;
+  public imprintOpen: boolean = false;
 
   constructor() { }
 

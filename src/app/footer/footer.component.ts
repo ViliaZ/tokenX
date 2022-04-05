@@ -1,27 +1,21 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ImprintOpenService } from '../imprint-open.service';
-
+import { ImprintOpenService } from '../Services/imprint-open.service';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
 
-
 export class FooterComponent implements OnInit {
 
-imprintOpen = false;
-
-  constructor() { }
+  constructor(private imprintService: ImprintOpenService) { }
 
   ngOnInit(): void {
   }
 
-  openImprint(){
-    this.imprintOpen = true;
-    console.log('footerComponent, imprintOpen =', this.imprintOpen);
-
+  openImprint() {
+    this.imprintService.imprintOpen = true;
   }
 
 }

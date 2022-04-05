@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { AssetsService } from '../assets.service';
+import { AssetsService } from '../Services/assets.service';
 import { FooterComponent } from '../footer/footer.component';
 import { ImprintComponent } from '../imprint/imprint.component';
 

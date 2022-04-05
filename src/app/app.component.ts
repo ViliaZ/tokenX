@@ -1,34 +1,18 @@
-import { AfterViewInit, Component, OnChanges, ViewChild } from '@angular/core';
-import { FooterComponent } from './footer/footer.component';
-import { ImprintComponent } from './imprint/imprint.component';
-
+import { Component } from '@angular/core';
+import { ImprintOpenService } from './Services/imprint-open.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit, OnChanges{
-  title = 'tokenX';
+export class AppComponent{
 
   imprintOpen:boolean = false;
+  title = 'tokenX'
 
-  @ViewChild(FooterComponent) footer;
-  @ViewChild(ImprintComponent) imprint;
+  constructor(public imprintService: ImprintOpenService) { }
 
-  constructor() {}
 
-  ngAfterViewInit(){
-    console.log('PARENT: footer.imprintOpen is',this.footer.imprintOpen);
-    console.log('PARENT: this.imprintOpen is',this.imprintOpen);
-    this.imprintOpen = this.footer.imprintOpen;
-    console.log('PARENT: nach AfterviewInit this.imprintOpen is',this.imprintOpen);
-
-  }
-
-  ngOnChanges(){
-    this.imprintOpen = this.footer.imprintOpen;
-    console.log('PARENT: onChanges() this.imprintOpen is',this.imprintOpen);
-  }
 
   
 }

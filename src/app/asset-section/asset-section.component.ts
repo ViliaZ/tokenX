@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { AssetsService } from '../assets.service';
+import { AssetsService } from '../Services/assets.service';
+
 
 @Component({
   selector: 'app-asset-section',

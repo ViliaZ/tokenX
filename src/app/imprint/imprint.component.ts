@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
-import { ImprintOpenService } from '../imprint-open.service';
+import { ImprintOpenService } from '../Services/imprint-open.service';
 
 @Component({
   selector: 'app-imprint',
@@ -8,17 +8,12 @@ import { ImprintOpenService } from '../imprint-open.service';
 })
 export class ImprintComponent implements OnInit {
 
-  // @Input() imprintOpen;
-
-
-  imprintOpen: boolean = false;
-
   constructor(public imprintService: ImprintOpenService) { }
 
   ngOnInit(): void {
   }
 
   closeImprint() {
-    this.imprintOpen = false;
+    this.imprintService.imprintOpen = false;
   }
 }

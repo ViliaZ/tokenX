@@ -10,8 +10,6 @@ import { firstValueFrom } from 'rxjs';
   styleUrls: ['./graph.component.scss']
 })
 
-
-
 export class GraphComponent implements OnInit {
 
   prices: any = [];
@@ -24,8 +22,6 @@ export class GraphComponent implements OnInit {
   }
 
   ngOnChanges() {
-    // console.log('requested is (graph):', this.requestedAssetID);
-
     // check if chart object is empty or already in use
     if (Object.keys(this.chart).length === 0) {
       this.drawGraph(this.requestedAssetID);
@@ -40,46 +36,82 @@ export class GraphComponent implements OnInit {
   }
 
   async drawGraph(asset) {
-    console.log('draw graph from this Asset', asset);
-
     this.prices = [];
     this.dates = [];
 
     try {
-      let graphdata = await firstValueFrom(this.assetService.getAssetDayData(asset));
-
-      graphdata['prices'].map((datapoint) => {
-        let calendarDate = new Date(datapoint[0]);
-        let options: any = { year: 'numeric', month: 'numeric', day: 'numeric' };
-        let dateFormatted = calendarDate.toLocaleDateString('ger', options);
-        this.dates.push(dateFormatted);
-      });
-      graphdata['prices'].map((datapoint) => {
-        this.prices.push(datapoint[1]);
-      })
-
-      // console.log('weekPrices', this.prices);
-
-      this.chart = new Chart('mycanvas', {
-        type: 'line',
-        data: {
-          labels: this.dates,
-          datasets: [
-            {
-              data: this.prices,
-              borderColor: 'white',
-              fill: true,
-              label: 'Last 30 days',
-              backgroundColor: '#03f8a234',
-              borderWidth: 1,
-              pointBorderColor: 'white'
-            },
-          ],
-        },
-      });
-    } catch (error) {
-      console.log('error in fetchiing Graph data:', error);
+      await this.getChartData(asset);
+      this.assembleChart();
+    }
+    catch (error) {
+      console.error('error fetching Graph data:', error);
     }
   }
+
+  async getChartData(asset) {
+    let graphdata = await firstValueFrom(this.assetService.getAssetDayData(asset));
+
+    graphdata['prices'].map((datapoint) => {
+      let calendarDate = new Date(datapoint[0]);
+      let options: any = { year: 'numeric', month: 'numeric', day: 'numeric' };
+      let dateFormatted = calendarDate.toLocaleDateString('ger', options);
+      this.dates.push(dateFormatted);
+    });
+    graphdata['prices'].map((datapoint) => {
+      this.prices.push(datapoint[1]);
+    })
+  }
+
+  assembleChart() {
+    // configuration options here: https://www.chartjs.org/docs/latest/charts/line.html
+    this.chart = new Chart('mycanvas', {
+      type: 'line',
+      options: {
+        scales: {
+          x: {   // text x axis
+            ticks: {
+              color: 'white'
+            }
+          },
+          y: {  // text y axis
+            ticks: {
+              color: 'white'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            align: 'end',
+            display: true,  // this the title like "24h view"
+            labels: {
+              color: 'white', // this the title like "24h view"
+            }
+          }
+        }
+      },
+      data: {
+        labels: this.dates,
+        datasets: [
+          {
+            data: this.prices,
+            label: '24 hour view',
+            backgroundColor: '#03f8a234', // line fill color
+            borderColor: 'white', // line color
+            borderWidth: 1, // thickness of line in px
+            fill: true,
+            pointBorderColor: 'white',
+            pointBackgroundColor: 'transparent',  // fill color points
+            pointBorderWidth: 1, // thickness point border
+            pointRadius: 2,
+            pointStyle: 'star',
+          },
+        ],
+      },
+    });
+  }
+
+
+
 
 }

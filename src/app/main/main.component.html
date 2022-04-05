@@ -1,26 +1,43 @@
-<app-calculator #calculator requestedAssetID class="border-rad flex-c-c gap-1">
+    <!-- (requestedAsset)="getRequestedAssedID($event)"  -->
+
+
+<app-calculator 
+    #calculator 
+    class="border-rad flex-c-c gap-1">
 </app-calculator>
 
-<app-graph *ngIf="currentTab === 'table'" [requestedAssetID]="calculator.requestedAssetID"
+
+<app-graph  
+    *ngIf="currentTab === 'table'" 
+    [requestedAssetID]="calculator.requestedAssetID"
     class="flex-1 border-rad mt-1">
 </app-graph>
 
-<app-table *ngIf="currentTab === 'graph'" [requestedAssetID]="calculator.requestedAssetID">
+
+<app-table 
+    *ngIf="currentTab === 'graph'" 
+    [requestedAssetID]="calculator.requestedAssetID">
 </app-table>
 
+
 <!-- pos absolute -->
-<div *ngIf="currentTab === 'graph'" class="info">
+<div 
+    *ngIf="currentTab === 'graph'" 
+    class="info">
     <i>* all prices in €</i>
 </div>
 
-<div *ngIf="currentTab === 'table'" class="infoContainer">
+<!-- Asset Info Text Form -->
+<div 
+    *ngIf="currentTab === 'table'" 
+    class="infoContainer">
 
-    <span *ngIf="assetWebsite !== '' || assetWebsite !== undefined" class="websiteLink">
-        Read More: {{ assetWebsite }}
+    <span 
+        *ngIf="assetWebsite !== '' || assetWebsite !== undefined" 
+        class="websiteLink" >
+    Read More: {{ assetWebsite }}
     </span>
 
-    <p>
-        {{ assetInfotext }}
-    </p>
+    <p>{{ assetInfotext }}</p>
 
 </div>

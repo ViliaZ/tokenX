@@ -7,6 +7,7 @@
     min-height: 30px;
     width: 100%;
     color: white;
+    transition: all 200ms ease-in-out;
 }
 
 a{
@@ -25,34 +26,16 @@ a{
     min-width: 200px;
     cursor: pointer;
 
-    .wrapper-table{
-        position: relative;
-        height: 100%; 
-        width: 50%;
-
-        &::after{
-            content: '';
-            background-color: var(--bg-dark);
-            border-top-left-radius: 16px;
-            border-top-right-radius: 4px;
-            width: 100%;
-            height: 100%; 
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 2;
-        }
-    }
-
     .wrapper-graph{
         position: relative;
         height: 100%; 
         width: 50%;
 
+
         &::after{
             content: '';
-            background-color: var(--bg-dark);
+            // inactive background for graph tab
+            background-color: rgb(114, 114, 114);
             border-top-left-radius: 4px;
             border-top-right-radius: 16px;
             width: 100%;
@@ -61,7 +44,29 @@ a{
             bottom: 0;
             left: 0;
             right: 0;
-            z-index: 2;
+            z-index: 1;
+        }
+    }
+
+    .wrapper-table{
+        position: relative;
+        height: 100%; 
+        width: 50%;
+
+
+        &::after{
+            content: '';
+            // inactive background for table tab
+            background-color: rgb(114, 114, 114);
+            border-top-left-radius: 16px;
+            border-top-right-radius: 4px;
+            width: 100%;
+            height: 100%; 
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
         }
     }
 
@@ -72,7 +77,7 @@ a{
         transform: translateX(55%);
     }
 
-    .table {
+    .graph {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -82,14 +87,15 @@ a{
         padding-right: 25px;
         border-right: 2px solid rgba(0, 0, 0, 0.24);
         height: 100%;
-        background-color: var(--accent);
-        border-top-left-radius: 16px;
-        border-top-right-radius: 4px;
-        z-index: 3;
+        // inactive background for graph tab
+        background-color:var(--bg-dark);
+        border-top-left-radius: 4px;
+        border-top-right-radius: 16px;
+        z-index: 0;
 
     }
 
-    .graph {
+    .table {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -98,24 +104,30 @@ a{
         padding-left: 25px;
         padding-right: 25px;
         height: 100%;
-        background-color: var(--accent);
-        border-top-left-radius: 4px;
-        border-top-right-radius: 16px;
-        z-index: 3;
+             // active background for table tab
+        background-color:var(--bg-dark);
+        border-top-left-radius: 16px;
+        border-top-right-radius: 4px;
+        z-index: 0;
     }
 }
 
 .animationTabChange {
-    animation: changeTab 250ms ease-in forwards;
-    
+    animation: changeTab 200ms ease-in forwards;
+
+
 }
 
 @keyframes changeTab {
     from {
-        height: 100%;
+        z-index: 10;
+        height: 0%;
     }
     to {
-        height: 0%;
+        z-index: 10;
+        height: 100%;
+        // filter: opacity(0);
+
     }
 }
 

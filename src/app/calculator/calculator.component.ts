@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { AssetsService } from '../Services/assets.service';
 
@@ -15,7 +15,7 @@ export class CalculatorComponent implements OnInit {
   amountInEUR: number = 0;
   assetList: any = [];
 
-  requestedAssetID: string = 'litecoin';
+  public requestedAssetID: string = 'bitcoin';
 
   priceInEUR: number = 0;
   priceInUSD: number = 0;
@@ -37,11 +37,12 @@ export class CalculatorComponent implements OnInit {
     this.calculateExchange();
   }
 
-  ngOnChanges(){    
+  ngOnChanges() {
   }
 
   getAssetList() {
-    this.assetService.getAssetList().subscribe((data) => { this.assetList = data; })
+    this.assetService.getAssetList()
+    .subscribe((data) => { this.assetList = data; })
   }
 
   findRequestedAsset() {
@@ -62,8 +63,12 @@ export class CalculatorComponent implements OnInit {
 
 
   async calculateExchange() {
-    let fetchResult = await firstValueFrom(this.assetService.getExchangeRateEUR(this.requestedAssetID));
-    this.priceInEUR = (fetchResult['market_data']['current_price']['eur']) * this.amountInput;
+    try {
+      let fetchResult = await firstValueFrom(this.assetService.getExchangeRateEUR(this.requestedAssetID));
+      this.priceInEUR = (fetchResult['market_data']['current_price']['eur']) * this.amountInput;
+    } catch (error) {
+      console.log('catched error in calc exchange:', error);
+    }
   }
 
 }

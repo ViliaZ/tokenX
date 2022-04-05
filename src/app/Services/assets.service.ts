@@ -12,10 +12,10 @@ export class AssetsService {
 
   assetList: object = {};
   requestedAssetID: string = 'bitcoin'; // from input field
- 
+
 
   constructor(private http: HttpClient) {
-   }
+  }
 
   getAssetList() {
     return this.http.get(this.urlAllCoins);
@@ -30,16 +30,21 @@ export class AssetsService {
     return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}/market_chart?vs_currency=eur&days=30&interval=daily`);
   }
 
+  getAssetDayData(assetRequested) {
+    // in Euro
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}/market_chart?vs_currency=eur&days=1&interval=minute`);
+  }
 
-getAssetDetails(assetRequested){
-  // thumbnail, infotext
-  return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}`);
-}
 
-getMarketInfos(){
-  // thumbnail, infotext
-  return this.http.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false`);
-}
+  getAssetDetails(assetRequested) {
+    // thumbnail, infotext
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}`);
+  }
+
+  getMarketInfos() {
+    // thumbnail, infotext
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false`);
+  }
 
 
 

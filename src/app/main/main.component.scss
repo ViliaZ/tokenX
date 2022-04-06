@@ -12,6 +12,9 @@
     overflow: auto;
 }
 
+
+
+
 .info {
     position: absolute;
     left: 2rem;
@@ -28,20 +31,24 @@
     width: 100%;
     flex: 1;
     display: flex;  
-    overflow: auto;
-    
+
+    .icon-web{
+        width: 24px;
+        margin-right: 12px;
+    }
+
+    a{
+        text-decoration: none;
+        color: white;
+    }
+
     .websiteLink{
         position: relative;
         margin-bottom: 12px;
-
-        &::after{
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            content: '';
-            width: 42px;
-            height: 1px; 
-            background-color: white;
-        }
+        display: flex;
+        align-items: center;
+        font-style: italic;
+        color: white;
+        cursor: pointer;
     }
 }

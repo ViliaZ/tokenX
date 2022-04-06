@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AssetsService {
 
-  urlAllCoins: string = 'https://api.coingecko.com/api/v3/coins/list?include_platform=false';
+  // allCoins: string = 'https://api.coingecko.com/api/v3/coins/list?include_platform=false';
   // Attribution required!
 
   assetList: object = {};
@@ -18,7 +18,9 @@ export class AssetsService {
   }
 
   getAssetList() {
-    return this.http.get(this.urlAllCoins);
+    // in order of market cap
+    // reference prices in Eur
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false`);
   }
 
   getExchangeRateEUR(assetRequested) {

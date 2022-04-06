@@ -35,9 +35,11 @@
     <span 
         *ngIf="assetWebsite !== '' || assetWebsite !== undefined" 
         class="websiteLink" >
-    Read More: {{ assetWebsite }}
+        <img class="icon-web" src="assets/img/website-white.png" alt="icon-website">
+        <a href="{{ assetWebsite }}">{{ assetWebsite }}</a>
     </span>
 
-    <p>{{ assetInfotext }}</p>
+   
+    <p> {{ assetInfotext }}</p>
 
 </div>

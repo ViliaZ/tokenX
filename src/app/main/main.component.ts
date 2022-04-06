@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { AssetsService } from '../Services/assets.service';
 import { CalculatorComponent } from '../calculator/calculator.component';
 
@@ -12,16 +12,29 @@ export class MainComponent implements OnInit {
 
   @Input() currentTab: string = 'graph'
 
-  public assetInfotext: any = '';
-  public assetWebsite: any = ''
+  public assetInfotext: any = 'no data available';
+  public assetWebsite: any = 'no data available';
 
-  requestedAssetID: any;
+  requestedAssetID:any = 'bitcoin'
+ 
+  @ViewChild(CalculatorComponent) calculatorComp: CalculatorComponent;
 
   constructor(private assets: AssetsService) { }
 
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(){ // runs only once after Child is initialized
+    this.requestedAssetID = this.calculatorComp.requestedAssetID;
+    this.getInfoTextData();
+  }
+
+  // update changes in AssetSearch
+  ngAfterViewChecked(){ // detects changes in Child --> triggers frequently
+  if(this.requestedAssetID !== this.calculatorComp.requestedAssetID ){
+    this.requestedAssetID = this.calculatorComp.requestedAssetID; 
+    this.getInfoTextData(); }
+  }
 
   // getting Data form EventEmitter (child comp: Calculator) 
   getRequestedAssedID(assetFromCalculator: any) {
@@ -29,17 +42,15 @@ export class MainComponent implements OnInit {
   }
 
   getInfoTextData() {
-    console.log('requested Asset ID for Text: ', this.requestedAssetID);
-
-    // try {
-    //   this.assets.getAssetDetails(this.requestedAssetID)
-    //     .subscribe((results: any) => {
-    //       this.assetInfotext = results.description.en;
-    //       this.assetWebsite = results.links.homepage[0];
-    //     })
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    try {
+      this.assets.getAssetDetails(this.requestedAssetID)
+        .subscribe((results: any) => {
+          this.assetInfotext = results.description.en;
+          this.assetWebsite = results.links.homepage[0];
+        })
+    } catch (error) {
+      console.error(error);
+    }
   }
 
 

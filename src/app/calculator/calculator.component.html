@@ -1,26 +1,46 @@
-<div class="currencyOne">
-    <input 
-        [(ngModel)]="amountInput" 
-        (ngModelChange)="calculateExchange()" 
-        type="number" 
-        min="0" 
-        class="inputNumber">
-    <input 
-        [(ngModel)]="assetInput" 
-        (ngModelChange)="getSearchData()" 
-        class="inputAsset">
-</div>
+<div class="currencySearch-container">
 
+    <input 
+        class="inputNumber"
+        min="0" 
+        type="number" 
+        [(ngModel)]="amountInput" 
+        (ngModelChange)="calculateExchange()" >
+
+    <div class="searchAssetContainer">
+        <input 
+            id='inputfieldSearchAsset'
+            class="inputAsset"
+            min="2" 
+            [(ngModel)]="assetInput" 
+            (ngModelChange)="getSearchData()"
+            (focus)="toggleList(true, $event)" 
+            [value]="requestedAssetID"
+            >
+            
+            <!-- position absolute -->
+        <li 
+            id='listAssetOptions'
+            *ngIf="showList"
+            (mouseenter)="toggleList(true, $event)"
+            class="filteredAssetOptions">
+                <ul             
+                *ngFor="let asset of filteredAsset; index as i" (click)="updateRequestedAsset(asset, $event)">
+                    {{ asset }}
+                </ul>
+        </li>
+    </div>
+</div>
+<!-- (blur)="toggleList(false, $event)" -->
+
+
+<!-- CONVERTER SYMBOL -->
 <div>
     <img src="assets/img/exchange-white.png" class="imgArrows">
 </div>
 
-
-<div class="currencyEUR">
-    <input 
-        [(ngModel)]="priceInEUR" 
-        class="inputNumber" 
-        type="number" 
-        [disabled]="true">
-    <div class="currStable">EUR</div>
+<!-- EUR SECTION -->
+<div class="currencyEUR-container">
+    <input [(ngModel)]="priceInEUR" class="inputNumber" type="number" [disabled]="true">
+    <div class="EUR">EUR</div>
 </div>

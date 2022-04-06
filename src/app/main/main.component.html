@@ -1,45 +1,47 @@
-    <!-- (requestedAsset)="getRequestedAssedID($event)"  -->
 
-
-<app-calculator 
-    #calculator 
-    class="border-rad flex-c-c gap-1">
-</app-calculator>
-
-
-<app-graph  
-    *ngIf="currentTab === 'table'" 
-    [requestedAssetID]="calculator.requestedAssetID"
-    class="flex-1 border-rad mt-1">
-</app-graph>
-
-
-<app-table 
-    *ngIf="currentTab === 'graph'" 
-    [requestedAssetID]="calculator.requestedAssetID">
-</app-table>
-
-
-<!-- pos absolute -->
-<div 
-    *ngIf="currentTab === 'graph'" 
-    class="info">
-    <i>* all prices in €</i>
-</div>
-
-<!-- Asset Info Text Form -->
-<div 
-    *ngIf="currentTab === 'table'" 
-    class="infoContainer">
-
-    <span 
-        *ngIf="assetWebsite !== '' || assetWebsite !== undefined" 
-        class="websiteLink" >
-        <img class="icon-web" src="assets/img/website-white.png" alt="icon-website">
-        <a href="{{ assetWebsite }}">{{ assetWebsite }}</a>
-    </span>
-
-   
-    <p> {{ assetInfotext }}</p>
-
+<div class="wrapper">
+    
+    <app-calculator
+        #calculator
+        class="border-rad flex-c-c gap-1">
+    </app-calculator>
+    
+    
+    <app-graph
+        *ngIf="currentTab === 'table'"
+        [requestedAssetID]="calculator.requestedAssetID">
+    </app-graph>
+    
+    
+    <app-table
+        *ngIf="currentTab === 'graph'"
+        [requestedAssetID]="calculator.requestedAssetID">
+    </app-table>
+    
+    
+    <!-- pos absolute -->
+    
+    <!-- BUG TO FIX: graph and table are other way around in variable names - but all is functioning correctly -->
+    <div
+        *ngIf="currentTab === 'graph'"
+        class="info">
+        <i>* all prices in €</i>
+    </div>
+    
+    <!-- Asset Text Form -->
+    <div
+        *ngIf="currentTab === 'table'"
+        class="infoContainer">
+    
+        <span
+            *ngIf="assetWebsite !== '' || assetWebsite !== undefined"
+            class="websiteLink" >
+            <img class="icon-web" src="assets/img/website-white.png" alt="icon-website">
+            <a href="{{ assetWebsite }}">{{ assetWebsite }}</a>
+    
+        </span>
+    
+        <div class="text"> {{ assetInfotext }}</div>
+    
+    </div>
 </div>

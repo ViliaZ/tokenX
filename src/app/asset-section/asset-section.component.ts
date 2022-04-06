@@ -45,9 +45,8 @@ export class AssetSectionComponent implements OnInit {
         this.images.push(asset['image'])
         this.changePercent.push(asset['price_change_percentage_24h'])
       })
-  
     } catch (error) {
-      console.log('error in getAssetInfos():', error);
+      console.error('error in getAssetInfos():', error);
     }
 
     // loop over the object (it is not an Array!! --> map() will not functioning

@@ -9,6 +9,14 @@
     max-width: 230px;
     height: 100%;
     overflow: auto;
+
+    @media (max-width: 1000px) {
+        width: 100%;
+        max-width: unset;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 }
 
 .card {
@@ -26,6 +34,12 @@
     margin-top: 22px;
     overflow: hidden;
 
+    @media (max-width: 1000px) {
+        width: 46%;
+        max-width: 360px;
+        margin: 0px 8px 20px 8px;
+    }
+
     &:first-child {
         margin-top: 0px !important;
     }
@@ -35,13 +49,13 @@
         bottom: 10px;
         left: 10px;
         font-size: 14px;
-        color:  whitesmoke;
+        color: whitesmoke;
 
         &::after {
             content: "";
             width: 250px;
             height: 1px;
-            background-color:whitesmoke;
+            background-color: whitesmoke;
             position: absolute;
             top: 48%;
             right: 0;
@@ -91,10 +105,10 @@
     }
 }
 
-.changePercent{
+.changePercent {
     color: var(--accent);
 }
 
-.red{
-    color: rgb(255, 0, 106)!important;
+.red {
+    color: rgb(255, 0, 106) !important;
 }

@@ -4,8 +4,13 @@
     justify-content: flex-start;
     height: 100vh;
     max-height: 100%;
+    width: 100%;
     max-width: 100%;
     overflow: hidden;
+
+    @media (max-width: 1000px) {
+        height: max-content;
+    }
 }
 
 .wrapper {
@@ -16,15 +21,25 @@
     margin-bottom: 60px;
     margin-right: 3rem;
     gap: 2rem;
+    width: 100%;
+    max-width: 100%;
+
+    @media (max-width: 1000px) {
+        flex-direction: column;
+        height: max-content;
+        margin-right: unset;
+    }
 }
 
-.rightSection{
+.main {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    width: 100%;
+    max-width: 100%;
 }
 
 .flex-1 {
@@ -34,9 +49,3 @@
 .pos-rel {
     position: relative;
 }
-
-
-
-
-
-

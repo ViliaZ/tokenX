@@ -1,17 +1,25 @@
 <div class="wrapperDiv">
 
     <div (click)="tabAnimation('graph')" class="wrapper-table">
+        <img class="icon" src="assets/img/table.svg" alt="table icon"> 
+
         <div class="table" [class.animationTabChange]="activeTab == 'graph'">
+            <a [class.changeColor]="activeTab == 'table'"> 
+                <img class="icon" src="assets/img/table.svg" alt="table icon">
+            </a>
+    
         </div>
+
         <!-- pos absolute -->
-        <a >Table</a>
+        <a [class.changeColor]="activeTab == 'table'">Table </a>
 
     </div>
 
     <div (click)="tabAnimation('table')" class="wrapper-graph">
         <div class="graph" [class.animationTabChange]="activeTab == 'table'">
         </div>
-        
-        <a >Graph</a>
+
+        <img class="icon" src="assets/img/graph.svg" alt="graph icon">
+        <a [class.changeColor]="activeTab == 'graph'">Graph</a>
     </div>
 </div>

@@ -8,17 +8,13 @@
 :root {
     --bg: #101214;
     --primary-light: rgb(248, 240, 240);
-    --secondary: #24272c;
+    --secondary: #32363d;
     --accent1: #E902B3;
     --accent2: #13e2a4;
-    --muted: lightgrey;  // z.B. Menu inactive tab
+    --muted: #12bb88;  // z.B. Menu inactive tab
     --link: lightgrey;
     --shadow: 
 
-    // --bg-dark: rgb(57, 57, 58);
-    // --bg-light: rgba(185, 180, 180, 0.555);
-    // --primary: rgb(235, 235, 243);
-    // --accent: rgb(0, 255, 170);
 }
 
 app-root {

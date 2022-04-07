@@ -1,7 +1,7 @@
 :host {
     padding: 2rem;
     background-color: var(--secondary);
-    color:  var(--primary);
+    color: var(--primary-light);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -12,16 +12,9 @@
     overflow: auto;
 
     @media (max-width: 500px) {
-        padding: 8px!important;
-          }
+        padding: 8px !important;
+    }
 }
-
-// .wrapper{
-//     max-width: 100%;
-//     width: 100%;
-//     flex: 1;
-//     overflow: auto;
-// }
 
 .info {
     position: absolute;
@@ -38,57 +31,56 @@
     gap: 0.5rem;
     width: 100%;
     flex: 1;
-    display: flex;  
+    display: flex;
     margin-top: 26px;
 
-    .icon-web{
+    .icon-web {
         width: 24px;
         margin-right: 12px;
     }
 
-    a{
+    a {
         text-decoration: none;
-        color:  var(--primary);
+        color: var(--accent2);
     }
 
     // causes issues, when not restricted to a width
-    .text{
+    .text {
         max-width: 95%;
         word-break: break-word;
     }
 
-    .websiteLink{
+    .websiteLink {
         position: relative;
         margin-bottom: 12px;
         display: flex;
         align-items: center;
         font-style: italic;
-        color:  var(--primary);
+        color: var(--primary-light);
         cursor: pointer;
     }
 }
 
-.readMore{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.readMore {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     font-style: italic;
     cursor: pointer;
+    color: var(--accent2);
 
-    &:hover{
-        color: var(muted);
+    &:hover {
+        color: var(--primary-light);
     }
 }
 
-.desktopOnly{
-
+.desktopOnly {
     @media (max-width: 1000px) {
         display: none;
-           }
-    
+    }
 }
-.mobileOnly{
+.mobileOnly {
     display: none;
 
     @media (max-width: 1000px) {
-       display: block;
-          }
+        display: block;
+    }
 }

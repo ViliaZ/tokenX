@@ -6,36 +6,42 @@
     // background-color: black;
     min-height: 30px;
     width: 100%;
-    color: var(--primary);
+    color: var(--primary-light);
     transition: all 200ms ease-in-out;
 }
 
+.icon{
+    width: 20px;
+    margin-right: 4px;
+}
+// Titles Graph and Titles
 a{
-    color: var(--primary);
+    color: var(--accent2);
     text-decoration: none;
     z-index: 100;
 }
-
-
 
 .wrapperDiv {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    min-width: 200px;
+    min-width: 280px;
     cursor: pointer;
 
     .wrapper-graph{
         position: relative;
         height: 100%; 
         width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
 
         &::after{
             content: '';
             // inactive background for graph tab
-            background-color:  var(--muted);
+            background-color: var(--muted);
             border-top-left-radius: 4px;
             border-top-right-radius: 16px;
             width: 100%;
@@ -55,6 +61,7 @@ a{
 
 
         &::after{
+            position: absolute;
             content: '';
             // inactive background for table tab
             background-color: var(--muted);
@@ -62,7 +69,6 @@ a{
             border-top-right-radius: 4px;
             width: 100%;
             height: 100%; 
-            position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
@@ -71,10 +77,14 @@ a{
     }
 
     a{
-        position: absolute;
+        // position: absolute;
         bottom: 6px;
         left: 0;
         transform: translateX(55%);
+    }
+
+    .changeColor{
+        color: var(--secondary)!important;
     }
 
     .graph {
@@ -92,7 +102,6 @@ a{
         border-top-left-radius: 4px;
         border-top-right-radius: 16px;
         z-index: 0;
-
     }
 
     .table {
@@ -114,8 +123,6 @@ a{
 
 .animationTabChange {
     animation: changeTab 200ms ease-in forwards;
-
-
 }
 
 @keyframes changeTab {
@@ -126,13 +133,7 @@ a{
     to {
         z-index: 10;
         height: 100%;
-        // filter: opacity(0);
-
     }
 }
 
-// .activeTab {
-//     background-color: white;
-//     color: var(--bg-dark);
-// }
 

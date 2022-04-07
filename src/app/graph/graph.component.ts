@@ -70,11 +70,11 @@ export class GraphComponent implements OnInit {
         responsive: true,
         scales: {
           x: {   // text x axis
-            
-            time: {
-              unit: 'hour',
+            ticks: {
+              color: 'white'
+            }
               // unitStepSize: 
-          }
+          
             // ticks: {
             //   color: 'white',
               // stepSize: ''

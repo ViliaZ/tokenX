@@ -20,6 +20,12 @@
     min-width: 150px;
     width: 40%;
     flex: 1;
+    transition: all 150ms ease-in-out;
+
+    &:hover{
+        background-color: var(--muted);
+        cursor: pointer;
+    }
 
     @media (max-width: 500px) {
         width: 84%;
@@ -29,8 +35,12 @@
     // Inputfield for searching Amount
     .inputNumber {
         width: 45%;
-        background-color: var(--bg);
-        height: 36px;
+        // height: 36px;
+    }
+
+    .inputAsset{
+        width: 100%;
+   
     }
 
     // contains searchInput and container for holding filtered Options
@@ -41,10 +51,12 @@
         justify-content: center;
         position: relative;
         font-size: 14px;
-        background-color: var(--bg);
-        border-left: 1px rgb(211, 205, 205) solid;
+        border-left: 1px var(--primary-light) solid;
         height: 20px;
 
+        &:hover{
+            border-left:1px solid var(--bg)!important;
+        }
 
         li {
             width: fit-content;
@@ -66,10 +78,6 @@
             }
         }
     }
-
-    // Inputfield for searching Asset
-    .inputAsset {
-    }
 }
 
 .currencyEUR-container {
@@ -90,10 +98,13 @@
 
     .EUR {
         width: 50%;
-        border-left: 1px rgb(211, 205, 205) solid;
+        border-left: 1px var(--primary-light) solid;
+        color: var(--primary-light);
+
     }
     input {
         width: 50%;
+        color: var(--primary-light);
     }
 }
 

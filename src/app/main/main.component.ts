@@ -13,28 +13,36 @@ export class MainComponent implements OnInit {
   @Input() currentTab: string = 'graph'
 
   public assetInfotext: any = 'no data available';
-  public assetWebsite: any = 'no data available';
+  public assetWebsite!: any;
+  public lowestPrice!: any;
+  public highestPrice!: any;
 
-  requestedAssetID:any = 'bitcoin'
+  requestedAssetID: any = 'bitcoin'
   public fulltextOpen: boolean = false; // asset text info
- 
+
   @ViewChild(CalculatorComponent) calculatorComp: CalculatorComponent;
 
   constructor(private assets: AssetsService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      console.log(this.assetWebsite);
+    }, 1000);
   }
 
-  ngAfterViewInit(){ // runs only once after Child is initialized
+  ngAfterViewInit() { // runs only once after Child is initialized
     this.requestedAssetID = this.calculatorComp.requestedAssetID;
     this.getInfoTextData();
+
+    
   }
 
   // update changes in AssetSearch
-  ngAfterViewChecked(){ // detects changes in Child --> triggers frequently
-  if(this.requestedAssetID !== this.calculatorComp.requestedAssetID ){
-    this.requestedAssetID = this.calculatorComp.requestedAssetID; 
-    this.getInfoTextData(); }
+  ngAfterViewChecked() { // detects changes in Child --> triggers frequently
+    if (this.requestedAssetID !== this.calculatorComp.requestedAssetID) {
+      this.requestedAssetID = this.calculatorComp.requestedAssetID;
+      this.getInfoTextData();
+    }
   }
 
   // getting Data form EventEmitter (child comp: Calculator) 
@@ -54,13 +62,13 @@ export class MainComponent implements OnInit {
     }
   }
 
-  fullText(request: string){
-    if(request == 'open'){
-      this.fulltextOpen = true; 
+  fullText(request: string) {
+    if (request == 'open') {
+      this.fulltextOpen = true;
     }
     else {
-      this.fulltextOpen = false; 
- 
+      this.fulltextOpen = false;
+
     }
   }
 

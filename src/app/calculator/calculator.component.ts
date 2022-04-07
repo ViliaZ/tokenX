@@ -118,6 +118,7 @@ export class CalculatorComponent implements OnInit {
     event.stopPropagation();
     console.log('option was chosen', asset)
     this.requestedAssetID = asset;
+    this.showList = false;
   }
 
   // close List of Asset Options, when Click SOMEWHERE on the page 

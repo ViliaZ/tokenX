@@ -22,11 +22,14 @@
     <!-- Asset Text Form -->
     <div *ngIf="currentTab === 'table'" class="infoContainer">
 
-        <span *ngIf="assetWebsite !== '' || assetWebsite !== undefined" class="websiteLink">
-            <img class="icon-web" src="assets/img/website-white.png" alt="icon-website">
-            <a href="{{ assetWebsite }}">{{ assetWebsite }}</a>
-
-        </span>
+        <div class="furtherInfos">
+            <div *ngIf="assetWebsite" class="websiteLink">
+                <img class="icon-web" src="assets/img/website-white.png" alt="icon-website">
+                <a href="{{ assetWebsite }}">{{ assetWebsite }}</a>
+            </div>
+            <div *ngIf="lowestPrice" class="detail">24h-High {{ lowestPrice }}</div>
+            <div *ngIf="highestPrice" class="detail">24h-Low {{ highestPrice }}</div>
+        </div>
 
 
         <div class="shortText desktopOnly"> {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:1000 }} 

@@ -19,7 +19,7 @@
     }
 
     @media (max-width: 350px) {
-        justify-content:center;
+        justify-content: center;
     }
 }
 
@@ -31,16 +31,19 @@
     align-items: center;
     background-color: var(--secondary);
     border-radius: 16px;
-    padding: 55px 6px 40px 6px;
+    padding: 45px 6px 40px 6px;
     color: var(--primary-light);
     width: 100%;
     min-height: 150px;
     margin-top: 22px;
     overflow: hidden;
 
+    &:hover{
+        box-shadow: rgb(36, 35, 35) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;    }
+
     @media (max-width: 1000px) {
         min-width: 200px;
-        flex:1;
+        flex: 1;
         max-width: 260px;
         margin: 0px 8px 20px 8px;
     }
@@ -58,10 +61,13 @@
         margin-top: 0px !important;
     }
 
-    .MCR{
-        font-size: 14px;
-        text-align: center;
-        vertical-align: center;
+    .currPrice {
+        margin-bottom: 6px;
+        color: rgb(138, 146, 151);  // COLOR
+    }
+
+    .currPriceNumber{
+        font-size: 16px;
     }
 
     .assetName {
@@ -69,13 +75,16 @@
         bottom: 10px;
         left: 10px;
         font-size: 14px;
-        color: var(--primary-light);
+        // color: var(--primary-light);
+        color: rgb(138, 146, 151);
+
 
         &::after {
             content: "";
             width: 250px;
             height: 1px;
-            background-color:var(--primary-light);
+            // background-color: var(--primary-light);
+            background-color: rgb(138, 146, 151);
             position: absolute;
             top: 48%;
             right: 0;
@@ -102,8 +111,17 @@
         filter: drop-shadow(0.3rem 0.4rem 0.55rem rgb(22, 22, 22));
     }
     .rankingNr {
-        font-size: 20px;
-        filter: drop-shadow(0.6rem 0.4rem 0.6rem rgb(12, 12, 12));
+        position: absolute;
+        z-index: 4;
+        right: 12px;
+        top: -8px;
+        font-size: 44px;
+        color:rgba(138, 146, 151, 0.287);
+        // color: var(--bg);
+        // -webkit-text-stroke: 2px var(--bg);
+        // filter: drop-shadow(2px 1px 1px #47524f);
+
+        // letter-spacing: -6px;
     }
 }
 
@@ -120,15 +138,16 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
         // padding-left: 30px;
+        line-height: 1.5em;
     }
 }
 
 .changePercent {
-    color: var(--accent1);
+    color: var(--accent2);
 }
 
 .red {
-    color: var(--accent2) !important;
+    color: var(--accent1);
 }

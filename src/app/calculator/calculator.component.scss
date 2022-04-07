@@ -15,12 +15,13 @@
     justify-content: center;
     align-items: center;
     background-color: var(--bg);
+    border: 1px solid var(--accent2);
     border-radius: 16px;
     height: 36px;
     min-width: 150px;
-    width: 40%;
+    width: 45%;
     flex: 1;
-    transition: all 150ms ease-in-out;
+    transition: all 125ms ease-in-out;
 
     &:hover{
         background-color: var(--muted);
@@ -35,12 +36,13 @@
     // Inputfield for searching Amount
     .inputNumber {
         width: 45%;
-        // height: 36px;
-    }
+        color: var(--accent2);
+        }
 
     .inputAsset{
         width: 100%;
-   
+        color: var(--accent2);
+        border-left: 1px var(--accent2) solid;
     }
 
     // contains searchInput and container for holding filtered Options
@@ -51,18 +53,15 @@
         justify-content: center;
         position: relative;
         font-size: 14px;
-        border-left: 1px var(--primary-light) solid;
-        height: 20px;
+        height: 36px;
 
-        &:hover{
-            border-left:1px solid var(--bg)!important;
-        }
-
+        // list of altiernative Assets
         li {
             width: fit-content;
             margin-top: 8px;
             list-style-type: none !important;
             position: absolute;
+            top: 16px;
             left: 0;
             background-color: var(--bg);
             cursor: pointer;
@@ -71,10 +70,10 @@
             margin-top: 4px;
             padding: 4px 8px;
             border-bottom: 1px var(--primary-light) solid;
-            transition: all ease-in-out 150ms;
+            transition: all ease-in-out 125ms;
 
             &:hover {
-                background-color: var(--hover);
+                background-color: var(--accent2);
             }
         }
     }
@@ -88,7 +87,7 @@
     border-radius: 16px;
     height: 36px;
     min-width: 150px;
-    width: 40%;
+    width: 45%;
     text-align: center;
     font-size: 14px;
 

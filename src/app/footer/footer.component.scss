@@ -27,11 +27,12 @@
 }
 .impressum {
     position: absolute;
-    bottom: 10px;
-    right: 60px;
+    bottom: 16px;
+    right: 70px;
     color: var(--primary-light);
     font-size: 12px;
     cursor: pointer;
+    transition: all 120ms ease-in-out;
 
     &:hover {
         color: var(--accent1);
@@ -44,8 +45,7 @@
 
     @keyframes width {
         from{
-            width: 3rem;
-
+            width: 4rem;
         }to{
             width: 0px;
         }
@@ -53,11 +53,11 @@
 
     &:after {
         content: "";
-        width: 3rem;
+        width: 4rem;
         height: 1px;
         background-color: var(--primary-light);
         top: 50%;
-        right: -3.5rem;
+        right: -4.5rem;
         position: absolute;
         transform: translateY(180deg);
     }

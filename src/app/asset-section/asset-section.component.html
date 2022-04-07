@@ -3,7 +3,7 @@
     <div class="upperRow">
        <img class="image" src="{{ images[i] }}">
 
-        <div class="rankingNr">#{{ assetRanks[i] }}</div>
+        <div class="rankingNr"> <span class="MCR">MCR</span> #{{ assetRanks[i] }}</div>
     </div>
 
     <div class="infoPart">
@@ -22,7 +22,7 @@
     </div>
 
     <!-- pos absolute -->
-    <div class="assetName">{{ assetNames[i] }}</div>
+    <div class="assetName">{{ assetNames[i] | titlecase }}</div>
 </div>
 
 

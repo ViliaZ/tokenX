@@ -14,8 +14,12 @@
         width: 100%;
         max-width: unset;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         flex-wrap: wrap;
+    }
+
+    @media (max-width: 350px) {
+        justify-content:center;
     }
 }
 
@@ -25,23 +29,39 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--bg-dark);
+    background-color: var(--secondary);
     border-radius: 16px;
     padding: 55px 6px 40px 6px;
-    color: white;
+    color: var(--primary);
     width: 100%;
     min-height: 150px;
     margin-top: 22px;
     overflow: hidden;
 
     @media (max-width: 1000px) {
-        width: 46%;
-        max-width: 360px;
+        min-width: 200px;
+        flex:1;
+        max-width: 260px;
         margin: 0px 8px 20px 8px;
+    }
+
+    @media (max-width: 500px) {
+        margin: 0px 4px 20px 4px;
+    }
+
+    @media (max-width: 350px) {
+        margin: 0px 4px 20px 4px;
+        width: 90%;
     }
 
     &:first-child {
         margin-top: 0px !important;
+    }
+
+    .MCR{
+        font-size: 14px;
+        text-align: center;
+        vertical-align: center;
     }
 
     .assetName {
@@ -49,13 +69,13 @@
         bottom: 10px;
         left: 10px;
         font-size: 14px;
-        color: whitesmoke;
+        color: var(--primary-light);
 
         &::after {
             content: "";
             width: 250px;
             height: 1px;
-            background-color: whitesmoke;
+            background-color:var(--primary-light);
             position: absolute;
             top: 48%;
             right: 0;
@@ -106,9 +126,9 @@
 }
 
 .changePercent {
-    color: var(--accent);
+    color: var(--accent1);
 }
 
 .red {
-    color: rgb(255, 0, 106) !important;
+    color: var(--accent2) !important;
 }

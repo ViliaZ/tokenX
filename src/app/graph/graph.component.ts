@@ -67,11 +67,18 @@ export class GraphComponent implements OnInit {
     this.chart = new Chart('mycanvas', {
       type: 'line',
       options: {
+        responsive: true,
         scales: {
           x: {   // text x axis
-            ticks: {
-              color: 'white'
-            }
+            
+            time: {
+              unit: 'hour',
+              // unitStepSize: 
+          }
+            // ticks: {
+            //   color: 'white',
+              // stepSize: ''
+            // }
           },
           y: {  // text y axis
             ticks: {

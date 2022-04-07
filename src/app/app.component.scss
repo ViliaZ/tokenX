@@ -1,5 +1,5 @@
 :host {
-    background-color: black;
+    background-color: var(--bg);
     display: flex;
     justify-content: flex-start;
     height: 100vh;
@@ -27,7 +27,14 @@
     @media (max-width: 1000px) {
         flex-direction: column;
         height: max-content;
-        margin-right: unset;
+        margin-right: 2em;
+        margin-left: 2em;
+        margin-top: 100px;
+    }
+    @media (max-width: 500px) {
+        margin-right: 1em;
+        margin-left: 1em;
+        margin-top: 120px;
     }
 }
 
@@ -49,3 +56,5 @@
 .pos-rel {
     position: relative;
 }
+
+

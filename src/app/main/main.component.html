@@ -1,47 +1,44 @@
-
 <div class="wrapper">
-    
-    <app-calculator
-        #calculator
-        class="border-rad flex-c-c gap-1">
+
+    <app-calculator #calculator class="border-rad flex-c-c gap-1">
     </app-calculator>
-    
-    
-    <app-graph
-        *ngIf="currentTab === 'table'"
-        [requestedAssetID]="calculator.requestedAssetID">
+
+
+    <app-graph *ngIf="currentTab === 'table'" [requestedAssetID]="calculator.requestedAssetID">
     </app-graph>
-    
-    
-    <app-table
-        *ngIf="currentTab === 'graph'"
-        [requestedAssetID]="calculator.requestedAssetID">
+
+
+    <app-table *ngIf="currentTab === 'graph'" [requestedAssetID]="calculator.requestedAssetID">
     </app-table>
-    
-    
+
+
     <!-- pos absolute -->
-    
+
     <!-- BUG TO FIX: graph and table are other way around in variable names - but all is functioning correctly -->
-    <div
-        *ngIf="currentTab === 'graph'"
-        class="info">
+    <div *ngIf="currentTab === 'graph'" class="info">
         <i>* all prices in €</i>
     </div>
-    
+
     <!-- Asset Text Form -->
-    <div
-        *ngIf="currentTab === 'table'"
-        class="infoContainer">
-    
-        <span
-            *ngIf="assetWebsite !== '' || assetWebsite !== undefined"
-            class="websiteLink" >
+    <div *ngIf="currentTab === 'table'" class="infoContainer">
+
+        <span *ngIf="assetWebsite !== '' || assetWebsite !== undefined" class="websiteLink">
             <img class="icon-web" src="assets/img/website-white.png" alt="icon-website">
             <a href="{{ assetWebsite }}">{{ assetWebsite }}</a>
-    
+
         </span>
-    
-        <div class="text"> {{ assetInfotext }}</div>
-    
+
+
+        <div class="shortText desktopOnly"> {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:1000 }} 
+            <span *ngIf="!fulltextOpen" (click)="fullText('open')" class="readMore">... read more</span>
+            <span *ngIf="fulltextOpen" (click)="fullText('close')" class="readMore">... show less</span>
+
+        </div>
+
+        <div class="shortText mobileOnly"> {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:300 }}
+            <span *ngIf="!fulltextOpen" (click)="fullText('open')" class="readMore">... read more</span>
+            <span *ngIf="fulltextOpen" (click)="fullText('close')" class="readMore">... show less</span>
+        </div>
+
     </div>
 </div>

@@ -16,6 +16,7 @@ export class MainComponent implements OnInit {
   public assetWebsite: any = 'no data available';
 
   requestedAssetID:any = 'bitcoin'
+  public fulltextOpen: boolean = false; // asset text info
  
   @ViewChild(CalculatorComponent) calculatorComp: CalculatorComponent;
 
@@ -53,6 +54,14 @@ export class MainComponent implements OnInit {
     }
   }
 
-
+  fullText(request: string){
+    if(request == 'open'){
+      this.fulltextOpen = true; 
+    }
+    else {
+      this.fulltextOpen = false; 
+ 
+    }
+  }
 
 }

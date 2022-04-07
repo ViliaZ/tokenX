@@ -1,45 +1,53 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-:root{
-    --bg-dark: rgb(77, 78, 90);
-    --bg-light: rgba(185, 180, 180, 0.555);
-    --primary: rgb(226, 228, 243) ;
-    --accent: rgb(0, 255, 170);
+:root {
+    --bg: #101214;
+    --primary-light: rgb(248, 240, 240);
+    --secondary: #24272c;
+    --accent1: #E902B3;
+    --accent2: #13e2a4;
+    --muted: lightgrey;  // z.B. Menu inactive tab
+    --link: lightgrey;
+    --shadow: 
+
+    // --bg-dark: rgb(57, 57, 58);
+    // --bg-light: rgba(185, 180, 180, 0.555);
+    // --primary: rgb(235, 235, 243);
+    // --accent: rgb(0, 255, 170);
 }
 
-app-root{
+app-root {
     overflow: hidden;
 }
 
-h2{
+h2 {
     font-size: 22px;
     font-weight: 200;
 }
 
-h3{
+h3 {
     font-size: 18px;
 }
 
-.mt-1{
-margin-top: 2rem;
+.mt-1 {
+    margin-top: 2rem;
 }
 
-.border-rad{
+.border-rad {
     border-radius: 16px;
 }
 
-.flex-c-c{
+.flex-c-c {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.gap-1{
-gap: 2rem;
+.gap-1 {
+    gap: 2rem;
 }
-

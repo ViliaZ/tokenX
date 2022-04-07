@@ -1,9 +1,30 @@
-:host{
-    background-color: black;
+:host {
+    display: flex;
+    background-color: var(--bg);
     min-width: 175px;
+    display: flex;
+    align-items: flex-start;
 }
 
-h1{
+.subline-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 44px;
+    width: 50px;
+    text-align: justify;
+
+    .subline {
+        width: 90px;
+        word-wrap: wrap;
+        color: var(--primary-light);
+        font-size: 24px;
+        font-weight: 200;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: justify;
+    }
+}
+
+h1 {
     margin: 0;
     position: absolute;
     writing-mode: vertical-lr;

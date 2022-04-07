@@ -2,25 +2,35 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 2em;
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+        gap: 0.5em!important;
+    }
 }
 
 .currencySearch-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 0, 0);
+    background-color: var(--bg);
     border-radius: 16px;
     height: 36px;
     min-width: 150px;
     width: 40%;
     flex: 1;
 
+    @media (max-width: 500px) {
+        width: 84%;
+    }
+
+
     // Inputfield for searching Amount
     .inputNumber {
         width: 45%;
-        background-color: rgb(0, 0, 0);
+        background-color: var(--bg);
         height: 36px;
-
     }
 
     // contains searchInput and container for holding filtered Options
@@ -31,7 +41,7 @@
         justify-content: center;
         position: relative;
         font-size: 14px;
-        background-color: black;
+        background-color: var(--bg);
         border-left: 1px rgb(211, 205, 205) solid;
         height: 20px;
 
@@ -42,17 +52,17 @@
             list-style-type: none !important;
             position: absolute;
             left: 0;
-            background-color: rgb(58, 57, 57);
+            background-color: var(--bg);
             cursor: pointer;
         }
         ul {
             margin-top: 4px;
             padding: 4px 8px;
-            border-bottom: 1px rgba(255, 255, 255, 0.424) solid;
+            border-bottom: 1px var(--primary-light) solid;
             transition: all ease-in-out 150ms;
 
             &:hover {
-                background-color: rgba(104, 103, 103, 0.466);
+                background-color: var(--hover);
             }
         }
     }
@@ -66,13 +76,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 0, 0);
+    background-color: var(--bg);
     border-radius: 16px;
     height: 36px;
     min-width: 150px;
     width: 40%;
     text-align: center;
     font-size: 14px;
+
+    @media (max-width: 500px) {
+        width: 84%;
+    }
 
     .EUR {
         width: 50%;
@@ -97,7 +111,7 @@ input {
     text-align: center;
     background-color: transparent;
     border: unset;
-    color: white;
+    color: var(--primary-light);
     overflow: auto;
 }
 
@@ -106,5 +120,5 @@ input[type="number"] {
 }
 
 input::placeholder {
-    color: white;
+    color: var(--primary-light);
 }

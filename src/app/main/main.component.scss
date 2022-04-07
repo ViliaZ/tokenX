@@ -1,7 +1,7 @@
 :host {
     padding: 2rem;
-    background-color: var(--bg-dark);
-    color: white;
+    background-color: var(--secondary);
+    color:  var(--primary);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -10,6 +10,10 @@
     border-top-right-radius: 0px !important;
     gap: 2rem;
     overflow: auto;
+
+    @media (max-width: 500px) {
+        padding: 8px!important;
+          }
 }
 
 // .wrapper{
@@ -44,7 +48,7 @@
 
     a{
         text-decoration: none;
-        color: white;
+        color:  var(--primary);
     }
 
     // causes issues, when not restricted to a width
@@ -59,7 +63,32 @@
         display: flex;
         align-items: center;
         font-style: italic;
-        color: white;
+        color:  var(--primary);
         cursor: pointer;
     }
+}
+
+.readMore{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    cursor: pointer;
+
+    &:hover{
+        color: var(muted);
+    }
+}
+
+.desktopOnly{
+
+    @media (max-width: 1000px) {
+        display: none;
+           }
+    
+}
+.mobileOnly{
+    display: none;
+
+    @media (max-width: 1000px) {
+       display: block;
+          }
 }

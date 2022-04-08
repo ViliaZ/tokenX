@@ -2,19 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
 }
 
 :root {
     --bg: #101214;
     --primary-light: rgb(248, 240, 240);
     --secondary: #32363d;
-    --accent1: #E902B3;
+    --accent1: #e902b3;
     --accent2: #13e2a4;
-    --muted: #12bb88;  // z.B. Menu inactive tab
+    --muted: #12bb88; // z.B. Menu inactive tab
     --link: lightgrey;
-    --shadow: 
-
+    --font-bold: 400;
+    --font-xBold: 600;
+    --font-thin: 200;
 }
 
 app-root {

@@ -43,6 +43,9 @@
         width: 100%;
         color: var(--accent2);
         border-left: 1px var(--accent2) solid;
+        font-weight: var(--font-bold);
+        font-size: 16px;
+    
     }
 
     // contains searchInput and container for holding filtered Options
@@ -89,7 +92,8 @@
     min-width: 150px;
     width: 45%;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: var(--font-bold)!important;
 
     @media (max-width: 500px) {
         width: 84%;
@@ -99,6 +103,7 @@
         width: 50%;
         border-left: 1px var(--primary-light) solid;
         color: var(--primary-light);
+        font-weight: var(--font-bold);
 
     }
     input {

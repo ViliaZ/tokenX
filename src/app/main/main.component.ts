@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AssetsService } from '../Services/assets.service';
 import { CalculatorComponent } from '../calculator/calculator.component';
 
@@ -16,11 +16,10 @@ export class MainComponent implements OnInit {
   public assetWebsite!: any;
   public lowestPrice!: any;
   public highestPrice!: any;
-
   requestedAssetID: any = 'bitcoin'
   public fulltextOpen: boolean = false; // asset text info
-
   @ViewChild(CalculatorComponent) calculatorComp: CalculatorComponent;
+
 
   constructor(private assets: AssetsService) { }
 
@@ -33,8 +32,6 @@ export class MainComponent implements OnInit {
   ngAfterViewInit() { // runs only once after Child is initialized
     this.requestedAssetID = this.calculatorComp.requestedAssetID;
     this.getInfoData();
-
-    
   }
 
   // update changes in AssetSearch
@@ -73,5 +70,7 @@ export class MainComponent implements OnInit {
 
     }
   }
+
+
 
 }

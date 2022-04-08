@@ -43,18 +43,21 @@
     display: flex;
     margin-top: 26px;
     text-align: justify;
-
-
+    word-break: break-word;
 
     a {
         text-decoration: none;
         color: var(--accent2);
+        font-weight: var(--font-bold);
+
+        &:hover{
+            color: var(--muted);
+        }
     }
 
     // causes issues, when not restricted to a width
     .text {
         max-width: 95%;
-        word-break: break-word;
     }
 
 
@@ -77,6 +80,7 @@
 
     .websiteLink{
         cursor: pointer;
+
     }
 
     .icon {
@@ -109,8 +113,8 @@
 }
 
 .readMore {
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     font-style: italic;
+    font-weight: var(--font-bold);
     cursor: pointer;
     color: var(--accent2);
     transition: all 120ms ease-in-out;
@@ -123,4 +127,5 @@
 .accentColor {
     color: var(--accent2);
     margin-right: 4px;
+    font-weight: var(--font-bold);
 }

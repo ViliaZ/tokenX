@@ -103,7 +103,7 @@ export class GraphComponent implements OnInit {
           {
             data: this.prices,
             label: '24 hour view',
-            backgroundColor: '#03f8a234', // line fill color
+            backgroundColor: '#12bb889d', // line fill color
             borderColor: 'white', // line color
             borderWidth: 1, // thickness of line in px
             fill: true,

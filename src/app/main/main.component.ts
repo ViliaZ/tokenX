@@ -26,13 +26,13 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      console.log(this.assetWebsite);
-    }, 1000);
+      console.log(this.lowestPrice, this.highestPrice);
+    }, 2000);
   }
 
   ngAfterViewInit() { // runs only once after Child is initialized
     this.requestedAssetID = this.calculatorComp.requestedAssetID;
-    this.getInfoTextData();
+    this.getInfoData();
 
     
   }
@@ -41,7 +41,7 @@ export class MainComponent implements OnInit {
   ngAfterViewChecked() { // detects changes in Child --> triggers frequently
     if (this.requestedAssetID !== this.calculatorComp.requestedAssetID) {
       this.requestedAssetID = this.calculatorComp.requestedAssetID;
-      this.getInfoTextData();
+      this.getInfoData();
     }
   }
 
@@ -50,12 +50,14 @@ export class MainComponent implements OnInit {
     this.requestedAssetID = assetFromCalculator;
   }
 
-  getInfoTextData() {
+  getInfoData() {
     try {
       this.assets.getAssetDetails(this.requestedAssetID)
         .subscribe((results: any) => {
           this.assetInfotext = results.description.en;
           this.assetWebsite = results.links.homepage[0];
+          this.lowestPrice = results.market_data.low_24h.eur
+          this.highestPrice = results.market_data.high_24h.eur;
         })
     } catch (error) {
       console.error(error);

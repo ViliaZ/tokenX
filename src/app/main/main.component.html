@@ -23,12 +23,21 @@
     <div *ngIf="currentTab === 'table'" class="infoContainer">
 
         <div class="furtherInfos">
-            <div *ngIf="assetWebsite" class="websiteLink">
-                <img class="icon-web" src="assets/img/website-white.png" alt="icon-website">
+            <div *ngIf="assetWebsite" class="infoWithIcon websiteLink">
+                <img class="icon" src="assets/img/website.png" alt="icon-website">
                 <a href="{{ assetWebsite }}">{{ assetWebsite }}</a>
             </div>
-            <div *ngIf="lowestPrice" class="detail">24h-High {{ lowestPrice }}</div>
-            <div *ngIf="highestPrice" class="detail">24h-Low {{ highestPrice }}</div>
+            <div *ngIf="lowestPrice" class="infoWithIcon">
+                <img class="icon" src="assets/img/high.png" alt="icon-high">
+                <span class="accentColor">24h-High:</span>
+                  € {{ highestPrice }}
+            </div>
+
+            <div *ngIf="highestPrice" class="infoWithIcon">
+                <img class="icon" src="assets/img/low.png" alt="icon-low">
+                <span class="accentColor">24h-Low:</span>
+                  € {{ lowestPrice }}
+            </div>
         </div>
 
 

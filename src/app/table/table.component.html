@@ -1,9 +1,9 @@
-    <table>
+    <table class="biggerScreen">
         <tr>
-                <th>DATE</th>
-                <th>PRICE</th>
-                <th>MARKET CAP</th>
-                <th>VOLUME</th>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Market Cap</th>
+                <th>Volume</th>
         </tr>
     
         <tr *ngFor="let date of dates; index as i">
@@ -11,5 +11,19 @@
             <td>{{ prices[i] }}</td>
             <td>{{ marketCaps[i] }}</td>
             <td>{{ volumes[i] }}</td>
+        </tr>
+    </table>
+
+    <table class="mobileOnly">
+        <tr>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Market Cap</th>
+        </tr>
+    
+        <tr *ngFor="let date of dates; index as i">
+            <td>{{ date }}</td>
+            <td>{{ prices[i] }}</td>
+            <td>{{ marketCaps[i] }}</td>
         </tr>
     </table>

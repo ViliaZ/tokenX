@@ -37,11 +37,8 @@ a{
 
 .changeColor{
     color: var(--secondary)!important;
-
-
     @media (max-width: 1000px) {
         color: var(--primary-light)!important;
-
     }
 }
 

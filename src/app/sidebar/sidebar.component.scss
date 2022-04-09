@@ -1,7 +1,9 @@
 :host {
     display: flex;
     background-color: var(--bg);
+    width: 10vw;
     min-width: 175px;
+    max-width: 200px;
     display: flex;
     align-items: flex-start;
 }

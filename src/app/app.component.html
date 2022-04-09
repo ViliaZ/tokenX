@@ -9,9 +9,9 @@
     
         <div class="main">
             <app-menu #menu></app-menu>
-            <app-main [currentTab]="menu.activeTab" class="flex-1 pos-rel border-rad"></app-main>
+            <app-main [currentTab]="menu.activeTab" class="pos-rel border-rad"></app-main>
         </div>
-        
+
         <app-asset-section></app-asset-section>
     
         <app-footer *ngIf="currScreenWidth < 1100" ></app-footer>

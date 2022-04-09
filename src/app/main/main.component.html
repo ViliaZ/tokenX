@@ -4,7 +4,7 @@
     </app-calculator>
 
 
-    <app-graph *ngIf="currentTab === 'table'" [requestedAssetID]="calculator.requestedAssetID">
+    <app-graph class="flex-1" *ngIf="currentTab === 'table'" [requestedAssetID]="calculator.requestedAssetID" >
     </app-graph>
 
 
@@ -41,17 +41,15 @@
         </div>
 
         <!-- TEXT ASSET -->
-        <div class="shortText desktopOnly"> 
-            {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:600}} 
+        <div class="shortText desktopOnly" [class.bottomMargin]="fulltextOpen"> 
+            {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:550}} 
             <span *ngIf="!fulltextOpen" (click)="fullText('open')" class="readMore">... read more</span>
-            <span *ngIf="fulltextOpen" (click)="fullText('close')" class="readMore">... show less</span>
+            <span *ngIf="fulltextOpen" (click)="fullText('close')" class="readMore readmore-open">... show less</span>
         </div>
 
-        <!-- [innerHtml]="html | htmldecoder" -->
-
-        <div class="shortText mobileOnly"> {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:300 }}
+        <div class="shortText mobileOnly" [class.bottomMargin]="fulltextOpen" > {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:300 }}
             <span *ngIf="!fulltextOpen" (click)="fullText('open')" class="readMore">... read more</span>
-            <span *ngIf="fulltextOpen" (click)="fullText('close')" class="readMore">... show less</span>
+            <span *ngIf="fulltextOpen" (click)="fullText('close')" class="readMore readmore-open">... show less</span>
         </div>
 
     </div>

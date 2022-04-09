@@ -2,7 +2,9 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 2em;
+    
 
     @media (max-width: 500px) {
         flex-direction: column;
@@ -19,6 +21,7 @@
     border-radius: 16px;
     height: 36px;
     min-width: 150px;
+    max-width: 400px;
     width: 45%;
     flex: 1;
     transition: all 125ms ease-in-out;
@@ -91,6 +94,7 @@
     height: 36px;
     min-width: 150px;
     width: 45%;
+    max-width: 400px;
     text-align: center;
     font-size: 16px;
     font-weight: var(--font-bold)!important;
@@ -116,6 +120,7 @@
 
 .imgArrows {
     width: 1.5rem;
+    transform: translateX(12px);
 }
 
 input::-webkit-outer-spin-button,

@@ -17,7 +17,7 @@
     max-width: 960px;
     max-height: 40vh;
 
-    @media (min-width: 1000px) {
+    @media (min-width: 1100px) {
         max-height: 60vh;
     }
 }
@@ -28,9 +28,16 @@
 // }
 
 #mycanvas {
-    width: auto !important;
-    height: auto !important;
-    // height: auto!important;
+    // width: auto !important;
+    // height: auto !important;
+    height: 60vh;
+    width: 60vw;
     max-width: 100%;
     max-height: 40vh;
+
+    @media (min-width: 1100px) {
+        // height: 60vh;
+        width: 90vw;
+        height: unset;
+    }
 }

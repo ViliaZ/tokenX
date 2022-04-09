@@ -1,11 +1,11 @@
 
 
-    <app-sidebar *ngIf="currScreenWidth > 1000" class="pos-rel"></app-sidebar>
+    <app-sidebar *ngIf="currScreenWidth > 1100" class="pos-rel"></app-sidebar>
     <!-- see Hostlistener -->
     
     
     <div class="wrapper flex-1">
-        <app-sidebar-mobil *ngIf="currScreenWidth < 1000" ></app-sidebar-mobil>
+        <app-sidebar-mobil *ngIf="currScreenWidth < 1100" ></app-sidebar-mobil>
     
         <div class="main">
             <app-menu #menu></app-menu>
@@ -13,7 +13,7 @@
         </div>
         <app-asset-section></app-asset-section>
     
-        <app-footer *ngIf="currScreenWidth < 1000" ></app-footer>
+        <app-footer *ngIf="currScreenWidth < 1100" ></app-footer>
     
     </div>
 
@@ -24,4 +24,4 @@
 
 
 <!-- pos. absolute -->
-<app-footer *ngIf="currScreenWidth > 1000" ></app-footer> 
+<app-footer *ngIf="currScreenWidth > 1100" ></app-footer> 

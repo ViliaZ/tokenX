@@ -42,7 +42,7 @@
 
         <!-- TEXT ASSET -->
         <div class="shortText desktopOnly"> 
-            {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:300}} 
+            {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:600}} 
             <span *ngIf="!fulltextOpen" (click)="fullText('open')" class="readMore">... read more</span>
             <span *ngIf="fulltextOpen" (click)="fullText('close')" class="readMore">... show less</span>
         </div>

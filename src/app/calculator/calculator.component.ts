@@ -11,9 +11,7 @@ import { AssetsService } from '../Services/assets.service';
 })
 export class CalculatorComponent implements OnInit {
 
-
   public showList: any = true;  // if inputfield in focus
-
 
   assetInput: string = 'Bitcoin';
   amountInput: number = 1;
@@ -24,15 +22,14 @@ export class CalculatorComponent implements OnInit {
 
   assetList: any = [];
   filteredAsset: any = [];
-  public requestedAssetID: any = 'bitcoin';
 
-  // @Output() requestedAsset = new EventEmitter<any>(); // 'bitcoin';
+
+  public requestedAssetID: any = 'bitcoin';
 
   //   Format INFO from API: 
   //      "id": "bitcoin",
   //      "symbol": "btc",
   //      "name": "Bitcoin"
-
 
   constructor(private assetService: AssetsService) { }
 
@@ -42,23 +39,13 @@ export class CalculatorComponent implements OnInit {
     this.calculateExchange();
   }
 
-  // emitNewAssetSearch(value: string) {
-  //   this.requestedAsset.emit(this.requestedAssetID);
-  // }
-
-  ngOnChanges(changes: SimpleChanges){
-    console.count('this');
-    console.log(changes);
-  }
-
   getAssetList() {
     this.assetService.getAssetList()
       .subscribe((data) => { this.assetList = data; })
   }
 
   // process data from input field
-  getSearchData(event?: Event) {
-
+  getSearchData() {
     this.filteredAsset = [];
 
     if (this.assetInput.length == 0) {
@@ -75,17 +62,13 @@ export class CalculatorComponent implements OnInit {
         if (this.assetList[i].id == this.assetInput.toLowerCase()) {
           this.requestedAssetID = this.assetList[i].id;
           this.assetService.requestedAssetID = this.assetList[i].id;
-          // this.emitNewAssetSearch(this.requestedAssetID)
         }
       }
       this.calculateExchange();
     }
   };
 
-
-
-  async calculateExchange(event?) {
-
+  async calculateExchange() {
     try {
       let res = await firstValueFrom(this.assetService.getExchangeRateEUR(this.requestedAssetID));
       this.priceInEUR = (res['market_data']['current_price']['eur']) * this.amountInput;
@@ -96,42 +79,32 @@ export class CalculatorComponent implements OnInit {
   }
 
   // toggle for show/notshow list of alternative search options
-  toggleList(showList: boolean, event?) {
-    // if(EventSource)
-
-    // console.log(event, EventSource);
-
+  toggleList(showList: boolean) {
     if (showList == true) {
-      console.log('showList true', showList);
-
       this.showList = true;
     }
     else {
       this.showList = false;
-      console.log('showList false this', showList);
-
     }
   }
 
   // clicked on a option from list
   updateRequestedAsset(asset: string, event: Event) {
     event.stopPropagation();
-    console.log('option was chosen', asset)
     this.requestedAssetID = asset;
     this.showList = false;
   }
 
   // close List of Asset Options, when Click SOMEWHERE on the page 
-
   @HostListener("document:click", ['$event.target.id'])
-
   clickOnPage(id: string) {
-    console.log('click somewhere on page', id);
-
     // template Ids for input and List are checked --> prevent closing list in these cases
     if (id != 'listAssetOptions' && id != 'inputfieldSearchAsset') {
       this.showList = false;
     }
   }
 
-}
+
+
+  }
+

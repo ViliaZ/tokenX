@@ -17,8 +17,7 @@ export class AssetSectionComponent implements OnInit {
   images: any[] = [];
   changePercent: any[] = [];
 
-
-  constructor(private assetService: AssetsService) { }
+  constructor(public assetService: AssetsService) { }
 
   ngOnInit(): void {
     this.getAssetInfos();

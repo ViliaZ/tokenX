@@ -1,8 +1,10 @@
-import { Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { Chart, ChartConfiguration, ChartEvent, ChartType, registerables } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Chart, registerables } from 'chart.js';
 import { AssetsService } from '../Services/assets.service';
 import { firstValueFrom } from 'rxjs';
+import { BaseChartDirective } from 'ng2-charts';
+
+
 
 @Component({
   selector: 'app-graph',
@@ -10,15 +12,57 @@ import { firstValueFrom } from 'rxjs';
   styleUrls: ['./graph.component.scss']
 })
 
-export class GraphComponent implements OnInit {
+
+export class GraphComponent implements OnInit, AfterViewInit {
 
   prices: any = [];
   dates: any = [];
   chart: any = {};
+
+  @ViewChild(BaseChartDirective, { static: true }) mychart: BaseChartDirective;
+  @ViewChild('mycanvas') canvas: ElementRef;
+
+  lineChartColors;
+
+
   @Input() requestedAssetID;  // is synchronous calculator input, property binding in main component
+
+  chartDirective: any;
+  changeDetectorRef: any;
+
 
   constructor(private assetService: AssetsService) {
     Chart.register(...registerables);
+  }
+
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+
+  
+      const ctx = this.canvas.nativeElement.getContext('2d');
+      console.log('context before',ctx);
+
+      let gradientFill = ctx.createLinearGradient(0, 0, 200, 50);
+      console.log('gradientFill before',gradientFill);
+      gradientFill.addColorStop(0, 'green');
+      gradientFill.addColorStop(.5, 'cyan');
+      gradientFill.addColorStop(1, 'green');
+
+      console.log('gradientFill after',gradientFill);
+
+      ctx.borderColor = 'green';
+      ctx.backgroundColor = gradientFill;
+      ctx.strokeStyle = gradientFill;
+
+      console.log('context after',ctx);
+      // this.fillcolor = [{
+      //   backgroundColor: gradientFill
+      // }];
+
+
+
   }
 
   ngOnChanges() {
@@ -32,13 +76,11 @@ export class GraphComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-  }
+
 
   async drawGraph(asset) {
     this.prices = [];
     this.dates = [];
-
     try {
       await this.getChartData(asset);
       this.assembleChart();
@@ -53,13 +95,36 @@ export class GraphComponent implements OnInit {
 
     graphdata['prices'].map((datapoint) => {
       let calendarDate = new Date(datapoint[0]);
-      let options: any = { year: 'numeric', month: 'numeric', day: 'numeric' };
-      let dateFormatted = calendarDate.toLocaleDateString('ger', options);
-      this.dates.push(dateFormatted);
+
+      let options: any = { formatMatcher: 'basic', hour: 'numeric', minute: 'numeric', hourCycle: 'h12' };
+      let dateFormatted = calendarDate.toLocaleDateString('de', options);
+      let cutOutDay = dateFormatted.split(','); // we just need the time, without the day
+      this.dates.push(cutOutDay[1]); // only push "hour" to use as graph data
     });
     graphdata['prices'].map((datapoint) => {
       this.prices.push(datapoint[1]);
     })
+  }
+
+  getColor(){
+
+    const ctx = this.canvas.nativeElement.getContext('2d');
+    console.log('context before',ctx);
+
+    let gradientFill = ctx.createLinearGradient(0, 20, 300, 800);
+    console.log('gradientFill before',gradientFill);
+    gradientFill.addColorStop(0.1, '#13e2a4');
+    gradientFill.addColorStop(0.8, '#e902b3');
+    gradientFill.addColorStop(1, '#e902b3');
+
+    console.log('gradientFill after',gradientFill);
+
+    ctx.borderColor = 'green';
+    ctx.backgroundColor = gradientFill;
+    ctx.strokeStyle = gradientFill;
+
+    console.log('context after',ctx);
+    return gradientFill
   }
 
   assembleChart() {
@@ -73,16 +138,19 @@ export class GraphComponent implements OnInit {
             ticks: {
               color: 'white'
             }
-              // unitStepSize: 
-          
-            // ticks: {
-            //   color: 'white',
-              // stepSize: ''
-            // }
           },
           y: {  // text y axis
             ticks: {
+              autoSkip: false,
               color: 'white'
+            },
+            title: {
+              display: true,
+              text: 'Amount in Euros',
+              color: 'white',
+              font: {
+                size: 12,
+              }
             }
           }
         },
@@ -102,8 +170,8 @@ export class GraphComponent implements OnInit {
         datasets: [
           {
             data: this.prices,
-            label: '24 hour view',
-            backgroundColor: '#12bb889d', // line fill color
+            label: '24-Hour view',
+            backgroundColor: this.getColor(),
             borderColor: 'white', // line color
             borderWidth: 1, // thickness of line in px
             fill: true,
@@ -111,14 +179,10 @@ export class GraphComponent implements OnInit {
             pointBackgroundColor: 'transparent',  // fill color points
             pointBorderWidth: 1, // thickness point border
             pointRadius: 2,
-            pointStyle: 'star',
+            pointStyle: 'point',
           },
         ],
       },
     });
   }
-
-
-
-
 }

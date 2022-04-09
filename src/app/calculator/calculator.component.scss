@@ -24,7 +24,7 @@
     transition: all 125ms ease-in-out;
 
     &:hover{
-        background-color: var(--muted);
+        background-color:rgba(95, 126, 118, 0.349);
         cursor: pointer;
     }
 
@@ -37,6 +37,7 @@
     .inputNumber {
         width: 45%;
         color: var(--accent2);
+        font-weight: var(--font-bold);
         }
 
     .inputAsset{
@@ -45,7 +46,6 @@
         border-left: 1px var(--accent2) solid;
         font-weight: var(--font-bold);
         font-size: 16px;
-    
     }
 
     // contains searchInput and container for holding filtered Options
@@ -76,7 +76,7 @@
             transition: all ease-in-out 125ms;
 
             &:hover {
-                background-color: var(--accent2);
+                color: var(--accent2);
             }
         }
     }
@@ -94,6 +94,8 @@
     text-align: center;
     font-size: 16px;
     font-weight: var(--font-bold)!important;
+    transition: all ease-in-out 125ms;
+
 
     @media (max-width: 500px) {
         width: 84%;
@@ -104,8 +106,8 @@
         border-left: 1px var(--primary-light) solid;
         color: var(--primary-light);
         font-weight: var(--font-bold);
-
     }
+
     input {
         width: 50%;
         color: var(--primary-light);
@@ -125,14 +127,22 @@ input::-webkit-inner-spin-button {
 input {
     text-align: center;
     background-color: transparent;
-    border: unset;
+    border:unset;
     color: var(--primary-light);
     overflow: auto;
+    height: 80%!important;
+
+}
+
+input:focus{
+    outline: none!important;
 }
 
 input[type="number"] {
     -moz-appearance: textfield;
+    font-weight: var(--font-bold);
 }
+
 
 input::placeholder {
     color: var(--primary-light);

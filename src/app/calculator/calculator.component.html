@@ -16,19 +16,19 @@
             min="2" 
             [(ngModel)]="assetInput" 
             (ngModelChange)="getSearchData()"
-            (focus)="toggleList(true, $event)" 
-            [value]="requestedAssetID"
+            (focus)="toggleList(true)" 
+            [value]="requestedAssetID | titlecase"
             >
             
             <!-- position absolute -->
         <li 
             id='listAssetOptions'
             *ngIf="showList"
-            (mouseenter)="toggleList(true, $event)"
+            (mouseenter)="toggleList(true)"
             class="filteredAssetOptions">
                 <ul             
                 *ngFor="let asset of filteredAsset; index as i" (click)="updateRequestedAsset(asset, $event)">
-                    {{ asset }}
+                    {{ asset | titlecase}}
                 </ul>
         </li>
     </div>
@@ -43,6 +43,6 @@
 
 <!-- EUR SECTION -->
 <div class="currencyEUR-container">
-    <input [(ngModel)]="priceInEUR" class="inputNumber" type="number" [disabled]="true">
+    <input [(ngModel)]="priceInEUR" class="inputNumber" type="number" disabled="true" >
     <div class="EUR">Euro</div>
 </div>

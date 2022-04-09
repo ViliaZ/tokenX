@@ -2,61 +2,73 @@
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-left: 1em;
-    // background-color: red;
-    height: 54px;
+    height: 110px;
 }
 
 
 .wrapper{
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     max-width: 100%;
     height: 100%;
 
-    // &:after{
-    //     content: '';
-    //     position: absolute;
-    //     width: 26px;
-    //     background-color: var(--primary-light);
-    //     height: 44px;
-    //     bottom: 0;
-    //     z-index: 2;
 
-    //     right: 0;
-    //     }
+    &:after{
+        content: '';
+        z-index: 2;
+        position: absolute;
+        width: 4px;
+        background-color: var(--accent2);
+        height: 65px;
+        right: 0;
+        bottom: 23px;
+        translate: transitionY(50%);
+        }
 }
 
 h1 {
-    // position: absolute;
-    left: -30px; 
-    top: -30px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-left: 22px;
     font-size: 84px;
+    font-weight: 900;
     color: transparent;
     -webkit-text-stroke: 1px rgb(175, 169, 169);
-}
 
-.subline-wrapper {
-    position: absolute;
-    top: 58px;
-    margin-top: 4px;
-    display: flex;
-    // align-items: center;
+    @media (max-width: 550px) {
+        font-size: 52px!important;
+    }
 
-    .subline {
-        color: var(--primary-light);
-        flex-wrap: wrap;
-        font-size: 18px;
-        letter-spacing: 3px;
-        text-align: start;
+    @media (max-width: 375px) {
+        font-size: 12px;
     }
 }
+
+    .subline {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        color: var(--primary-light);
+       
+        font-size: 18px;
+        letter-spacing: 4px;
+        margin-right: 24px;
+
+        @media (max-width: 550px) {
+            font-size: 14px;
+        }
+
+        @media (max-width: 375px) {
+            font-size: 12px;
+        }
+    }
+
 
 

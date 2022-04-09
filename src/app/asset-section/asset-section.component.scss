@@ -9,6 +9,7 @@
     max-width: 230px;
     height: 100%;
     overflow: auto;
+    gap: 1em;
 
     @media (max-width: 1100px) {
         width: 100%;
@@ -35,13 +36,12 @@
     color: var(--primary-light);
     width: 100%;
     min-height: 150px;
-    margin-top: 22px;
     overflow: hidden;
     transition: all ease-in-out 150ms;
 
     &:hover{
         box-shadow: rgb(36, 35, 35) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;    
-       
+
         .rankingNr{
             color: var(--accent2);
         }
@@ -53,29 +53,27 @@
                 background-color: var(--accent2);
             }
         }
-
-        // .assetName ::after{
-        //     color: var(--accent2);
-        // }
-
     }
 
     @media (max-width: 1100px) {
         min-width: 200px;
         flex: 1;
         max-width: 260px;
-        margin: 0px 0px 20px 12px;
     }
 
     @media (max-width: 500px) {
-        margin: 0px 0px 20px 12px;
+        width: 90%;
+        max-width: 400px;
+        min-height: 200px;
+    }
+
+    @media (max-width: 440px) {
         width: 90%;
         max-width: 400px;
         min-height: 200px;
     }
 
     @media (max-width: 350px) {
-        margin: 0px 0px 20px 12px;
         width: 90%;
         max-width: 350px;
     }
@@ -86,7 +84,7 @@
 
     .currPrice {
         margin-bottom: 6px;
-        color: rgb(138, 146, 151);  // COLOR
+        color: var(--assetGrey);  // COLOR
     }
 
     .currPriceNumber{
@@ -99,14 +97,14 @@
         bottom: 10px;
         left: 10px;
         font-size: 14px;
-        color: rgb(138, 146, 151);
+        color: var(--assetGrey);
 
 
         &::after {
             content: "";
-            width: 250px;
+            width: 400px;
             height: 1px;
-            background-color: rgb(138, 146, 151);
+            background-color: var(--assetGrey);
             position: absolute;
             top: 48%;
             right: 0;
@@ -139,7 +137,7 @@
         top: -8px;
         font-size: 44px;
         font-weight: var(--font-bold);
-        color:rgba(138, 146, 151, 0.466);
+        color: rgb(156 164 173 / 53%);
     }
 }
 
@@ -164,6 +162,7 @@
 
 .changePercent {
     color: var(--accent2);
+    font-weight: var(--font-bold);
 }
 
 .red {

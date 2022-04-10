@@ -26,6 +26,8 @@ table {
     th {
         width: 25px;
         text-align: center;
+        font-weight: var(--font-bold);
+        padding-bottom: 10px;
                 
         @media (max-width: 400px) {
             font-size: 12px;

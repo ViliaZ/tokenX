@@ -54,10 +54,6 @@ a {
         max-width: 1000px;
     }
 
-    @media (max-width: 600px) {
-        max-width: 3120px;
-    }
-
     .wrapper-graph {
         position: relative;
         height: 100%;
@@ -67,7 +63,7 @@ a {
         width: 200px;
 
         @media (max-width: 900px) {
-            width: 400px;
+            width: 500px;
             max-width: 50%;
         }
         
@@ -94,7 +90,7 @@ a {
         width: 200px;
 
         @media (max-width: 900px) {
-            width: 400px;
+            width: 500px;
             max-width: 50%;
         }
 

@@ -18,6 +18,7 @@
     width: 100%;
     max-width: 100%;
     height: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.375);
 
 
     &:after{
@@ -36,7 +37,7 @@
 h1 {
     margin-block-start: 0em;
     margin-block-end: 0em;
-    margin-left: 22px;
+    margin-left: 34px;
     font-size: 84px;
     font-weight: 900;
     color: transparent;
@@ -54,9 +55,9 @@ h1 {
     .subline {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
         color: var(--primary-light);
-       
+       width: fit-content;
         font-size: 18px;
         letter-spacing: 4px;
         margin-right: 24px;
@@ -68,6 +69,19 @@ h1 {
         @media (max-width: 375px) {
             font-size: 12px;
         }
+    }
+
+    .track{
+        letter-spacing: 0.3em;
+    }    
+    .your{
+        font-size: 12px;
+      margin-left: 10px;
+
+        letter-spacing: 1.18em;
+    }   
+     .coins{
+        letter-spacing: 0.32em;
     }
 
 

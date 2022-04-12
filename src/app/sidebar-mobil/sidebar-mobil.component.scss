@@ -9,8 +9,7 @@
     height: 110px;
 }
 
-
-.wrapper{
+.wrapper {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -20,9 +19,8 @@
     height: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.375);
 
-
-    &:after{
-        content: '';
+    &:after {
+        content: "";
         z-index: 2;
         position: absolute;
         width: 4px;
@@ -31,58 +29,75 @@
         right: 0;
         bottom: 23px;
         translate: transitionY(50%);
-        }
+    }
 }
 
 h1 {
     margin-block-start: 0em;
-    margin-block-end: 0em;
+    margin-block-end: 3px;
     margin-left: 34px;
     font-size: 84px;
     font-weight: 900;
     color: transparent;
-    -webkit-text-stroke: 1px  rgb(177, 193, 195);
+    -webkit-text-stroke: 1px rgb(177, 193, 195);
 
     @media (max-width: 550px) {
-        font-size: 52px!important;
+        font-size: 52px !important;
+        margin-left: 20px;
     }
 
     @media (max-width: 375px) {
-        font-size: 12px;
+        font-size: 11px;
+        margin-left: 12px;
     }
 }
 
-    .subline {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: var(--primary-light);
-       width: fit-content;
-        font-size: 18px;
-        letter-spacing: 4px;
+.subline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--primary-light);
+    width: fit-content;
+    font-size: 18px;
+    letter-spacing: 4px;
+    margin-right: 14px;
+
+    @media (max-width: 1100px) {
         margin-right: 24px;
-
-        @media (max-width: 550px) {
-            font-size: 14px;
-        }
-
-        @media (max-width: 375px) {
-            font-size: 12px;
-        }
     }
-
-    .track{
-        letter-spacing: 0.3em;
-    }    
-    .your{
-        font-size: 12px;
-      margin-left: 10px;
-
-        letter-spacing: 1.18em;
-    }   
-     .coins{
-        letter-spacing: 0.32em;
+    @media (max-width: 800px) {
+        margin-right: 16px;
     }
 
 
+}
 
+.track {
+    letter-spacing: 5px;
+
+    @media (max-width: 450px) {
+        font-size: 14px;
+        letter-spacing: 4px;
+    }
+}
+
+.your {
+    font-size: 12px;
+    margin-left: 10px;
+    letter-spacing: 14px;
+
+    @media (max-width: 450px) {
+        font-size: 11px;
+        letter-spacing: 10px;
+        margin-left: 7px;
+    }
+}
+
+.coins {
+    letter-spacing: 5px;
+
+    @media (max-width: 450px) {
+        letter-spacing: 4px;
+        font-size: 14px;
+    }
+}

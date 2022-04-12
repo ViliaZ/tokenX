@@ -19,7 +19,7 @@
         <i>* all prices in €</i>
     </div>
 
-    <!-- Asset Text Form -->
+    <!-- ASSET INFOS + TEXT -->
     <div *ngIf="currentTab === 'table'" class="infoContainer">
 
         <div class="furtherInfos">
@@ -40,14 +40,19 @@
             </div>
         </div>
 
-        <!-- TEXT ASSET -->
-        <div class="shortText desktopOnly" [class.bottomMargin]="fulltextOpen"> 
-            {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:550}} 
+        <!-- DESCRIPTION ASSET -->
+        <!-- <div [innerHTML]="fulltextOpen ? assetInfotext : assetInfotext"></div> -->
+        <div 
+            class="shortText desktopOnly" 
+            [class.bottomMargin]="fulltextOpen"
+            [innerHTML]="fulltextOpen ? assetInfotext : assetInfotext | slice:0:550">
+            <!-- {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:550}}  -->
             <span *ngIf="!fulltextOpen" (click)="fullText('open')" class="readMore">... read more</span>
             <span *ngIf="fulltextOpen" (click)="fullText('close')" class="readMore readmore-open">... show less</span>
         </div>
 
-        <div class="shortText mobileOnly" [class.bottomMargin]="fulltextOpen" > {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:300 }}
+        <div class="shortText mobileOnly" [class.bottomMargin]="fulltextOpen" > 
+            {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:300 }}
             <span *ngIf="!fulltextOpen" (click)="fullText('open')" class="readMore">... read more</span>
             <span *ngIf="fulltextOpen" (click)="fullText('close')" class="readMore readmore-open">... show less</span>
         </div>

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { AssetsService } from '../Services/assets.service';
 import { firstValueFrom } from 'rxjs';
@@ -21,7 +21,8 @@ export class GraphComponent implements OnInit, AfterViewInit {
 
   @ViewChild(BaseChartDirective, { static: true }) mychart: BaseChartDirective;
   @ViewChild('mycanvas') canvas: ElementRef;
-
+  @ViewChild('graphContainer') graphContainer: ElementRef;
+  
   lineChartColors;
 
 
@@ -39,8 +40,6 @@ export class GraphComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-
-
     const ctx = this.canvas.nativeElement.getContext('2d');
     console.log('context before', ctx);
 
@@ -76,6 +75,15 @@ export class GraphComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // @HostListener('window:resize', ['$event'])
+  // onWindowResize() {
+  //   let width = this.graphContainer.nativeElement.parentNode.getBoundingClientRect().width;
+  //   console.log('width ',width);
+  //   console.log('width parentnode',this.graphContainer.nativeElement.parentNode);
+  //   this.canvas.nativeElement.style.width = width;
+  
+    
+  // }
 
 
   async drawGraph(asset) {

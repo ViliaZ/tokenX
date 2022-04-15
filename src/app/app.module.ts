@@ -15,6 +15,7 @@ import { TableComponent } from './table/table.component';
 import { AssetSectionComponent } from './asset-section/asset-section.component';
 import { ImprintComponent } from './imprint/imprint.component';
 import { SidebarMobilComponent } from './sidebar-mobil/sidebar-mobil.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SidebarMobilComponent } from './sidebar-mobil/sidebar-mobil.component';
     AppRoutingModule, 
     FormsModule,  
     NgChartsModule,
+    BrowserAnimationsModule
   ],
 
   providers: [],

@@ -1,12 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { AssetsService } from '../Services/assets.service';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 
 @Component({
   selector: 'app-asset-section',
   templateUrl: './asset-section.component.html',
-  styleUrls: ['./asset-section.component.scss']
+  styleUrls: ['./asset-section.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('200ms', style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class AssetSectionComponent implements OnInit {
   // allAssetsInfo: any = {};

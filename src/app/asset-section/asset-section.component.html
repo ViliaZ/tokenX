@@ -1,10 +1,10 @@
-
 <div 
+    @fadeIn
     *ngFor="let asset of assetNames.slice(0, 10); index as i" class="card">
     <div class="upperRow">
-       <img class="image" src="{{ images[i] }}">
+        <img class="image" src="{{ images[i] }}">
 
-        <div class="rankingNr"> 
+        <div class="rankingNr">
             <!-- <span class="MCR">MCR</span>  -->
             {{ assetRanks[i] }}
         </div>
@@ -15,20 +15,18 @@
         <div class="row">
             <span class="currPrice">PRICE</span>
             <span class="currPriceNumber">€ {{ currentPrices[i].toFixed(2) }}</span>
-            <span 
-                class="changePercent" 
-                [class.red]="changePercent[i] == 0 || changePercent[i] < 0">
-                    <span *ngIf="changePercent[i] > 0">+</span>
+            <span class="changePercent" [class.red]="changePercent[i] == 0 || changePercent[i] < 0">
+                <span *ngIf="changePercent[i] > 0">+</span>
                 {{ changePercent[i].toFixed(2) }}%
             </span>
+        </div>
+
+        <!-- pos absolute -->
+        <div class="assetName">{{ assetNames[i] | uppercase }}</div>
     </div>
 
-    <!-- pos absolute -->
-    <div class="assetName">{{ assetNames[i] | uppercase }}</div>
-</div>
 
-
-<!-- <div *ngFor="let asset of assetNames.slice(0, 10); index as i" class="card">
+    <!-- <div *ngFor="let asset of assetNames.slice(0, 10); index as i" class="card">
     <div class="upperRow">
        <img class="image" src="{{ images[i] }}">
 

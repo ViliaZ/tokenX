@@ -4,11 +4,11 @@
     </app-calculator>
 
 
-    <app-graph class="flex-1" *ngIf="currentTab === 'table'" [requestedAssetID]="calculator.requestedAssetID">
+    <app-graph class="flex-1" *ngIf="currentTab === 'table'" [requestedAssetID]="assetService.requestedAssetID">
     </app-graph>
 
 
-    <app-table *ngIf="currentTab === 'graph'" [requestedAssetID]="calculator.requestedAssetID">
+    <app-table *ngIf="currentTab === 'graph'" [requestedAssetID]="assetService.requestedAssetID">
     </app-table>
 
 

@@ -39,7 +39,6 @@
 
 
 .card {
-
     position: relative;
     display: flex;
     flex-direction: column;
@@ -53,6 +52,7 @@
     min-height: 150px;
     overflow: hidden;
     transition: all ease-in-out 150ms;
+    cursor: pointer;
 
     &:hover{
         box-shadow: rgb(36, 35, 35) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;    

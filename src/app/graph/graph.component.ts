@@ -55,11 +55,11 @@ export class GraphComponent implements OnInit, AfterViewInit {
   ngOnChanges() {
     // check if chart object is empty or already in use
     if (Object.keys(this.chart).length === 0) {
-      this.drawGraph(this.requestedAssetID);
+      this.drawGraph(this.assetService.requestedAssetID);
     }
     else {
       this.chart.destroy();
-      this.drawGraph(this.requestedAssetID);
+      this.drawGraph(this.assetService.requestedAssetID);
     }
   }
 

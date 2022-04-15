@@ -19,11 +19,12 @@ export class MainComponent implements OnInit, AfterViewInit {
   public highestPrice!: any;
   requestedAssetID: any = 'bitcoin'
   public fulltextRequested: boolean = false; // asset text info
+  
   @ViewChild(CalculatorComponent) calculatorComp: CalculatorComponent;
   @ViewChild('innerHTMLText') innerHTMLText: ElementRef;
 
 
-  constructor(private assets: AssetsService, private sanitizer: DomSanitizer) { }
+  constructor(public assetService: AssetsService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -32,7 +33,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() { // runs only once after Child is initialized
-    this.requestedAssetID = this.calculatorComp.requestedAssetID;
+    this.requestedAssetID = this.assetService.requestedAssetID;
     this.getInfoData();
     console.log('innerhtml', this.innerHTMLText.nativeElement);
 
@@ -44,20 +45,20 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   // update changes in AssetSearch
   ngAfterViewChecked() { // detects changes in Child --> triggers frequently
-    if (this.requestedAssetID !== this.calculatorComp.requestedAssetID) {
-      this.requestedAssetID = this.calculatorComp.requestedAssetID;
+    if (this.requestedAssetID !== this.assetService.requestedAssetID) {
+      this.requestedAssetID = this.assetService.requestedAssetID;
       this.getInfoData();
     }
   }
 
   // getting Data form EventEmitter (child comp: Calculator) 
-  getRequestedAssedID(assetFromCalculator: any) {
-    this.requestedAssetID = assetFromCalculator;
+  getRequestedAssedID() {
+    this.requestedAssetID = this.assetService.requestedAssetID;
   }
 
   getInfoData() {
     try {
-      this.assets.getAssetDetails(this.requestedAssetID)
+      this.assetService.getAssetDetails(this.assetService.requestedAssetID)
         .subscribe((results: any) => {
           this.assetInfotext = results.description.en;
           this.assetWebsite = results.links.homepage[0];

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, HostListener, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 
 import { firstValueFrom } from 'rxjs';
 import { AssetsService } from '../Services/assets.service';
@@ -13,7 +13,7 @@ export class CalculatorComponent implements OnInit {
 
   public showList: any = true;  // if inputfield in focus
 
-  assetInput: string = 'Bitcoin';
+  assetInput: any = this.assetService.requestedAssetID;
   amountInput: number = 1;
 
   amountInEUR: number = 0;
@@ -24,20 +24,22 @@ export class CalculatorComponent implements OnInit {
   filteredAsset: any = [];
 
 
-  public requestedAssetID: any = 'bitcoin';
+  public requestedAssetID: any = this.assetService.requestedAssetID;;
 
   //   Format INFO from API: 
   //      "id": "bitcoin",
   //      "symbol": "btc",
   //      "name": "Bitcoin"
 
-  constructor(private assetService: AssetsService) { }
+  constructor(public assetService: AssetsService, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.getAssetList();
     this.getSearchData();
     this.calculateExchange();
   }
+
+
 
   getAssetList() {
     this.assetService.getAssetList()
@@ -49,7 +51,7 @@ export class CalculatorComponent implements OnInit {
     this.filteredAsset = [];
 
     if (this.assetInput.length == 0) {
-      this.requestedAssetID = 'bitcoin';
+      this.assetService.requestedAssetID = 'bitcoin';
     }
     // check if PARTLY the input string is matching an actual asset in my list
     if (this.assetInput.length > 1) {  // min search: 3 characters
@@ -60,8 +62,8 @@ export class CalculatorComponent implements OnInit {
         }
         // check for COMPLETE string is correct and mathcing an actual asset
         if (this.assetList[i].id == this.assetInput.toLowerCase()) {
-          this.requestedAssetID = this.assetList[i].id;
           this.assetService.requestedAssetID = this.assetList[i].id;
+
         }
       }
       this.calculateExchange();
@@ -70,7 +72,7 @@ export class CalculatorComponent implements OnInit {
 
   async calculateExchange() {
     try {
-      let res = await firstValueFrom(this.assetService.getExchangeRateEUR(this.requestedAssetID));
+      let res = await firstValueFrom(this.assetService.getExchangeRateEUR(this.assetService.requestedAssetID));
       this.priceInEUR = (res['market_data']['current_price']['eur']) * this.amountInput;
     }
     catch (error) {
@@ -91,7 +93,7 @@ export class CalculatorComponent implements OnInit {
   // clicked on a option from list
   updateRequestedAsset(asset: string, event: Event) {
     event.stopPropagation();
-    this.requestedAssetID = asset;
+    this.assetService.requestedAssetID = asset;
     this.showList = false;
   }
 

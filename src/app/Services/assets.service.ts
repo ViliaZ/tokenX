@@ -11,7 +11,7 @@ export class AssetsService {
   // Attribution required!
 
   assetList: object = {};
-  requestedAssetID: string = 'bitcoin'; // from input field
+  requestedAssetID: string = 'tether'; // from input field
 
 
   constructor(private http: HttpClient) {

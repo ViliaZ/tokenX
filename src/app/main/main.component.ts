@@ -1,14 +1,15 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, SecurityContext, ViewChild } from '@angular/core';
 import { AssetsService } from '../Services/assets.service';
 import { CalculatorComponent } from '../calculator/calculator.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
 
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, AfterViewInit {
 
   @Input() currentTab: string = 'graph'
 
@@ -17,11 +18,12 @@ export class MainComponent implements OnInit {
   public lowestPrice!: any;
   public highestPrice!: any;
   requestedAssetID: any = 'bitcoin'
-  public fulltextOpen: boolean = false; // asset text info
+  public fulltextRequested: boolean = false; // asset text info
   @ViewChild(CalculatorComponent) calculatorComp: CalculatorComponent;
+  @ViewChild('innerHTMLText') innerHTMLText: ElementRef;
 
 
-  constructor(private assets: AssetsService) { }
+  constructor(private assets: AssetsService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -32,6 +34,12 @@ export class MainComponent implements OnInit {
   ngAfterViewInit() { // runs only once after Child is initialized
     this.requestedAssetID = this.calculatorComp.requestedAssetID;
     this.getInfoData();
+    console.log('innerhtml', this.innerHTMLText.nativeElement);
+
+    setTimeout(() => {
+      // this.innerHTMLText.nativeElement.innerHTML += this.sanitizer.bypassSecurityTrustHtml(`<span (click)="fullText('open')" [class]="readMore">... read more</span>`)
+      this.innerHTMLText.nativeElement.innerHTML += this.sanitizer.sanitize(SecurityContext.HTML,`<span #readMore (click)="fullText('open')" [class]="readMore">... read more</span>`)
+    }, 500)
   }
 
   // update changes in AssetSearch
@@ -63,13 +71,15 @@ export class MainComponent implements OnInit {
 
   fullText(request: string) {
     if (request == 'open') {
-      this.fulltextOpen = true;
-    }
-    else {
-      this.fulltextOpen = false;
+      this.fulltextRequested = true;
 
     }
+    else {
+      this.fulltextRequested = false;
+    }
   }
+
+
 
 
 

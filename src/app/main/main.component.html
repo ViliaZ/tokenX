@@ -1,10 +1,10 @@
-<div class="wrapper">
+<div class="wrapper" [class.flexboxStart]="fulltextRequested">
 
     <app-calculator #calculator class="border-rad flex-c-c gap-1">
     </app-calculator>
 
 
-    <app-graph class="flex-1" *ngIf="currentTab === 'table'" [requestedAssetID]="calculator.requestedAssetID" >
+    <app-graph class="flex-1" *ngIf="currentTab === 'table'" [requestedAssetID]="calculator.requestedAssetID">
     </app-graph>
 
 
@@ -30,32 +30,38 @@
             <div *ngIf="lowestPrice" class="infoWithIcon">
                 <img class="icon" src="assets/img/high.png" alt="icon-high">
                 <span class="accentColor">24h-High </span>
-                  € {{ highestPrice }}
+                € {{ highestPrice }}
             </div>
 
             <div *ngIf="highestPrice" class="infoWithIcon">
                 <img class="icon" src="assets/img/low.png" alt="icon-low">
                 <span class="accentColor">24h-Low </span>
-                  € {{ lowestPrice }}
+                € {{ lowestPrice }}
             </div>
         </div>
 
         <!-- DESCRIPTION ASSET -->
-        <!-- <div [innerHTML]="fulltextOpen ? assetInfotext : assetInfotext"></div> -->
-        <div 
-            class="shortText desktopOnly" 
-            [class.bottomMargin]="fulltextOpen"
-            [innerHTML]="fulltextOpen ? assetInfotext : assetInfotext | slice:0:550">
-            <!-- {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:550}}  -->
-            <span *ngIf="!fulltextOpen" (click)="fullText('open')" class="readMore">... read more</span>
-            <span *ngIf="fulltextOpen" (click)="fullText('close')" class="readMore readmore-open">... show less</span>
+        <div class="shortText desktopOnly">
+            <!-- must be innerHTML to have correct formatting of links from API
+            CAVE: be sure to have a trustworthy source innerHTML allows for cross-site scripting -->
+            <div #innerHTMLText  
+            [innerHTML]="fulltextRequested ? assetInfotext : (assetInfotext | slice:0:550)"
+            [class.bottomMargin]="fulltextRequested">
+                
+            </div>
+
+            <span *ngIf="!fulltextRequested" (click)="fullText('open')" class="readMore">... read more</span>
+            <span *ngIf="fulltextRequested" (click)="fullText('close')" class="readMore readmore-open">... show
+                less</span>
         </div>
 
-        <div class="shortText mobileOnly" [class.bottomMargin]="fulltextOpen" > 
-            {{ fulltextOpen ? assetInfotext : assetInfotext | slice:0:300 }}
-            <span *ngIf="!fulltextOpen" (click)="fullText('open')" class="readMore">... read more</span>
-            <span *ngIf="fulltextOpen" (click)="fullText('close')" class="readMore readmore-open">... show less</span>
-        </div>
+        <!-- <div  class="shortText mobileOnly" >
+            <div [innerHTML]="fulltextRequested ? assetInfotext : (assetInfotext | slice:0:300)"
+               [class.bottomMargin]="fulltextRequested">
+            </div>
+            <span *ngIf="!fulltextRequested" (click)="fullText('open')" class="readMore">... read more</span>
+            <span *ngIf="fulltextRequested" (click)="fullText('close')" class="readMore readmore-open">... show less</span>
+        </div> -->
 
     </div>
 </div>

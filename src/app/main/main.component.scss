@@ -19,13 +19,32 @@
     @media (max-width: 900px) {
         border-top-left-radius: 0px !important;
     }
+
+
 }
+
+a {
+    text-decoration: none;
+    color: var(--accent2);
+    font-weight: var(--font-bold);
+
+    &:hover {
+        color: var(--muted);
+    }
+}
+
+
 
 .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%; 
+
+    &.flexboxStart{
+        justify-content: flex-start!important;
+        gap: 2em; 
+    }
 }
 
 app-graph {
@@ -63,16 +82,6 @@ app-graph {
     word-break: break-word;
     height: fit-content;
  
-    a {
-        text-decoration: none;
-        color: var(--accent2);
-        font-weight: var(--font-bold);
-
-        &:hover {
-            color: var(--muted);
-        }
-    }
-
     // causes issues, when not restricted to a width
     .text {
         max-width: 95%;
@@ -119,17 +128,18 @@ app-graph {
     @media (max-width: 1100px) {
         margin-bottom: 10px;
     }
+}
 
-    .readMore {
-        font-style: italic;
-        font-weight: var(--font-bold);
-        cursor: pointer;
-        color: var(--accent2);
-        transition: all 120ms ease-in-out;
+.readMore {
+    font-style: italic;
+    font-weight: var(--font-bold);
+    cursor: pointer;
+    color: var(--accent2);
+    transition: all 120ms ease-in-out;
 
-        &:hover {
-            color: var(--primary-light);
-        }
+
+    &:hover {
+        color: var(--primary-light);
     }
 }
 

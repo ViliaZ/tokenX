@@ -41,27 +41,15 @@ export class GraphComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     const ctx = this.canvas.nativeElement.getContext('2d');
-    console.log('context before', ctx);
 
     let gradientFill = ctx.createLinearGradient(0, 0, 200, 50);
-    console.log('gradientFill before', gradientFill);
     gradientFill.addColorStop(0, 'green');
     gradientFill.addColorStop(.5, 'cyan');
     gradientFill.addColorStop(1, 'green');
 
-    console.log('gradientFill after', gradientFill);
-
     ctx.borderColor = 'green';
     ctx.backgroundColor = gradientFill;
     ctx.strokeStyle = gradientFill;
-
-    console.log('context after', ctx);
-    // this.fillcolor = [{
-    //   backgroundColor: gradientFill
-    // }];
-
-
-
   }
 
   ngOnChanges() {
@@ -117,21 +105,17 @@ export class GraphComponent implements OnInit, AfterViewInit {
   getColor() {
 
     const ctx = this.canvas.nativeElement.getContext('2d');
-    console.log('context before', ctx);
 
     let gradientFill = ctx.createLinearGradient(0, 20, 300, 800);
-    console.log('gradientFill before', gradientFill);
     gradientFill.addColorStop(0.1, '#13e2a4');
     gradientFill.addColorStop(0.8, '#e902b3');
     gradientFill.addColorStop(1, '#e902b3');
 
-    console.log('gradientFill after', gradientFill);
 
     ctx.borderColor = 'green';
     ctx.backgroundColor = gradientFill;
     ctx.strokeStyle = gradientFill;
 
-    console.log('context after', ctx);
     return gradientFill
   }
 

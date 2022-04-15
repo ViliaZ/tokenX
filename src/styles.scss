@@ -6,6 +6,10 @@
     font-weight: 300;
 }
 
+
+// hide scrollbar
+
+
 :root {
     --bg: #031229;
     --primary-light: rgb(248, 240, 240);
@@ -50,4 +54,15 @@ h3 {
 
 .gap-1 {
     gap: 2rem;
+}
+
+
+a {
+    text-decoration: none;
+    color: var(--accent2);
+    font-weight: var(--font-bold);
+
+    &:hover {
+        color: var(--muted);
+    }
 }

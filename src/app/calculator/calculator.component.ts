@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, HostListener, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener, SimpleChanges, ChangeDetectorRef, OnChanges } from '@angular/core';
 
 import { firstValueFrom } from 'rxjs';
 import { AssetsService } from '../Services/assets.service';
@@ -40,7 +40,6 @@ export class CalculatorComponent implements OnInit {
   }
 
 
-
   getAssetList() {
     this.assetService.getAssetList()
       .subscribe((data) => { this.assetList = data; })
@@ -63,7 +62,6 @@ export class CalculatorComponent implements OnInit {
         // check for COMPLETE string is correct and mathcing an actual asset
         if (this.assetList[i].id == this.assetInput.toLowerCase()) {
           this.assetService.requestedAssetID = this.assetList[i].id;
-
         }
       }
       this.calculateExchange();

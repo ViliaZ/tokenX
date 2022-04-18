@@ -35,13 +35,8 @@ export class MainComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() { // runs only once after Child is initialized
     this.requestedAssetID = this.assetService.requestedAssetID;
     this.getInfoData();
-    console.log('innerhtml', this.innerHTMLText.nativeElement);
-
-    setTimeout(() => {
-      // this.innerHTMLText.nativeElement.innerHTML += this.sanitizer.bypassSecurityTrustHtml(`<span (click)="fullText('open')" [class]="readMore">... read more</span>`)
-      this.innerHTMLText.nativeElement.innerHTML += this.sanitizer.sanitize(SecurityContext.HTML,`<span #readMore (click)="fullText('open')" [class]="readMore">... read more</span>`)
-    }, 500)
   }
+
 
   // update changes in AssetSearch
   ngAfterViewChecked() { // detects changes in Child --> triggers frequently

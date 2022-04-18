@@ -44,24 +44,23 @@
         <div class="shortText desktopOnly">
             <!-- must be innerHTML to have correct formatting of links from API
             CAVE: be sure to have a trustworthy source innerHTML allows for cross-site scripting -->
-            <div #innerHTMLText  
-            [innerHTML]="fulltextRequested ? assetInfotext : (assetInfotext | slice:0:550)"
-            [class.bottomMargin]="fulltextRequested">
-                
-            </div>
-
+            <span #innerHTMLText [innerHTML]="fulltextRequested ? assetInfotext : (assetInfotext | slice:0:550)"
+                [class.bottomMargin]="fulltextRequested">
+            </span>
             <span *ngIf="!fulltextRequested" (click)="fullText('open')" class="readMore">... read more</span>
             <span *ngIf="fulltextRequested" (click)="fullText('close')" class="readMore readmore-open">... show
                 less</span>
         </div>
 
-        <!-- <div  class="shortText mobileOnly" >
-            <div [innerHTML]="fulltextRequested ? assetInfotext : (assetInfotext | slice:0:300)"
-               [class.bottomMargin]="fulltextRequested">
-            </div>
+        <div class="shortText mobileOnly">
+            <span [innerHTML]="fulltextRequested ? assetInfotext : (assetInfotext | slice:0:300)"
+                [class.bottomMargin]="fulltextRequested">
+            </span>
             <span *ngIf="!fulltextRequested" (click)="fullText('open')" class="readMore">... read more</span>
-            <span *ngIf="fulltextRequested" (click)="fullText('close')" class="readMore readmore-open">... show less</span>
-        </div> -->
+
+            <span *ngIf="fulltextRequested" (click)="fullText('close')" class="readMore readmore-open">... show
+                less</span>
+        </div>
 
     </div>
 </div>

@@ -63,7 +63,7 @@ export class AssetSectionComponent implements OnInit {
 
 showAsset(asset:string){
   this.assetService.requestedAssetID = asset;
-  console.log(this.assetService.requestedAssetID);
-  
+  this.assetService.calculateExchange();
 }
+
 }

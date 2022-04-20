@@ -14,12 +14,10 @@ export class CalculatorComponent implements OnInit {
   public showList: any = true;  // if inputfield in focus
 
   assetInput: any = this.assetService.requestedAssetID;
-  amountInput: number = 1;
-
+  // amountInput: number = 1;
   amountInEUR: number = 0;
-  priceInEUR: number = 0;
-  priceInUSD: number = 0;
-
+  // priceInEUR: any = 0;
+  
   assetList: any = [];
   filteredAsset: any = [];
 
@@ -36,7 +34,7 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {
     this.getAssetList();
     this.getSearchData();
-    this.calculateExchange();
+    this.assetService.calculateExchange();
   }
 
 
@@ -48,35 +46,24 @@ export class CalculatorComponent implements OnInit {
   // process data from input field
   getSearchData() {
     this.filteredAsset = [];
-
     if (this.assetInput.length == 0) {
       this.assetService.requestedAssetID = 'bitcoin';
     }
     // check if PARTLY the input string is matching an actual asset in my list
-    if (this.assetInput.length > 1) {  // min search: 3 characters
+    if (this.assetInput.length > 2) {  // min search: 2 characters
       for (let i = 0; i < this.assetList.length; i++) {
         // restrict array to 6 items 
         if (this.assetList[i].id.includes(this.assetInput.toLowerCase()) && this.filteredAsset.length < 6) {
           this.filteredAsset.push(this.assetList[i].id);
         }
-        // check for COMPLETE string is correct and mathcing an actual asset
+        // check for COMPLETE string is correct and matching an actual asset
         if (this.assetList[i].id == this.assetInput.toLowerCase()) {
           this.assetService.requestedAssetID = this.assetList[i].id;
         }
       }
-      this.calculateExchange();
+      this.assetService.calculateExchange();
     }
   };
-
-  async calculateExchange() {
-    try {
-      let res = await firstValueFrom(this.assetService.getExchangeRateEUR(this.assetService.requestedAssetID));
-      this.priceInEUR = (res['market_data']['current_price']['eur']) * this.amountInput;
-    }
-    catch (error) {
-      console.error('calc exchange error:', error);
-    }
-  }
 
   // toggle for show/notshow list of alternative search options
   toggleList(showList: boolean) {
@@ -92,6 +79,7 @@ export class CalculatorComponent implements OnInit {
   updateRequestedAsset(asset: string, event: Event) {
     event.stopPropagation();
     this.assetService.requestedAssetID = asset;
+    this.assetService.calculateExchange();
     this.showList = false;
   }
 

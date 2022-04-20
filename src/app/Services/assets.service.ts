@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,8 @@ export class AssetsService {
 
   assetList: object = {};
   requestedAssetID: string = 'bitcoin'; // from input field
+  priceInEUR: any = 0; // for calculation input field
+  amountInput: number = 1;
 
 
   constructor(private http: HttpClient) {
@@ -48,6 +50,16 @@ export class AssetsService {
     return this.http.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false`);
   }
 
-
+  async calculateExchange() {
+    console.log('exchangerequest', this.requestedAssetID)
+    try {
+      let res = await firstValueFrom(this.getExchangeRateEUR(this.requestedAssetID));
+      this.priceInEUR = (res['market_data']['current_price']['eur']) * this.amountInput;
+      console.log('priceinEUR new', this.priceInEUR)
+    }
+    catch (error) {
+      console.error('calc exchange error:', error);
+    }
+  }
 
 }

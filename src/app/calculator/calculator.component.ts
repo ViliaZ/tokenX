@@ -12,22 +12,11 @@ import { AssetsService } from '../Services/assets.service';
 export class CalculatorComponent implements OnInit {
 
   public showList: any = true;  // if inputfield in focus
-
+  public requestedAssetID: any = this.assetService.requestedAssetID;;
   assetInput: any = this.assetService.requestedAssetID;
-  // amountInput: number = 1;
   amountInEUR: number = 0;
-  // priceInEUR: any = 0;
-  
   assetList: any = [];
   filteredAsset: any = [];
-
-
-  public requestedAssetID: any = this.assetService.requestedAssetID;;
-
-  //   Format INFO from API: 
-  //      "id": "bitcoin",
-  //      "symbol": "btc",
-  //      "name": "Bitcoin"
 
   constructor(public assetService: AssetsService, private cd: ChangeDetectorRef) { }
 
@@ -47,7 +36,7 @@ export class CalculatorComponent implements OnInit {
   getSearchData() {
     this.filteredAsset = [];
     if (this.assetInput.length == 0) {
-      this.assetService.requestedAssetID = 'bitcoin';
+      this.assetService.requestedAssetID = 'Bitcoin';
     }
     // check if PARTLY the input string is matching an actual asset in my list
     if (this.assetInput.length > 2) {  // min search: 2 characters
@@ -91,8 +80,6 @@ export class CalculatorComponent implements OnInit {
       this.showList = false;
     }
   }
-
-
 
   }
 

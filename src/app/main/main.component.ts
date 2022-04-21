@@ -17,7 +17,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   public assetWebsite!: any;
   public lowestPrice!: any;
   public highestPrice!: any;
-  requestedAssetID: any = 'bitcoin'
+  requestedAssetID: any = 'Bitcoin'
   public fulltextRequested: boolean = false; // asset text info
   
   @ViewChild(CalculatorComponent) calculatorComp: CalculatorComponent;

@@ -11,7 +11,7 @@ export class AssetsService {
   // Attribution required!
 
   assetList: object = {};
-  requestedAssetID: string = 'bitcoin'; // from input field
+  requestedAssetID: string = 'Bitcoin'; // from input field
   priceInEUR: any = 0; // for calculation input field
   amountInput: number = 1;
 
@@ -26,23 +26,23 @@ export class AssetsService {
   }
 
   getExchangeRateEUR(assetRequested) {
-    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}?tickers=true&sparkline=true`);
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested.toLowerCase()}?tickers=true&sparkline=true`);
   }
 
   getAssetWeeklyData(assetRequested) {
     // in Euro
-    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}/market_chart?vs_currency=eur&days=30&interval=daily`);
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested.toLowerCase()}/market_chart?vs_currency=eur&days=30&interval=daily`);
   }
 
   getAssetDayData(assetRequested) {
     // in Euro
-    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}/market_chart?vs_currency=eur&days=1&interval=minute`);
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested.toLowerCase()}/market_chart?vs_currency=eur&days=1&interval=minute`);
   }
 
 
   getAssetDetails(assetRequested) {
     // thumbnail, infotext
-    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested}`);
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/${assetRequested.toLowerCase()}`);
   }
 
   getMarketInfos() {
@@ -53,7 +53,7 @@ export class AssetsService {
   async calculateExchange() {
     console.log('exchangerequest', this.requestedAssetID)
     try {
-      let res = await firstValueFrom(this.getExchangeRateEUR(this.requestedAssetID));
+      let res = await firstValueFrom(this.getExchangeRateEUR(this.requestedAssetID.toLowerCase()));
       this.priceInEUR = (res['market_data']['current_price']['eur']) * this.amountInput;
       console.log('priceinEUR new', this.priceInEUR)
     }

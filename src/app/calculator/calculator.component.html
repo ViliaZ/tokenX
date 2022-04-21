@@ -18,7 +18,7 @@
             [(ngModel)]="assetInput" 
             (ngModelChange)="getSearchData(); assetService.calculateExchange()"
             (focus)="toggleList(true)"   
-            [value]="assetService.requestedAssetID"       
+            [value]="assetService.requestedAssetID  | titlecase"       
             >
             
             <!-- position absolute -->

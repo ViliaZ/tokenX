@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { AssetsService } from '../Services/assets.service';
 
 
@@ -9,15 +9,19 @@ import { AssetsService } from '../Services/assets.service';
 })
 export class CalculatorComponent implements OnInit {
 
+  @ViewChild('inputNumber') inputNumber: ElementRef;
+  @ViewChild('assetSearch') assetSearch: ElementRef;
   public showList: any = true;  // if inputfield in focus
-  public requestedAssetID: any = this.assetService.requestedAssetID;;
+  public requestedAssetID: any = this.assetService.requestedAssetID;
+  public exchangePrice: any = 0;  // this will be toFixed() and become a string, therefore type is string, not number
+  public previousSearchAsset: string;  // if defautlDirection is false, requestedAssetID will not work (Inputfield.length = 0 and it would always be bitcoin)
+
   assetInput: any = this.assetService.requestedAssetID;
   amountInEUR: number = 0;
   assetList: any = [];
   filteredAsset: any = [];
-  public euroPriceForAsset: any = 0;  // this will be toFixed() and become a string, therefore type is string, not number
-  public previousSearchAsset: string;  // if defautlDirection is false, requestedAssetID will not work (Inputfield.length = 0 and it would always be bitcoin)
 
+ 
   constructor(public assetService: AssetsService) { }
 
   ngOnInit(): void {
@@ -43,19 +47,23 @@ export class CalculatorComponent implements OnInit {
     }
     // check if PARTLY the input string is matching an actual asset in my list
     if (this.assetInput.length > 0) {  // min search: 2 characters
-      for (let i = 0; i < this.assetList.length; i++) {
-        // restrict array to 6 items 
-        if (this.assetList[i].id.includes(this.assetInput.toLowerCase()) && this.filteredAsset.length < 6) {
-          this.filteredAsset.push(this.assetList[i].id);
-        }
-        // check for COMPLETE string is correct and matching an actual asset
-        if (this.assetList[i].id == this.assetInput.toLowerCase()) {
-          this.assetService.requestedAssetID = this.assetList[i].id;
-          this.assetService.calculateExchange();
-        }
-      }
+      this.getMatchingAssets();
     }
   };
+
+  // Goal: get LIst of max 6 items to propose for searchInput
+  getMatchingAssets() {
+    for (let i = 0; i < this.assetList.length; i++) {
+      if (this.assetList[i].id.includes(this.assetInput.toLowerCase()) && this.filteredAsset.length < 6) {
+        this.filteredAsset.push(this.assetList[i].id);
+      }
+      // check for COMPLETE string is correct and matching an actual asset
+      if (this.assetList[i].id == this.assetInput.toLowerCase()) {
+        this.assetService.requestedAssetID = this.assetList[i].id;
+        this.assetService.calculateExchange();
+      }
+    }
+  }
 
   // toggle for show/notshow list of alternative search options
   toggleList(showList: boolean) {
@@ -84,31 +92,40 @@ export class CalculatorComponent implements OnInit {
     }
   }
 
-  toggleConversion() {    
+  toggleConversion() {
     this.previousSearchAsset = this.assetService.requestedAssetID; // if we would take requestedAssetID (as always) it would always be Bitcoin, because input field is empty
     if (this.assetService.defaultDirection) {
-      this.euroPriceForAsset = this.calcEuroPriceForAsset();
+      this.exchangePrice = this.calcexchangePrice();
       this.assetService.defaultDirection = false;
+      setTimeout(()=>{ this.inputNumber.nativeElement.focus()},200)
+     
     }
     else { // get back to default     
       this.assetInput = this.previousSearchAsset;
       this.assetService.defaultDirection = true;
+      setTimeout(()=>{ this.assetSearch.nativeElement.focus()},300)
     }
   }
 
-  calcEuroPriceForAsset(){    
-    if(this.assetService.priceInEUR > 1000){
+  calcexchangePrice() {
+    if (this.assetService.priceInEUR > 1000) {
       return (1 / this.assetService.priceInEUR).toFixed(6);
     }
-    else if(this.assetService.priceInEUR > 10000){
+    else if (this.assetService.priceInEUR > 10000) {
       return (1 / this.assetService.priceInEUR).toFixed(8);
     }
-    else if(this.assetService.priceInEUR > 100000){
+    else if (this.assetService.priceInEUR > 100000) {
       return (1 / this.assetService.priceInEUR).toFixed(10);
     }
-    else{
+    else {
       return (1 / this.assetService.priceInEUR).toFixed(4);
     }
+  }
+
+  // Trigger: only if this.assetService.defaultDirection = false;
+  calculateReverseExchange() {
+    this.exchangePrice = this.exchangePrice * this.assetService.amountInput;
+    // this.inputNumber.nativeElement.focus();
   }
 
 }

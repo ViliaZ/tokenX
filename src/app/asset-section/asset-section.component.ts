@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { AssetsService } from '../Services/assets.service';
 import { trigger, style, animate, transition } from '@angular/animations';
@@ -26,6 +26,7 @@ export class AssetSectionComponent implements OnInit {
   assetRanks: any[] = [];
   images: any[] = [];
   changePercent: any[] = [];
+
 
   constructor(public assetService: AssetsService) { }
 
@@ -55,17 +56,18 @@ export class AssetSectionComponent implements OnInit {
     } catch (error) {
       console.error('error in getAssetInfos():', error);
     }
-
     // loop over the object (it is not an Array!! --> map() will not functioning
   }
 
    showAsset(asset: string) {
     this.assetService.defaultDirection = true;
+    this.assetService.amountInput = 1;
+
     setTimeout(()=>{
       this.assetService.requestedAssetID = asset;
       this.assetService.calculateExchange();
       this.scrollToTop();
-    },150)
+    },250)
   }
 
   scrollToTop(){

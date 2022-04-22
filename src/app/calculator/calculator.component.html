@@ -1,27 +1,59 @@
 <div class="currencySearch-container">
 
     <div class="inputNumber">
-        <input #inputNumber min="0" type="number" [(ngModel)]="assetService.amountInput"
-            (ngModelChange)="assetService.calculateExchange()" [class.hideIcon]="inputNumber.focus"
+        <input 
+                *ngIf="assetService.defaultDirection"
+                min="0" 
+                type="number" 
+                [(ngModel)]="assetService.amountInput"
+                (ngModelChange)="assetService.calculateExchange()" 
+            >        
+            
+            <input 
+                *ngIf="!assetService.defaultDirection"
+                #inputNumber 
+                min="0" 
+                type="number" 
+                [(ngModel)]="assetService.amountInput"
+                (ngModelChange)="calculateReverseExchange()" 
             >
     </div>
     <!-- position rel -->
     <div class="searchAssetContainer">
-        <input id='inputfieldSearchAsset' class="inputAsset" min="2" [(ngModel)]="assetInput"
-            (ngModelChange)="getSearchData()" (focus)="toggleList(true)"
+        <input 
             *ngIf="assetService.defaultDirection"
+            id='inputfieldSearchAsset' 
+            #assetSearch
+            class="inputAsset" 
+            min="2" 
+            [(ngModel)]="assetInput"
+            (ngModelChange)="getSearchData()" 
+            (focus)="toggleList(true)"
             [value]="assetService.requestedAssetID  | titlecase" autofocus>
 
-        <input id='inputfieldSearchAsset' class="inputAsset" min="2" 
-            (ngModelChange)="getSearchData()" (focus)="toggleList(true)"
-            [value]="'Euro'"
+        <input 
             *ngIf="!assetService.defaultDirection"
+            id='inputfieldSearchAsset' 
+            class="inputAsset" 
+            min="2" 
+            (ngModelChange)="getSearchData()" 
+            (focus)="toggleList(true)"
+            [value]="'Euro'"
             disabled
             >
       
         <!-- position absolute -->
-        <li id='listAssetOptions' *ngIf="showList" (mouseenter)="toggleList(true)" class="filteredAssetOptions">
-            <ul *ngFor="let asset of filteredAsset; index as i" (click)="updateRequestedAsset(asset, $event)">
+        <li 
+            id='listAssetOptions' 
+            *ngIf="showList" 
+            (mouseenter)="toggleList(true)" 
+            class="filteredAssetOptions"
+            >
+
+            <ul 
+                *ngFor="let asset of filteredAsset; index as i" 
+                (click)="updateRequestedAsset(asset, $event)"
+            >
                 {{ asset | titlecase}}
             </ul>
         </li>
@@ -38,7 +70,7 @@
 <!-- EUR SECTION -->
 <div class="currencyEUR-container">
     <input *ngIf="assetService.defaultDirection" [(ngModel)]='assetService.priceInEUR' class="inputNumber" type="number" disabled="true">
-    <input *ngIf="!assetService.defaultDirection"[(ngModel)]='euroPriceForAsset' class="inputNumber" type="number" disabled="true">
+    <input *ngIf="!assetService.defaultDirection"[(ngModel)]='exchangePrice' class="inputNumber" type="number" disabled="true">
     <div *ngIf="assetService.defaultDirection" class="EUR">Euro</div>
     <div *ngIf="!assetService.defaultDirection" class="EUR">{{ assetService.requestedAssetID | titlecase }}</div>
 </div>

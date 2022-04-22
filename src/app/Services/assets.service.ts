@@ -14,6 +14,7 @@ export class AssetsService {
   requestedAssetID: string = 'Bitcoin'; // from input field
   priceInEUR: any = 0; // for calculation input field
   amountInput: number = 1;
+  public defaultDirection: boolean = true;  // convert Asset to EUR
 
 
   constructor(private http: HttpClient) {

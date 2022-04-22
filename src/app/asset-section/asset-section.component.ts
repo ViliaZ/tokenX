@@ -59,11 +59,13 @@ export class AssetSectionComponent implements OnInit {
     // loop over the object (it is not an Array!! --> map() will not functioning
   }
 
-
-  showAsset(asset: string) {
-    this.assetService.requestedAssetID = asset;
-    this.assetService.calculateExchange();
-    this.scrollToTop();
+   showAsset(asset: string) {
+    this.assetService.defaultDirection = true;
+    setTimeout(()=>{
+      this.assetService.requestedAssetID = asset;
+      this.assetService.calculateExchange();
+      this.scrollToTop();
+    },150)
   }
 
   scrollToTop(){

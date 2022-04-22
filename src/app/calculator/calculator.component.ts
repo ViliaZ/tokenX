@@ -15,6 +15,8 @@ export class CalculatorComponent implements OnInit {
   amountInEUR: number = 0;
   assetList: any = [];
   filteredAsset: any = [];
+  public euroPriceForAsset: any = 0;  // this will be toFixed() and become a string, therefore type is string, not number
+  public previousSearchAsset: string;  // if defautlDirection is false, requestedAssetID will not work (Inputfield.length = 0 and it would always be bitcoin)
 
   constructor(public assetService: AssetsService) { }
 
@@ -26,10 +28,11 @@ export class CalculatorComponent implements OnInit {
 
   getAssetList() {
     this.assetService.getAssetList()
-      .subscribe((data) => { 
+      .subscribe((data) => {
         console.log('Calculator: getassetList');
-        
-        this.assetList = data })
+
+        this.assetList = data
+      })
   }
 
   // process data from input field
@@ -81,5 +84,32 @@ export class CalculatorComponent implements OnInit {
     }
   }
 
+  toggleConversion() {    
+    this.previousSearchAsset = this.assetService.requestedAssetID; // if we would take requestedAssetID (as always) it would always be Bitcoin, because input field is empty
+    if (this.assetService.defaultDirection) {
+      this.euroPriceForAsset = this.calcEuroPriceForAsset();
+      this.assetService.defaultDirection = false;
+    }
+    else { // get back to default     
+      this.assetInput = this.previousSearchAsset;
+      this.assetService.defaultDirection = true;
+    }
   }
+
+  calcEuroPriceForAsset(){    
+    if(this.assetService.priceInEUR > 1000){
+      return (1 / this.assetService.priceInEUR).toFixed(6);
+    }
+    else if(this.assetService.priceInEUR > 10000){
+      return (1 / this.assetService.priceInEUR).toFixed(8);
+    }
+    else if(this.assetService.priceInEUR > 100000){
+      return (1 / this.assetService.priceInEUR).toFixed(10);
+    }
+    else{
+      return (1 / this.assetService.priceInEUR).toFixed(4);
+    }
+  }
+
+}
 

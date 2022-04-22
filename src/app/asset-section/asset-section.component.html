@@ -1,3 +1,4 @@
+
 <div 
     @fadeIn
     (click)="showAsset(asset)"
@@ -6,8 +7,8 @@
         <img class="image" src="{{ images[i] }}">
 
         <div class="rankingNr">
-            <!-- <span class="MCR">MCR</span>  -->
-            {{ assetRanks[i] }}
+            <span class="mcr">#</span> 
+            <div class="nr">{{ assetRanks[i] }}</div>
         </div>
 
     </div>
@@ -25,32 +26,4 @@
         <!-- pos absolute -->
         <div class="assetName">{{ assetNames[i] | uppercase }}</div>
     </div>
-
-
-    <!-- <div *ngFor="let asset of assetNames.slice(0, 10); index as i" class="card">
-    <div class="upperRow">
-       <img class="image" src="{{ images[i] }}">
-
-        <div class="rankingNr"> <span class="MCR">MCR</span> #{{ assetRanks[i] }}</div>
-    </div>
-
-    <div class="infoPart">
-        <div class="row">
-            <span>Current Price</span>
-            <span>€ {{ currentPrices[i].toFixed(2) }}</span>
-        </div>
-        <div class="row">
-            <span 
-                class="changePercent" 
-                [class.red]="changePercent[i]==0 || changePercent[i]<0">
-                    <span *ngIf="changePercent[i]>0">+</span>
-            {{ changePercent[i].toFixed(2) }}%
-            </span>
-     </div>
-    </div>
-
-
-    <div class="assetName">{{ assetNames[i] | titlecase }}</div>
 </div>
-
- -->

@@ -21,7 +21,6 @@ export class MainComponent implements OnInit, AfterViewInit {
   public fulltextRequested: boolean = false; // asset text info
   
   @ViewChild(CalculatorComponent) calculatorComp: CalculatorComponent;
-  @ViewChild('innerHTMLText') innerHTMLText: ElementRef;
 
 
   constructor(public assetService: AssetsService, private sanitizer: DomSanitizer) { }
@@ -36,7 +35,6 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.requestedAssetID = this.assetService.requestedAssetID;
     this.getInfoData();
   }
-
 
   // update changes in AssetSearch
   ngAfterViewChecked() { // detects changes in Child --> triggers frequently

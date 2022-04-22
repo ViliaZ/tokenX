@@ -11,6 +11,8 @@
     height: 100%;
     gap: 2rem;
     overflow: auto;
+    transition: all 200ms ease-in-out;
+
 
     @media (max-width: 500px) {
         padding: 34px 10px !important;
@@ -19,8 +21,6 @@
     @media (max-width: 900px) {
         border-top-left-radius: 0px !important;
     }
-
-
 }
 
 a {
@@ -33,18 +33,12 @@ a {
     }
 }
 
-
-
 .wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     height: 100%; 
-
-    &.flexboxStart{
-        justify-content: flex-start!important;
-        gap: 2em; 
-    }
+    transition: all ease-in-out 400ms;
 }
 
 app-graph {
@@ -69,9 +63,6 @@ app-graph {
     }
 }
 
-.bottomMargin{
-    margin-bottom: 26px!important;
-}
 
 .infoContainer {
     display: flex;
@@ -80,13 +71,13 @@ app-graph {
     width: 100%;
     text-align: justify;
     word-break: break-word;
-    height: fit-content;
- 
+
     // causes issues, when not restricted to a width
     .text {
         max-width: 95%;
     }
 }
+
 // below Graph: website & Co.
 .furtherInfos {
     display: flex;
@@ -135,8 +126,7 @@ app-graph {
     font-weight: var(--font-bold);
     cursor: pointer;
     color: var(--accent2);
-    transition: all 120ms ease-in-out;
-
+    margin-left: 4px;
 
     &:hover {
         color: var(--primary-light);
@@ -150,6 +140,7 @@ app-graph {
 }
 
 .mobileOnly {
+    transition: all 200ms ease-in-out;
     display: none;
 
     @media (max-width: 1100px) {

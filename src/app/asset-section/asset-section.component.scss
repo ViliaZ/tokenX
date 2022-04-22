@@ -35,6 +35,8 @@
     }
 }
 
+
+
 .card {
     position: relative;
     display: flex;
@@ -56,6 +58,10 @@
 
         .rankingNr{
             color: var(--accent2);
+            
+            .nr{
+                color: var(--accent2);
+            }
         }
 
         .assetName{
@@ -161,6 +167,8 @@
 
     .rankingNr {
         position: absolute;
+        display: flex;
+        align-items: center;
         z-index: 4;
         right: 12px;
         top: -8px;
@@ -170,6 +178,17 @@
 
         @media (max-width: 445px) {
             font-size: 50px;
+        }
+
+        .mcr{
+            font-size: 18px;
+            height: 100%;
+            padding-bottom: 12px;
+        }
+        .nr{
+            font-size: 44px;
+            font-weight: var(--font-bold);
+            color: rgb(156 164 173 / 53%);
         }
     }
 }

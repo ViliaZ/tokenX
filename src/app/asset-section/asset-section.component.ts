@@ -61,9 +61,18 @@ export class AssetSectionComponent implements OnInit {
   }
 
 
-showAsset(asset:string){
-  this.assetService.requestedAssetID = asset;
-  this.assetService.calculateExchange();
-}
+  showAsset(asset: string) {
+    this.assetService.requestedAssetID = asset;
+    this.assetService.calculateExchange();
+    this.scrollToTop();
+  }
+
+  scrollToTop(){
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+});
+  }
 
 }

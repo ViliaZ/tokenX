@@ -18,19 +18,14 @@ export class GraphComponent implements OnInit, AfterViewInit {
   prices: any = [];
   dates: any = [];
   chart: any = {};
+  lineChartColors: any;
+  chartDirective: any;
+  changeDetectorRef: any;
 
   @ViewChild(BaseChartDirective, { static: true }) mychart: BaseChartDirective;
   @ViewChild('mycanvas') canvas: ElementRef;
   @ViewChild('graphContainer') graphContainer: ElementRef;
-  
-  lineChartColors;
-
-
   @Input() requestedAssetID;  // is synchronous calculator input, property binding in main component
-
-  chartDirective: any;
-  changeDetectorRef: any;
-
 
   constructor(private assetService: AssetsService) {
     Chart.register(...registerables);
@@ -46,7 +41,6 @@ export class GraphComponent implements OnInit, AfterViewInit {
     gradientFill.addColorStop(0, 'green');
     gradientFill.addColorStop(.5, 'cyan');
     gradientFill.addColorStop(1, 'green');
-
     ctx.borderColor = 'green';
     ctx.backgroundColor = gradientFill;
     ctx.strokeStyle = gradientFill;
@@ -63,17 +57,6 @@ export class GraphComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // @HostListener('window:resize', ['$event'])
-  // onWindowResize() {
-  //   let width = this.graphContainer.nativeElement.parentNode.getBoundingClientRect().width;
-  //   console.log('width ',width);
-  //   console.log('width parentnode',this.graphContainer.nativeElement.parentNode);
-  //   this.canvas.nativeElement.style.width = width;
-  
-    
-  // }
-
-
   async drawGraph(asset) {
     this.prices = [];
     this.dates = [];
@@ -86,12 +69,11 @@ export class GraphComponent implements OnInit, AfterViewInit {
     }
   }
 
-  async getChartData(asset) {
+  async getChartData(asset:any) {
     let graphdata = await firstValueFrom(this.assetService.getAssetDayData(asset));
 
     graphdata['prices'].map((datapoint) => {
       let calendarDate = new Date(datapoint[0]);
-
       let options: any = { formatMatcher: 'basic', hour: 'numeric', minute: 'numeric', hourCycle: 'h12' };
       let dateFormatted = calendarDate.toLocaleDateString('de', options);
       let cutOutDay = dateFormatted.split(','); // we just need the time, without the day
@@ -103,15 +85,11 @@ export class GraphComponent implements OnInit, AfterViewInit {
   }
 
   getColor() {
-
     const ctx = this.canvas.nativeElement.getContext('2d');
-
     let gradientFill = ctx.createLinearGradient(0, 20, 300, 800);
     gradientFill.addColorStop(0.1, '#13e2a4');
     gradientFill.addColorStop(0.8, '#e902b3');
     gradientFill.addColorStop(1, '#e902b3');
-
-
     ctx.borderColor = 'green';
     ctx.backgroundColor = gradientFill;
     ctx.strokeStyle = gradientFill;

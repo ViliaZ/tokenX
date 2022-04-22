@@ -99,7 +99,7 @@
 
         // list of altiernative Assets
         li {
-            width: fit-content;
+            width: 100%;
             margin-top: 8px;
             list-style-type: none !important;
             position: absolute;
@@ -116,6 +116,7 @@
 
             &:hover {
                 color: var(--accent2);
+                font-weight: var(--font-bold);
             }
         }
     }

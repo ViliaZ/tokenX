@@ -1,6 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, HostListener, SimpleChanges, ChangeDetectorRef, OnChanges } from '@angular/core';
-
-import { firstValueFrom } from 'rxjs';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { AssetsService } from '../Services/assets.service';
 
 
@@ -18,7 +16,7 @@ export class CalculatorComponent implements OnInit {
   assetList: any = [];
   filteredAsset: any = [];
 
-  constructor(public assetService: AssetsService, private cd: ChangeDetectorRef) { }
+  constructor(public assetService: AssetsService) { }
 
   ngOnInit(): void {
     this.getAssetList();
@@ -26,20 +24,22 @@ export class CalculatorComponent implements OnInit {
     this.assetService.calculateExchange();
   }
 
-
   getAssetList() {
     this.assetService.getAssetList()
-      .subscribe((data) => { this.assetList = data; })
+      .subscribe((data) => { 
+        console.log('Calculator: getassetList');
+        
+        this.assetList = data })
   }
 
   // process data from input field
   getSearchData() {
     this.filteredAsset = [];
-    if (this.assetInput.length == 0) {
+    if (this.assetInput.length == 1) {
       this.assetService.requestedAssetID = 'Bitcoin';
     }
     // check if PARTLY the input string is matching an actual asset in my list
-    if (this.assetInput.length > 2) {  // min search: 2 characters
+    if (this.assetInput.length > 0) {  // min search: 2 characters
       for (let i = 0; i < this.assetList.length; i++) {
         // restrict array to 6 items 
         if (this.assetList[i].id.includes(this.assetInput.toLowerCase()) && this.filteredAsset.length < 6) {
@@ -48,9 +48,9 @@ export class CalculatorComponent implements OnInit {
         // check for COMPLETE string is correct and matching an actual asset
         if (this.assetList[i].id == this.assetInput.toLowerCase()) {
           this.assetService.requestedAssetID = this.assetList[i].id;
+          this.assetService.calculateExchange();
         }
       }
-      this.assetService.calculateExchange();
     }
   };
 

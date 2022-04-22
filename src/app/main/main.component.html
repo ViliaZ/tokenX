@@ -44,15 +44,13 @@
         </div>
 
         <!-- DESCRIPTION ASSET -->
-        <div 
-            class="shortText expandableText desktopOnly " >
+        <div class="shortText desktopOnly"  [class.expandAnimation]="fulltextRequested">
             <!-- must be innerHTML to have correct formatting of links from API
             CAVE: be sure to have a trustworthy source innerHTML allows for cross-site scripting -->
             <span 
                 [innerHTML]="fulltextRequested ? assetInfotext : (assetInfotext | slice:0:550)"
                 [class.bottomMargin]="fulltextRequested"
-                [class.expandAnimation]="fulltextRequested"
-                class="expandableText">
+                >
             </span>
 
             <span 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { AssetsService } from '../Services/assets.service';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 
 @Component({
@@ -17,6 +17,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     ])
   ]
 })
+
 export class AssetSectionComponent implements OnInit {
   // allAssetsInfo: any = {};
   currentPrices: any[] = [];
@@ -43,8 +44,6 @@ export class AssetSectionComponent implements OnInit {
     try {
       // get Info from top 5 market ranked assets (they are in correct order)
       let allAssetsInfo: any = await firstValueFrom(this.assetService.getMarketInfos());
-      console.log('NEU', typeof this.assetService.getMarketInfos());
-
       allAssetsInfo.map((asset: any) => {
         this.assetNames.push(asset['id']);
         this.assetRanks.push(asset['market_cap_rank']);

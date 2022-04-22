@@ -28,15 +28,22 @@
         background-color: rgba(95, 126, 118, 0.349);
         cursor: pointer;
 
-        .searchAssetContainer .icon-magnifier{
-            filter: opacity(0.8);
-        }  
+        // .searchAssetContainer input{
+        //     background-image: url(../../assets/img/magnifier.png);
+        //     background-position: 8px 2px;
+        //     background-size: 16px;
+        //     background-repeat: no-repeat;
+        // }  
 
-        .inputNumber .icon-magnifier{
-            filter: opacity(0.8);
-        }
+        // .inputNumber input{
+        //     background-image: url(../../assets/img/magnifier.png);
+        //     background-position: left;
+        //     background-size: 16px;
+        //     background-repeat: no-repeat;
+        // }
     }
 
+    
     @media (max-width: 500px) {
         width: 84%;
     }
@@ -54,17 +61,9 @@
             width: 100%;
             height: 20px!important;
             color: var(--accent2);
+            transition: 150ms ease-in-out all;
+            overflow: auto;
         }
-
-        .icon-magnifier {
-            position: absolute;
-            left: 0px;
-            width: 16px;
-            height: 16px;
-            filter: opacity(0);
-            transition: all ease-in-out 205ms;
-        }
-
     }
 
     .inputAsset {
@@ -74,6 +73,7 @@
         border-left: 1px var(--accent2) solid;
         font-weight: var(--font-bold);
         font-size: 16px;
+        overflow: auto;
     }
 
     // contains searchInput and container for holding filtered Options
@@ -86,17 +86,7 @@
         font-size: 14px;
         height: 20px;
         z-index: 100;
-
-
-        .icon-magnifier {
-            position: absolute;
-            left: 10px;
-            width: 16px;
-            height: 16px;
-            filter: opacity(0);
-            transition: all ease-in-out 205ms;
-        }
-
+        
         // list of altiernative Assets
         li {
             width: 100%;

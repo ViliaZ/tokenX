@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, SecurityContext, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AssetsService } from '../Services/assets.service';
 import { CalculatorComponent } from '../calculator/calculator.component';
-import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-main',
@@ -9,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./main.component.scss'],
 })
 
-export class MainComponent implements OnInit, AfterViewInit {
+export class MainComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   @Input() currentTab: string = 'graph'
 
@@ -23,12 +23,9 @@ export class MainComponent implements OnInit, AfterViewInit {
   @ViewChild(CalculatorComponent) calculatorComp: CalculatorComponent;
 
 
-  constructor(public assetService: AssetsService, private sanitizer: DomSanitizer) { }
+  constructor(public assetService: AssetsService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      console.log(this.lowestPrice, this.highestPrice);
-    }, 2000);
   }
 
   ngAfterViewInit() { // runs only once after Child is initialized
@@ -66,15 +63,11 @@ export class MainComponent implements OnInit, AfterViewInit {
   fullText(request: string) {
     if (request == 'open') {
       this.fulltextRequested = true;
-
     }
     else {
       this.fulltextRequested = false;
     }
   }
-
-
-
 
 
 }

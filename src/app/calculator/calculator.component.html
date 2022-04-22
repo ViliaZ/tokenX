@@ -1,16 +1,18 @@
 <div class="currencySearch-container">
 
-    <input 
-        class="inputNumber"
-        #inputNumber
-        min="0" 
-        type="number" 
-        [(ngModel)]="assetService.amountInput" 
-        (ngModelChange)="assetService.calculateExchange()" >
-
-               
+    <div  class="inputNumber">
+        <img src="assets/img/magnifier.png" class="icon-magnifier" alt="search-icon">
+        <input
+            #inputNumber
+            min="0"
+            type="number"
+            [(ngModel)]="assetService.amountInput"
+            (ngModelChange)="assetService.calculateExchange()" >
+        
+    </div>   
             <!-- position rel -->
     <div class="searchAssetContainer">
+        <img src="assets/img/magnifier.png" class="icon-magnifier" alt="search-icon">
         <input 
             id='inputfieldSearchAsset'
             class="inputAsset"

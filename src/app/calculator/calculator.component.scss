@@ -4,11 +4,10 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 2em;
-    
 
     @media (max-width: 500px) {
         flex-direction: column;
-        gap: 0.5em!important;
+        gap: 0.5em !important;
     }
 }
 
@@ -23,28 +22,54 @@
     width: 45%;
     min-width: 150px;
     max-width: 400px;
-    transition: all 125ms ease-in-out;
+    transition: all 125ms ease-in-out;    
 
-    &:hover{
-        background-color:rgba(95, 126, 118, 0.349);
+    &:hover {
+        background-color: rgba(95, 126, 118, 0.349);
         cursor: pointer;
+
+        .searchAssetContainer .icon-magnifier{
+            filter: opacity(0.8);
+        }  
+
+        .inputNumber .icon-magnifier{
+            filter: opacity(0.8);
+        }
     }
 
     @media (max-width: 500px) {
         width: 84%;
     }
 
-
     // Inputfield for searching Amount
     .inputNumber {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 45%;
-        color: var(--accent2);
         font-weight: var(--font-bold);
+
+        input{
+            width: 100%;
+            height: 20px!important;
+            color: var(--accent2);
         }
 
-    .inputAsset{
+        .icon-magnifier {
+            position: absolute;
+            left: 0px;
+            width: 16px;
+            height: 16px;
+            filter: opacity(0);
+            transition: all ease-in-out 205ms;
+        }
+
+    }
+
+    .inputAsset {
         width: 100%;
-        height: 20px!important;
+        height: 20px !important;
         color: var(--accent2);
         border-left: 1px var(--accent2) solid;
         font-weight: var(--font-bold);
@@ -53,14 +78,24 @@
 
     // contains searchInput and container for holding filtered Options
     .searchAssetContainer {
-        width: 45%;
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;
+        width: 45%;
         font-size: 14px;
         height: 20px;
         z-index: 100;
+
+
+        .icon-magnifier {
+            position: absolute;
+            left: 10px;
+            width: 16px;
+            height: 16px;
+            filter: opacity(0);
+            transition: all ease-in-out 205ms;
+        }
 
         // list of altiernative Assets
         li {
@@ -98,9 +133,8 @@
     max-width: 400px;
     text-align: center;
     font-size: 16px;
-    font-weight: var(--font-bold)!important;
+    font-weight: var(--font-bold) !important;
     transition: all ease-in-out 125ms;
-
 
     @media (max-width: 500px) {
         width: 84%;
@@ -132,22 +166,20 @@ input::-webkit-inner-spin-button {
 input {
     text-align: center;
     background-color: transparent;
-    border:unset;
+    border: unset;
     color: var(--primary-light);
     overflow: auto;
-    height: 80%!important;
-
+    height: 80% !important;
 }
 
-input:focus{
-    outline: none!important;
+input:focus {
+    outline: none !important;
 }
 
 input[type="number"] {
     -moz-appearance: textfield;
     font-weight: var(--font-bold);
 }
-
 
 input::placeholder {
     color: var(--primary-light);

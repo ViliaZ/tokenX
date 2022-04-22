@@ -1,8 +1,8 @@
 :host {
     display: flex;
     background-color: var(--bg);
-    width: 116px;
-    min-width: 116px;
+    width: 100px;
+    min-width: 110px;
     display: flex;
     align-items: flex-start;
 
@@ -63,12 +63,12 @@ h1 {
     margin: 0;
     position: absolute;
     writing-mode: vertical-lr;
-    left: 0;
-    bottom: -16px;
+    // left: -0;
+    bottom: -20px;
     color: rgba(245, 245, 245, 0);
     font-size: 172px;
     font-weight: 900;
-    transform: translateX(-46px);
+    transform: translateX(-52px);
     -webkit-text-stroke: 1px rgb(177, 193, 195);
 
     @media (min-width: 1600px) {
@@ -78,8 +78,6 @@ h1 {
     @media (max-height: 780px) {
         font-size: 152px;
     }
-
-
 }
 
 #offset {

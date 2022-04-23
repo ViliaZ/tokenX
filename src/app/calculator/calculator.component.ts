@@ -13,13 +13,11 @@ export class CalculatorComponent implements OnInit {
   @ViewChild('assetSearch') assetSearch: ElementRef;
   public showList: any = true;  // if inputfield in focus
   public requestedAssetID: any = this.assetService.requestedAssetID;
-  public  // this will be toFixed() and become a string, therefore type is string, not number
-  public previousSearchAsset: string;  // if defautlDirection is false, requestedAssetID will not work (Inputfield.length = 0 and it would always be bitcoin)
+  public currAsset: string;  // if defautlDirection is false, requestedAssetID will not work (Inputfield.length = 0 and it would always be bitcoin)
   assetInput: any = this.assetService.requestedAssetID;
   amountInEUR: number = 0;
   assetList: any = [];
   filteredAsset: any = [];
-
 
   constructor(public assetService: AssetsService) { }
 
@@ -92,26 +90,33 @@ export class CalculatorComponent implements OnInit {
   }
 
   toggleConversion() {
-    this.previousSearchAsset = this.assetService.requestedAssetID; // if we would take requestedAssetID (as always) it would always be Bitcoin, because input field is empty
-    if (this.assetService.defaultDirection) {
-      this.assetService.amountInput_reverse = this.assetService.amountInput;
-      this.calculateReverseExchange();
-      this.assetService.defaultDirection = false;
-      setTimeout(() => { 
-        this.inputNumber.nativeElement.focus()}, 200)
+    this.currAsset = this.assetService.requestedAssetID; // if we would take requestedAssetID (as always) it would always be Bitcoin, because input field is empty
+    if (this.assetService.defaultDirection) { //  change exchange direction
+      this.changeExchangeDirection();
     }
-    else { // get back to default   
-      this.assetService.exchangePrice = this.assetService.amountInput_reverse * this.assetService.exchangeRate;
-      this.assetInput = this.previousSearchAsset;
-      this.assetService.amountInput = this.assetService.amountInput_reverse;
-      this.assetService.defaultDirection = true;
-      setTimeout(() => { this.assetSearch.nativeElement.focus() }, 300)
+    else { //  back to default exchange direction
+      this.resetExchangeDirection();
     }
   }
 
+  changeExchangeDirection() {
+    this.assetService.amountInput_reverse = this.assetService.amountInput;
+    this.calculateReverseExchange();
+    this.assetService.defaultDirection = false;
+    setTimeout(() => this.setFocusNumberInput(), 300);
+  }
+
+  resetExchangeDirection(){
+    this.assetService.exchangePrice = this.assetService.amountInput_reverse * this.assetService.exchangeRate;
+    this.assetInput = this.currAsset;
+    this.assetService.amountInput = this.assetService.amountInput_reverse;
+    this.assetService.defaultDirection = true;
+    setTimeout(() => this.setFocusSearchInput(), 300);
+  }
+
   improveNumberFormatting(price: number) {
-    if (price < 1) {   
-     return price.toFixed(8); 
+    if (price < 1) {
+      return price.toFixed(8);
     }
     if (price < 1000) {
       return price.toFixed(4);
@@ -129,11 +134,20 @@ export class CalculatorComponent implements OnInit {
     if (this.assetService.amountInput_reverse == 0) {
       this.assetService.exchangePrice_reverse = 0;
     }
-    let newPrice = 1 / this.assetService.exchangeRate * this.assetService.amountInput_reverse;  
-    setTimeout( ()=> {
+    let newPrice = 1 / this.assetService.exchangeRate * this.assetService.amountInput_reverse;
+    setTimeout(() => {
       this.assetService.exchangePrice_reverse = this.improveNumberFormatting(newPrice);
-    },200)
+      this.setFocusNumberInput();
+    }, 200)
   }
+
+setFocusNumberInput(){
+  this.inputNumber.nativeElement.focus();
+}
+
+setFocusSearchInput(){
+  this.assetSearch.nativeElement.focus();
+}
 
 }
 

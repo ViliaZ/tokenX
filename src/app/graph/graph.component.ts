@@ -118,12 +118,13 @@ export class GraphComponent implements OnInit, AfterViewInit {
         scales: {
           x: {   // text x axis
             ticks: {
-              color: 'white'
+              color: 'white',
             }
           },
           y: {  // text y axis
             ticks: {
               autoSkip: false,
+              maxTicksLimit: 8,
               color: 'white'
             },
             title: {

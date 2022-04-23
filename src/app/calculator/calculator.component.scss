@@ -26,21 +26,28 @@
 
     &:hover {
         background-color: rgba(95, 126, 118, 0.349);
-        cursor: pointer;
 
-        // .searchAssetContainer input{
-        //     background-image: url(../../assets/img/magnifier.png);
-        //     background-position: 8px 2px;
-        //     background-size: 16px;
-        //     background-repeat: no-repeat;
-        // }  
 
-        // .inputNumber input{
-        //     background-image: url(../../assets/img/magnifier.png);
-        //     background-position: left;
-        //     background-size: 16px;
-        //     background-repeat: no-repeat;
-        // }
+        #inputNrDefault{
+            background-image: url(../../assets/img/magnifier.png);
+            background-position: 8px 2px;
+            background-size: 16px;
+            background-repeat: no-repeat;
+        }
+
+        #inputNrReverse{
+            background-image: url(../../assets/img/magnifier.png);
+            background-position: left;
+            background-size: 16px;
+            background-repeat: no-repeat;
+        }
+
+        #inputfieldSearchAsset{
+            background-image: url(../../assets/img/magnifier.png);
+            background-position: 12px ;
+            background-size: 16px;
+            background-repeat: no-repeat;
+        }
     }
 
     
@@ -64,6 +71,8 @@
             transition: 150ms ease-in-out all;
             overflow: auto;
         }
+
+
     }
 
     .inputAsset {
@@ -74,6 +83,7 @@
         font-weight: var(--font-bold);
         font-size: 16px;
         overflow: auto;
+        z-index: 1000;
     }
 
     // contains searchInput and container for holding filtered Options
@@ -147,6 +157,10 @@
 .imgArrows {
     width: 1.5rem;
     cursor: pointer;
+    transition: all 125ms ease-in-out;
+
+    &:hover{
+        filter: invert(76%) sepia(89%) saturate(303%) hue-rotate(98deg) brightness(279%) contrast(80%);    }
 }
 
 input::-webkit-outer-spin-button,

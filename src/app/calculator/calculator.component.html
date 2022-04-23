@@ -7,6 +7,7 @@
                 type="number" 
                 [(ngModel)]="assetService.amountInput"
                 (ngModelChange)="assetService.calculateExchange()" 
+                id="inputNrDefault"
             >        
             
             <input 
@@ -16,6 +17,7 @@
                 type="number" 
                 [(ngModel)]="assetService.amountInput_reverse"
                 (ngModelChange)="calculateReverseExchange()" 
+                id="inputNrReverse"
             >
     </div>
     <!-- position rel -->
@@ -33,7 +35,7 @@
 
         <input 
             *ngIf="!assetService.defaultDirection"
-            id='inputfieldSearchAsset' 
+            id='inputfieldSearchAssetReverse' 
             class="inputAsset" 
             min="2" 
             (ngModelChange)="getSearchData()" 
@@ -63,7 +65,7 @@
 
 <!-- CONVERTER SYMBOL -->
 <div>
-    <img src="assets/img/exchange-white.png" class="imgArrows" (click)="toggleConversion()">
+    <img src="assets/img/exchange-white.png"  class="imgArrows" (click)="toggleConversion()">
 </div>
 
 <!-- EUR SECTION -->

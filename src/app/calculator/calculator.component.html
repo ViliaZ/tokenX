@@ -14,7 +14,7 @@
                 #inputNumber 
                 min="0" 
                 type="number" 
-                [(ngModel)]="assetService.amountInput"
+                [(ngModel)]="assetService.amountInput_reverse"
                 (ngModelChange)="calculateReverseExchange()" 
             >
     </div>
@@ -37,7 +37,6 @@
             class="inputAsset" 
             min="2" 
             (ngModelChange)="getSearchData()" 
-            (focus)="toggleList(true)"
             [value]="'Euro'"
             disabled
             >
@@ -69,8 +68,8 @@
 
 <!-- EUR SECTION -->
 <div class="currencyEUR-container">
-    <input *ngIf="assetService.defaultDirection" [(ngModel)]='assetService.priceInEUR' class="inputNumber" type="number" disabled="true">
-    <input *ngIf="!assetService.defaultDirection"[(ngModel)]='exchangePrice' class="inputNumber" type="number" disabled="true">
+    <input *ngIf="assetService.defaultDirection" [(ngModel)]='assetService.exchangePrice' class="inputNumber" type="number" disabled="true">
+    <input *ngIf="!assetService.defaultDirection"[(ngModel)]='assetService.exchangePrice_reverse' class="inputNumber" type="number" disabled="true">
     <div *ngIf="assetService.defaultDirection" class="EUR">Euro</div>
     <div *ngIf="!assetService.defaultDirection" class="EUR">{{ assetService.requestedAssetID | titlecase }}</div>
 </div>

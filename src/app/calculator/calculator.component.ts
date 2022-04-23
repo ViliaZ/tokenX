@@ -13,15 +13,14 @@ export class CalculatorComponent implements OnInit {
   @ViewChild('assetSearch') assetSearch: ElementRef;
   public showList: any = true;  // if inputfield in focus
   public requestedAssetID: any = this.assetService.requestedAssetID;
-  public exchangePrice: any = 0;  // this will be toFixed() and become a string, therefore type is string, not number
+  public  // this will be toFixed() and become a string, therefore type is string, not number
   public previousSearchAsset: string;  // if defautlDirection is false, requestedAssetID will not work (Inputfield.length = 0 and it would always be bitcoin)
-
   assetInput: any = this.assetService.requestedAssetID;
   amountInEUR: number = 0;
   assetList: any = [];
   filteredAsset: any = [];
 
- 
+
   constructor(public assetService: AssetsService) { }
 
   ngOnInit(): void {
@@ -95,37 +94,45 @@ export class CalculatorComponent implements OnInit {
   toggleConversion() {
     this.previousSearchAsset = this.assetService.requestedAssetID; // if we would take requestedAssetID (as always) it would always be Bitcoin, because input field is empty
     if (this.assetService.defaultDirection) {
-      this.exchangePrice = this.calcexchangePrice();
+      this.assetService.amountInput_reverse = this.assetService.amountInput;
+      this.calculateReverseExchange();
       this.assetService.defaultDirection = false;
-      setTimeout(()=>{ this.inputNumber.nativeElement.focus()},200)
-     
+      setTimeout(() => { 
+        this.inputNumber.nativeElement.focus()}, 200)
     }
-    else { // get back to default     
+    else { // get back to default   
+      this.assetService.exchangePrice = this.assetService.amountInput_reverse * this.assetService.exchangeRate;
       this.assetInput = this.previousSearchAsset;
+      this.assetService.amountInput = this.assetService.amountInput_reverse;
       this.assetService.defaultDirection = true;
-      setTimeout(()=>{ this.assetSearch.nativeElement.focus()},300)
+      setTimeout(() => { this.assetSearch.nativeElement.focus() }, 300)
     }
   }
 
-  calcexchangePrice() {
-    if (this.assetService.priceInEUR > 1000) {
-      return (1 / this.assetService.priceInEUR).toFixed(6);
+  improveNumberFormatting(price: number) {
+    if (price < 1) {   
+     return price.toFixed(8); 
     }
-    else if (this.assetService.priceInEUR > 10000) {
-      return (1 / this.assetService.priceInEUR).toFixed(8);
+    if (price < 1000) {
+      return price.toFixed(4);
     }
-    else if (this.assetService.priceInEUR > 100000) {
-      return (1 / this.assetService.priceInEUR).toFixed(10);
+    if (price > 100000) {
+      return price.toFixed(10);
     }
     else {
-      return (1 / this.assetService.priceInEUR).toFixed(4);
+      return price.toFixed(6);
     }
   }
 
   // Trigger: only if this.assetService.defaultDirection = false;
   calculateReverseExchange() {
-    this.exchangePrice = this.exchangePrice * this.assetService.amountInput;
-    // this.inputNumber.nativeElement.focus();
+    if (this.assetService.amountInput_reverse == 0) {
+      this.assetService.exchangePrice_reverse = 0;
+    }
+    let newPrice = 1 / this.assetService.exchangeRate * this.assetService.amountInput_reverse;  
+    setTimeout( ()=> {
+      this.assetService.exchangePrice_reverse = this.improveNumberFormatting(newPrice);
+    },200)
   }
 
 }

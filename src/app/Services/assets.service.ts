@@ -12,8 +12,11 @@ export class AssetsService {
 
   assetList: object = {};
   requestedAssetID: string = 'Bitcoin'; // from input field
-  priceInEUR: any = 0; // for calculation input field
-  amountInput: number = 1;
+  public exchangePrice: any = 0; // for calculation input field
+  public exchangePrice_reverse: any = 0; 
+  public exchangeRate: number; // used for calculation reversed  // stays CONSTANT!
+  public amountInput: number = 1;
+  public amountInput_reverse: number = 1;
   public defaultDirection: boolean = true;  // convert Asset to EUR
 
 
@@ -60,7 +63,8 @@ export class AssetsService {
   async calculateExchange() {
     try {
       let res = await firstValueFrom(this.getExchangeRateEUR(this.requestedAssetID.toLowerCase()));
-      this.priceInEUR = (res['market_data']['current_price']['eur']) * this.amountInput;
+      this.exchangePrice = (res['market_data']['current_price']['eur']) * this.amountInput;
+      this.exchangeRate = res['market_data']['current_price']['eur']; // CONSTANT!
     }
     catch (error) {
       console.error('calc exchange error:', error);

@@ -19,7 +19,7 @@ a {
     position: absolute;
     bottom: 4px;
     left: 50%;
-    transform: translate(-50%, 0)!important;
+    transform: translate(-50%, 0) !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +30,7 @@ a {
     @media (max-width: 1100px) {
         position: absolute;
         left: 50%;
-        transform: translate(-50%, 0)!important;
+        transform: translate(-50%, 0) !important;
 
         // transform: translateX(-50%);
     }
@@ -38,7 +38,6 @@ a {
 
 .changeColor {
     color: var(--primary-light) !important;
-
 }
 
 .wrapperDiv {
@@ -66,12 +65,11 @@ a {
             width: 500px;
             max-width: 50%;
         }
-        
 
         &::after {
             content: "";
             // inactive background for graph tab
-            background-color: rgba(122, 134, 146, 0.698);
+            background-color: rgba(122, 134, 146, 0.469);
             border-top-left-radius: 4px;
             border-top-right-radius: 16px;
             width: 100%;
@@ -98,7 +96,7 @@ a {
             position: absolute;
             content: "";
             // inactive background for table tab
-            background-color: rgba(122, 134, 146, 0.698);
+            background-color: rgba(122, 134, 146, 0.469);
             border-top-left-radius: 16px;
             border-top-right-radius: 4px;
             width: 100%;
@@ -144,8 +142,16 @@ a {
     }
 }
 
-.animationTabChange {
+.animationTabChangeGraph {
     animation: changeTab 200ms ease-in forwards;
+    -webkit-box-shadow: 14px 1px 14px -5px rgba(5,48,69,0.5); 
+    box-shadow: 14px 1px 14px -5px rgba(5,48,69,0.5);
+}
+
+.animationTabChangeTable {
+    animation: changeTab 200ms ease-in forwards;
+    -webkit-box-shadow: -14px 1px 14px -5px rgba(5,48,69,0.5); 
+    box-shadow: -14px 1px 14px -5px rgba(5,48,69,0.5);
 }
 
 @keyframes changeTab {

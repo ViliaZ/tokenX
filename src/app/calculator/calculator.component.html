@@ -24,9 +24,10 @@
     <div class="searchAssetContainer">
         <input 
             *ngIf="assetService.defaultDirection"
-            id='inputfieldSearchAsset' 
             #assetSearch
+            id='inputfieldSearchAsset' 
             class="inputAsset" 
+            autocomplete="off"
             min="2" 
             [(ngModel)]="assetInput"
             (ngModelChange)="getSearchData()" 

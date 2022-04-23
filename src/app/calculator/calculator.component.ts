@@ -77,6 +77,7 @@ export class CalculatorComponent implements OnInit {
     event.stopPropagation();
     this.assetService.requestedAssetID = asset;
     this.assetService.calculateExchange();
+    this.assetService.exchangePrice = this.improveNumberFormatting(this.assetService.exchangePrice);
     this.showList = false;
   }
 
@@ -115,17 +116,22 @@ export class CalculatorComponent implements OnInit {
   }
 
   improveNumberFormatting(price: number) {
-    if (price < 1) {
+    console.log('price',price);
+    
+    if(price == 0){
+      return 0;
+    }
+    else if (price < 0.001) {
       return price.toFixed(8);
     }
-    if (price < 1000) {
+    else if (price < 1) {
+      return price.toFixed(6);
+    }
+    else if (price < 10) {
       return price.toFixed(4);
     }
-    if (price > 100000) {
-      return price.toFixed(10);
-    }
     else {
-      return price.toFixed(6);
+      return price.toFixed(2);
     }
   }
 

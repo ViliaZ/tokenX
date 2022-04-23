@@ -77,7 +77,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
       let options: any = { formatMatcher: 'basic', hour: 'numeric', minute: 'numeric', hourCycle: 'h12' };
       let dateFormatted = calendarDate.toLocaleDateString('de', options);
       let cutOutDay = dateFormatted.split(','); // we just need the time, without the day
-      this.dates.push(cutOutDay[1]); // only push "hour" to use as graph data
+      this.dates.push(cutOutDay[1]); // only push "hour" to use as graph data     
     });
     graphdata['prices'].map((datapoint) => {
       this.prices.push(datapoint[1]);

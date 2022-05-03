@@ -115,6 +115,7 @@ app-graph {
     margin-bottom: 10px;
     max-height: 120px;
     transition: all 1s linear;
+    white-space: pre-wrap;
 
     &.expandAnimation {
         max-height: 800px;

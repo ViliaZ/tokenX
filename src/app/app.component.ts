@@ -13,11 +13,14 @@ export class AppComponent implements AfterViewInit {
   public currScreenWidth: any;  // for Hostlistener
   public currScreenHeight: any; // for Hostlistener
 
-  constructor(public imprintService: ImprintOpenService) { }
+  constructor(public imprintService: ImprintOpenService) { 
+    //if not working, try to put it in ngAfterViewInit()
+    this.onWindowResize();
+    setTimeout(()=>{this.onWindowResize()},500);
+  }
 
   ngAfterViewInit(): void {
-    this.onWindowResize();
-    setTimeout(()=>{this.onWindowResize()},300);
+
   }
 
   @HostListener('window:resize', ['$event'])

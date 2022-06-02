@@ -22,35 +22,33 @@
     width: 45%;
     min-width: 150px;
     max-width: 400px;
-    transition: all 125ms ease-in-out;    
+    transition: all 125ms ease-in-out;
 
     &:hover {
         background-color: rgba(95, 126, 118, 0.349);
 
-
-        #inputNrDefault{
+        #inputNrDefault {
             background-image: url(../../assets/img/magnifier.png);
             background-position: 8px 2px;
             background-size: 16px;
             background-repeat: no-repeat;
         }
 
-        #inputNrReverse{
+        #inputNrReverse {
             background-image: url(../../assets/img/magnifier.png);
             background-position: left;
             background-size: 16px;
             background-repeat: no-repeat;
         }
 
-        #inputfieldSearchAsset{
+        #inputfieldSearchAsset {
             background-image: url(../../assets/img/magnifier.png);
-            background-position: 12px ;
+            background-position: 12px;
             background-size: 16px;
             background-repeat: no-repeat;
         }
     }
 
-    
     @media (max-width: 500px) {
         width: 84%;
     }
@@ -64,15 +62,13 @@
         width: 45%;
         font-weight: var(--font-bold);
 
-        input{
+        input {
             width: 100%;
-            height: 20px!important;
+            height: 20px !important;
             color: var(--accent2);
             transition: 150ms ease-in-out all;
             overflow: auto;
         }
-
-
     }
 
     .inputAsset {
@@ -96,7 +92,7 @@
         font-size: 14px;
         height: 20px;
         z-index: 100;
-        
+
         // list of altiernative Assets
         li {
             width: 100%;
@@ -159,8 +155,9 @@
     cursor: pointer;
     transition: all 125ms ease-in-out;
 
-    &:hover{
-        filter: invert(76%) sepia(89%) saturate(303%) hue-rotate(98deg) brightness(279%) contrast(80%);    }
+    &:hover {
+        filter: invert(76%) sepia(89%) saturate(303%) hue-rotate(98deg) brightness(279%) contrast(80%);
+    }
 }
 
 input::-webkit-outer-spin-button,
@@ -189,4 +186,13 @@ input[type="number"] {
 
 input::placeholder {
     color: var(--primary-light);
+}
+
+::ng-deep .mat-tooltip {
+    /* your own custom styles here */
+    /* e.g. */
+    color: white;
+    background-color: #5e6a79;
+    text-align: center;
+    line-height: 1.35em;
 }

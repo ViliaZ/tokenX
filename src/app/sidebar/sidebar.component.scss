@@ -2,7 +2,7 @@
     display: flex;
     background-color: var(--bg);
     width: 100px;
-    min-width: 110px;
+    min-width: 116px;
     display: flex;
     align-items: flex-start;
 
@@ -68,7 +68,7 @@ h1 {
     color: rgba(245, 245, 245, 0);
     font-size: 172px;
     font-weight: 900;
-    transform: translateX(-52px);
+    transform: translateX(-49px);
     -webkit-text-stroke: 1px rgb(177, 193, 195);
 
     @media (min-width: 1600px) {

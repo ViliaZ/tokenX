@@ -16,6 +16,7 @@ import { AssetSectionComponent } from './asset-section/asset-section.component';
 import { ImprintComponent } from './imprint/imprint.component';
 import { SidebarMobilComponent } from './sidebar-mobil/sidebar-mobil.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule, 
     FormsModule,  
     NgChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTooltipModule
   ],
 
   providers: [],

@@ -1,61 +1,26 @@
 <div class="currencySearch-container">
 
     <div class="inputNumber">
-        <input 
-                *ngIf="assetService.defaultDirection"
-                min="0" 
-                type="number" 
-                [(ngModel)]="assetService.amountInput"
-                (ngModelChange)="assetService.calculateExchange()" 
-                id="inputNrDefault"
-            >        
-            
-            <input 
-                *ngIf="!assetService.defaultDirection"
-                #inputNumber 
-                min="0" 
-                type="number" 
-                [(ngModel)]="assetService.amountInput_reverse"
-                (ngModelChange)="calculateReverseExchange()" 
-                id="inputNrReverse"
-            >
+        <input *ngIf="assetService.defaultDirection" min="0" type="number" [(ngModel)]="assetService.amountInput"
+            (ngModelChange)="assetService.calculateExchange()" id="inputNrDefault">
+
+        <input *ngIf="!assetService.defaultDirection" #inputNumber min="0" type="number"
+            [(ngModel)]="assetService.amountInput_reverse" (ngModelChange)="calculateReverseExchange()"
+            id="inputNrReverse">
     </div>
     <!-- position rel -->
     <div class="searchAssetContainer">
-        <input 
-            *ngIf="assetService.defaultDirection"
-            #assetSearch
-            id='inputfieldSearchAsset' 
-            class="inputAsset" 
-            autocomplete="off"
-            min="2" 
-            [(ngModel)]="assetInput"
-            (ngModelChange)="getSearchData()" 
-            (focus)="toggleList(true)"
-            [value]="assetService.requestedAssetID  | titlecase" autofocus>
+        <input *ngIf="assetService.defaultDirection" #assetSearch id='inputfieldSearchAsset' class="inputAsset"
+        matTooltip="Search Crypto Assets"  autocomplete="off" min="2" [(ngModel)]="assetInput" (ngModelChange)="getSearchData()"
+            (focus)="toggleList(true)" [value]="assetService.requestedAssetID  | titlecase" autofocus>
 
-        <input 
-            *ngIf="!assetService.defaultDirection"
-            id='inputfieldSearchAssetReverse' 
-            class="inputAsset" 
-            min="2" 
-            (ngModelChange)="getSearchData()" 
-            [value]="'Euro'"
-            disabled
-            >
-      
+        <input *ngIf="!assetService.defaultDirection" id='inputfieldSearchAssetReverse' class="inputAsset" min="2"
+            (ngModelChange)="getSearchData()" [value]="'Euro'" disabled>
+
         <!-- position absolute -->
-        <li 
-            id='listAssetOptions' 
-            *ngIf="showList" 
-            (mouseenter)="toggleList(true)" 
-            class="filteredAssetOptions"
-            >
+        <li id='listAssetOptions' *ngIf="showList" (mouseenter)="toggleList(true)" class="filteredAssetOptions">
 
-            <ul 
-                *ngFor="let asset of filteredAsset; index as i" 
-                (click)="updateRequestedAsset(asset, $event)"
-            >
+            <ul *ngFor="let asset of filteredAsset; index as i" (click)="updateRequestedAsset(asset, $event)">
                 {{ asset | titlecase}}
             </ul>
         </li>
@@ -66,13 +31,15 @@
 
 <!-- CONVERTER SYMBOL -->
 <div>
-    <img src="assets/img/exchange-white.png"  class="imgArrows" (click)="toggleConversion()">
+    <img src="assets/img/exchange-white.png" class="imgArrows" (click)="toggleConversion()">
 </div>
 
 <!-- EUR SECTION -->
-<div class="currencyEUR-container">
-    <input *ngIf="assetService.defaultDirection" [(ngModel)]='assetService.exchangePrice' class="inputNumber" type="number" disabled="true">
-    <input *ngIf="!assetService.defaultDirection"[(ngModel)]='assetService.exchangePrice_reverse' class="inputNumber" type="number" disabled="true">
+<div class="currencyEUR-container" matTooltip="Read only. Use arrow icon to change conversion direction and search for assets.">
+    <input *ngIf="assetService.defaultDirection" [(ngModel)]='assetService.exchangePrice' class="inputNumber"
+    type="number" disabled="true">
+    <input *ngIf="!assetService.defaultDirection" [(ngModel)]='assetService.exchangePrice_reverse' class="inputNumber"
+    type="number" disabled="true">
     <div *ngIf="assetService.defaultDirection" class="EUR">Euro</div>
     <div *ngIf="!assetService.defaultDirection" class="EUR">{{ assetService.requestedAssetID | titlecase }}</div>
 </div>

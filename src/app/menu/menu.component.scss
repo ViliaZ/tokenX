@@ -148,13 +148,13 @@ box-shadow: inset 13px -11px 7px -4px rgba(0,53,69,0.42);
 .animationTabChangeGraph {
     animation: changeTab 200ms ease-in forwards;
     -webkit-box-shadow: 14px 1px 14px -5px rgba(5,48,69,0.5); 
-    box-shadow: 14px 1px 14px -5px rgba(5,48,69,0.5);
+    box-shadow: 14px 1px -10px -5px rgba(5,48,69,0.5);
 }
 
 .animationTabChangeTable {
     animation: changeTab 200ms ease-in forwards;
     -webkit-box-shadow: -14px 1px 14px -5px rgba(5,48,69,0.5); 
-    box-shadow: -14px 1px 14px -5px rgba(5,48,69,0.5);
+    box-shadow: -14px -1px -14px -5px rgba(5,48,69,0.5);
 }
 
 @keyframes changeTab {

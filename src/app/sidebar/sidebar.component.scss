@@ -68,10 +68,10 @@ h1 {
     font-size: 172px;
     font-weight: 900;
     transform: translateX(24px);
-    // transform: translateX(-49px);
     -webkit-text-stroke: 1px rgb(177, 193, 195);
 
     @media (min-width: 1600px) {
+        transform: translateX(48px);
         font-size: 202px;
     }
 
@@ -81,6 +81,7 @@ h1 {
 }
 
 #offset {
+    display: none;
     transform: translateX(-36px) translateY(-8px);
     -webkit-text-stroke: 0px rgba(2, 2, 2, 0) !important;
     color: rgba(0, 0, 0, 0.068);

@@ -6,10 +6,7 @@
     font-weight: 300;
 }
 
-
 // hide scrollbar
-
-
 :root {
     --bg: #031229;
     --primary-light: rgb(248, 240, 240);
@@ -56,7 +53,6 @@ h3 {
     gap: 2rem;
 }
 
-
 a {
     text-decoration: none;
     color: var(--accent2);
@@ -68,3 +64,9 @@ a {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-tooltip {
+    color:white!important;
+    font-size: 11px;
+}
